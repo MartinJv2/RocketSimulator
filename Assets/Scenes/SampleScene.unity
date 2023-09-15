@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectClone: {fileID: 7390866999137272505, guid: 98b8a8e46dc8146408be2640403974b9, type: 3}
   Parent: {fileID: 103436258}
-  x: -10
+  x: 0
 --- !u!1 &587713475
 GameObject:
   m_ObjectHideFlags: 0
