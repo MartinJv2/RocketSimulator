@@ -17,6 +17,6 @@ public class ButtonAction : MonoBehaviour
 	public void OnButtonPress()
 	{
 		Instantiate(ObjectClone, new Vector3(x, 0, x), Quaternion.identity, Parent.transform);
-		++x;
+		x += 2;
 	}
 }
