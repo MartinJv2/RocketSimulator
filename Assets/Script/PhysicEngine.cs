@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PhysicEngine : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float GravityAcelleration;
+    
+	private float speed = 0;
     void Start()
     {
         
@@ -12,7 +14,14 @@ public class PhysicEngine : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {	
+		speed += AddGravityBaseOnTime();
+        transform.Translate(0, speed * Time.deltaTime, 0);
+	}
+
+    private float AddGravityBaseOnTime()
     {
-        
+	    return GravityAcelleration * Time.deltaTime;
     }
+    
 }
