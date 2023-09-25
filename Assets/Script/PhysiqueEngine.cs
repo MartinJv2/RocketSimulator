@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class PhysicEngine : MonoBehaviour
+public class PhysiqueEngine : MonoBehaviour
 {
     public double GravityAcelleration;
     public float MotorForce;
@@ -19,7 +19,7 @@ public class PhysicEngine : MonoBehaviour
 	    TimeUntilStart += Time.deltaTime;
 		speed += AddGravityBaseOnTime();
 		speed += AddMotorFocreBaseOnTime();
-		Debug.Log(speed.ToString());
+		Debug.Log("Speed: "+speed.ToString());
         transform.Translate(0, speed * Time.deltaTime, 0);
 	}
 
