@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class BuildingManager : MonoBehaviour
 {
     public GameObject[] objects;
+    public GameObject Parent;
     private GameObject object_loading;
     private Vector3 position;
     private RaycastHit hits_ground;
@@ -40,7 +41,7 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        object_loading = Instantiate(objects[index], position, transform.rotation);
+        object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);
         //object_loading.SetActive(false);
     }
 
