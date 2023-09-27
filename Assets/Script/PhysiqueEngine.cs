@@ -14,7 +14,7 @@ public class PhysiqueEngine : MonoBehaviour
 	private float TimeUntilStart = 0;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 	    TimeUntilStart += Time.deltaTime;
 		speed += AddGravityBaseOnTime();
