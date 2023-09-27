@@ -12,7 +12,7 @@ public class BuildingManager : MonoBehaviour
     private GameObject object_loading;
     private Vector3 position;
     private RaycastHit hits_ground;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask LayerMask;
 
     void Update()
     {
@@ -33,7 +33,7 @@ public class BuildingManager : MonoBehaviour
     private void FixedUpdate()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hits_ground, 1000, layerMask))
+        if (Physics.Raycast(ray, out hits_ground, 1000, LayerMask))
         {
            position = hits_ground.point;
         }   
@@ -43,6 +43,6 @@ public class BuildingManager : MonoBehaviour
     {
         object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);
         //object_loading.SetActive(false);
-    }
+    } 
 
 }
