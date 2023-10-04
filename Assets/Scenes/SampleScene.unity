@@ -858,8 +858,8 @@ MonoBehaviour:
   - {fileID: 7390866999137272505, guid: 98b8a8e46dc8146408be2640403974b9, type: 3}
   - {fileID: 3094922816282848995, guid: 1078a88463058d8468b3342f72e825e5, type: 3}
   - {fileID: 6912486557993584536, guid: dc2646591268dff439cb28191a137696, type: 3}
-  - {fileID: 6912486557993584536, guid: dc2646591268dff439cb28191a137696, type: 3}
   Parent: {fileID: 103436258}
+  gridSize: 0
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
