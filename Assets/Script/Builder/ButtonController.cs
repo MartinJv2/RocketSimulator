@@ -12,13 +12,17 @@ public class BuildingManager : MonoBehaviour
     private GameObject object_loading;
     private Vector3 position;
     private RaycastHit hits_ground;
+    public float gridSize;
     [SerializeField] private LayerMask LayerMask;
 
     void Update()
     {
         if (object_loading != null)
-        {   
-            object_loading.transform.position = position;
+        {
+            object_loading.transform.position = new Vector3(
+                Gridsnap(position.x),
+                Gridsnap(position.y),
+                Gridsnap(position.z));
             
 
             if (Input.GetMouseButtonDown(0))
@@ -39,10 +43,21 @@ public class BuildingManager : MonoBehaviour
         }   
     }
 
+    float Gridsnap(float pos)
+    {
+        float rounding = pos % gridSize;
+        pos -= rounding;
+        if (rounding > (gridSize / 2))
+        {
+            pos += gridSize;
+        }
+
+        return pos;
+    }
+    
     public void SelectObject(int index)
     {
         object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);
-        //object_loading.SetActive(false);
     } 
 
 }
