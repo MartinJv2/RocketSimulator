@@ -51,5 +51,10 @@ public class PhysiqueEngine : MonoBehaviour
 	{
 		IsRunning = true;
 	}
+
+	public void StopLaunch()
+	{
+		IsRunning = false;
+	}
 	
 }
