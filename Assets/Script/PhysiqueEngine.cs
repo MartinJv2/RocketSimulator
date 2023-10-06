@@ -9,19 +9,23 @@ public class PhysiqueEngine : MonoBehaviour
     public float MotorForce;
     public float MotorIgniteTime;
 	public float Weight;
-    
+	
+	private bool IsRunning = false;
 	private float speed = 0;
 	private float TimeUntilStart = 0;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-	    TimeUntilStart += Time.deltaTime;
-		speed += AddGravityBaseOnTime();
-		speed += AddMotorFocreBaseOnTime();
-		Debug.Log("Speed: "+speed.ToString());
-        transform.Translate(0, speed * Time.deltaTime, 0);
-	}
+	    if (IsRunning)
+	    {
+		    TimeUntilStart += Time.deltaTime;
+		    speed += AddGravityBaseOnTime();
+		    speed += AddMotorFocreBaseOnTime();
+		    Debug.Log("Speed: " + speed.ToString());
+		    transform.Translate(0, speed * Time.deltaTime, 0);
+	    }
+    }
 
     private float AddGravityBaseOnTime()
     {
@@ -42,4 +46,10 @@ public class PhysiqueEngine : MonoBehaviour
 	{
 		return (float)(force/Weight);
 	}
+
+	public void StartLaunch()
+	{
+		IsRunning = true;
+	}
+	
 }
