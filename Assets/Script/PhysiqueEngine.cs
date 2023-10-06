@@ -47,6 +47,11 @@ public class PhysiqueEngine : MonoBehaviour
 		return (float)(force/Weight);
 	}
 
+	private float DragForce()
+	{
+		return 0;
+	}
+
 	public void StartLaunch()
 	{
 		IsRunning = true;
