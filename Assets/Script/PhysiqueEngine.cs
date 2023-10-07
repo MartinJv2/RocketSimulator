@@ -7,13 +7,16 @@ using TMPro;
 
 public class PhysiqueEngine : MonoBehaviour
 {
-    public double GravityAcelleration;
+    [Header("RocketInfo")]
+	public double GravityAcelleration;
     public float MotorForce;
     public float MotorIgniteTime;
 	public float Weight;
+	[Header("LaunchButton")]
 	public TMPro.TextMeshProUGUI ToggleLaunchButtonText;
 	public string StopText = "Stop";
 	public string RunText = "Run";
+	[Header("FlightInfo")]
 	public TMPro.TextMeshProUGUI AltitudeText;
 	public TMPro.TextMeshProUGUI SpeedText;
 	
