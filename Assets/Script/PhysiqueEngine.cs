@@ -14,6 +14,8 @@ public class PhysiqueEngine : MonoBehaviour
 	public TMPro.TextMeshProUGUI ToggleLaunchButtonText;
 	public string StopText = "Stop";
 	public string RunText = "Run";
+	public TMPro.TextMeshProUGUI AltitudeText;
+	public TMPro.TextMeshProUGUI SpeedText;
 	
 	private bool IsRunning = false;
 	private float speed = 0;
@@ -31,6 +33,8 @@ public class PhysiqueEngine : MonoBehaviour
 		    speed += AddGravityBaseOnTime();
 		    speed += AddMotorFocreBaseOnTime();
 		    transform.Translate(0, speed * Time.deltaTime, 0);
+		    AltitudeText.text = "Altitude: " + Mathf.Round(transform.position.y).ToString() + "m";
+		    SpeedText.text = "Speed: " + Mathf.Round(speed).ToString() + " m/s";
 	    }
     }
 
