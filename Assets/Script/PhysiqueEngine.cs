@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
+using TMPro;
 
 public class PhysiqueEngine : MonoBehaviour
 {
@@ -9,12 +11,18 @@ public class PhysiqueEngine : MonoBehaviour
     public float MotorForce;
     public float MotorIgniteTime;
 	public float Weight;
+	public TMPro.TextMeshProUGUI ToggleLaunchButtonText;
+	public string StopText = "Stop";
+	public string RunText = "Run";
 	
 	private bool IsRunning = false;
 	private float speed = 0;
 	private float TimeUntilStart = 0;
 
-    // Update is called once per frame
+	void Start()
+	{
+		ToggleLaunchButtonText.text = RunText;
+	}
     void FixedUpdate()
     {
 	    if (IsRunning)
@@ -22,7 +30,6 @@ public class PhysiqueEngine : MonoBehaviour
 		    TimeUntilStart += Time.deltaTime;
 		    speed += AddGravityBaseOnTime();
 		    speed += AddMotorFocreBaseOnTime();
-		    Debug.Log("Speed: " + speed.ToString());
 		    transform.Translate(0, speed * Time.deltaTime, 0);
 	    }
     }
@@ -52,14 +59,17 @@ public class PhysiqueEngine : MonoBehaviour
 		return 0;
 	}
 
-	public void StartLaunch()
+	public void ToggleLaunch()
 	{
-		IsRunning = true;
+		if (IsRunning)
+		{
+			IsRunning = false;
+			ToggleLaunchButtonText.text = RunText;
+		}
+		else
+		{
+			IsRunning = true;
+			ToggleLaunchButtonText.text = StopText;
+		}
 	}
-
-	public void StopLaunch()
-	{
-		IsRunning = false;
-	}
-	
 }
