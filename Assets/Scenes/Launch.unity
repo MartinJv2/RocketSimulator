@@ -902,6 +902,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1059091424}
     - target: {fileID: -1766134921128950517, guid: 5436bdf6c96f0474eb27a9eec025345b, type: 3}
+      propertyPath: SpeedContentText
+      value: 'Speed: '
+      objectReference: {fileID: 0}
+    - target: {fileID: -1766134921128950517, guid: 5436bdf6c96f0474eb27a9eec025345b, type: 3}
+      propertyPath: AltitudeContentText
+      value: 'Altitude: '
+      objectReference: {fileID: 0}
+    - target: {fileID: -1766134921128950517, guid: 5436bdf6c96f0474eb27a9eec025345b, type: 3}
       propertyPath: ToggleLaunchButtonName
       value: Launch
       objectReference: {fileID: 0}

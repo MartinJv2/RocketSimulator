@@ -17,7 +17,9 @@ public class PhysiqueEngine : MonoBehaviour
 	public string StopText = "Stop";
 	public string RunText = "Run";
 	[Header("FlightInfo")]
+	public string AltitudeContentText = "Altitude: ";
 	public TMPro.TextMeshProUGUI AltitudeText;
+	public string SpeedContentText = "Speed: ";
 	public TMPro.TextMeshProUGUI SpeedText;
 	
 	private bool IsRunning = false;
@@ -36,8 +38,8 @@ public class PhysiqueEngine : MonoBehaviour
 		    speed += AddGravityBaseOnTime();
 		    speed += AddMotorFocreBaseOnTime();
 		    transform.Translate(0, speed * Time.deltaTime, 0);
-		    AltitudeText.text = "Altitude: " + Mathf.Round(transform.position.y).ToString() + "m";
-		    SpeedText.text = "Speed: " + Mathf.Round(speed).ToString() + " m/s";
+		    AltitudeText.text = AltitudeContentText + Mathf.Round(transform.position.y).ToString() + "m";
+		    SpeedText.text = SpeedContentText + Mathf.Round(speed).ToString() + " m/s";
 	    }
     }
 
