@@ -1134,6 +1134,7 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
+  canPlace: 1
 --- !u!1 &595575609
 GameObject:
   m_ObjectHideFlags: 0

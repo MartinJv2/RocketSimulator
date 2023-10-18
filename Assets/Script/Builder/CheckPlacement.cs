@@ -7,7 +7,7 @@ public class CheckPlacement : MonoBehaviour
 
 {
     private BuildingManager buildingmanager;
-    public bool canPlace;
+    //public bool canPlace;
     
     void Start()
     {
@@ -18,8 +18,8 @@ public class CheckPlacement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Object"))
         {
-            canPlace = false;
-            print(canPlace);
+            buildingmanager.canPlace = true;
+            print(buildingmanager.canPlace);
         }
     }
     
@@ -27,8 +27,8 @@ public class CheckPlacement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Object"))
         {
-            canPlace = true;
-            print(canPlace);
+            buildingmanager.canPlace = false;
+            print(buildingmanager.canPlace);
         }
     }
 }

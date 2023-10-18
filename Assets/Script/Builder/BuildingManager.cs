@@ -14,6 +14,8 @@ public class BuildingManager : MonoBehaviour
     private RaycastHit hits_ground;
     public float gridSize;
     [SerializeField] private LayerMask LayerMask;
+    public bool canPlace;
+    
     
     void Update()
     {
@@ -25,9 +27,10 @@ public class BuildingManager : MonoBehaviour
                 Gridsnap(position.z));
             
 
-            if (Input.GetMouseButtonDown(0) && true)//canPlace)
+            if (Input.GetMouseButtonDown(0) && canPlace)
             {
                     object_loading = null;
+                    canPlace = false;
             }
         }
         
@@ -57,7 +60,12 @@ public class BuildingManager : MonoBehaviour
     
     public void SelectObject(int index)
     {
-        object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);
+        if (object_loading != null)
+        {
+            Destroy(object_loading);
+        }
+        object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);   
+        
     }
     
 }

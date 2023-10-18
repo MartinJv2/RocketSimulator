@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2147711064036758303}
   - component: {fileID: 6283734400843876629}
   - component: {fileID: -2799081723080227574}
-  - component: {fileID: -7968431932344485137}
   - component: {fileID: 7289642699104416173}
+  - component: {fileID: 3341631760435769054}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Object
@@ -113,8 +113,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &-7968431932344485137
-BoxCollider:
+--- !u!114 &7289642699104416173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390866999137272505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee6163771807604982e04fc7aa816f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &3341631760435769054
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,19 +143,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7289642699104416173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7390866999137272505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ee6163771807604982e04fc7aa816f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canPlace: 0
