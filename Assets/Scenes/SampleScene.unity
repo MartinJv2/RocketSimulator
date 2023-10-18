@@ -1135,6 +1135,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   canPlace: 1
+  showingplaceable:
+  - {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
+  - {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
+  - {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
 --- !u!1 &595575609
 GameObject:
   m_ObjectHideFlags: 0
