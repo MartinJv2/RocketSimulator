@@ -15,6 +15,7 @@ public class BuildingManager : MonoBehaviour
     public float gridSize;
     [SerializeField] private LayerMask LayerMask;
     public bool canPlace;
+    [SerializeField] private Material[] showingplaceable;
     
     
     void Update()
@@ -25,15 +26,16 @@ public class BuildingManager : MonoBehaviour
                 Gridsnap(position.x),
                 Gridsnap(position.y),
                 Gridsnap(position.z));
+            UpdateColor();
             
 
             if (Input.GetMouseButtonDown(0) && canPlace)
             {
-                    object_loading = null;
-                    canPlace = false;
+                object_loading.GetComponent<MeshRenderer>().material = showingplaceable[2];
+                object_loading = null;
+                canPlace = false;
             }
         }
-        
     }
     
 
@@ -66,6 +68,19 @@ public class BuildingManager : MonoBehaviour
         }
         object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);   
         
+    }
+
+    void UpdateColor()
+    {
+        if (canPlace)
+        {
+            Debug.Log(showingplaceable[0]);
+            object_loading.GetComponent<MeshRenderer>().material = showingplaceable[0];
+        }
+        else
+        {
+            object_loading.GetComponent<MeshRenderer>().material = showingplaceable[1];
+        }
     }
     
 }
