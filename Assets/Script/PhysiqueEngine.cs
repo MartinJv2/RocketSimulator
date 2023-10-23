@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PhysiqueEngine : MonoBehaviour
     public float MotorForce;
     public float MotorIgniteTime;
 	public float Weight;
+	public float accelerator = 1;
 	[Header("LaunchButton")]
 	public TMPro.TextMeshProUGUI ToggleLaunchButtonText;
 	public string StopText = "Stop";
@@ -24,11 +26,14 @@ public class PhysiqueEngine : MonoBehaviour
 	
 	private bool IsRunning = false;
 	private float speed = 0;
+	private float altitude;
 	private float TimeUntilStart = 0;
+	private MeshRenderer _renderer;
 
 	void Start()
 	{
 		ToggleLaunchButtonText.text = RunText;
+		_renderer = GetComponent<MeshRenderer>();
 	}
     void FixedUpdate()
     {
@@ -37,8 +42,18 @@ public class PhysiqueEngine : MonoBehaviour
 		    TimeUntilStart += Time.deltaTime;
 		    speed += AddGravityBaseOnTime();
 		    speed += AddMotorFocreBaseOnTime();
-		    transform.Translate(0, speed * Time.deltaTime, 0);
-		    AltitudeText.text = AltitudeContentText + Mathf.Round(transform.position.y).ToString() + "m";
+		    altitude += speed * Time.deltaTime;
+		    if (altitude < 0)
+		    {
+			    _renderer.material.mainTextureOffset = new Vector2(0, (float)-Math.Sqrt(Math.Abs(altitude))); 
+		    }
+		    else
+		    {
+			    _renderer.material.mainTextureOffset = new Vector2(0, (float)Math.Sqrt(altitude));
+		    }
+			    
+		    
+		    AltitudeText.text = AltitudeContentText + Mathf.Round(altitude).ToString() + "m";
 		    SpeedText.text = SpeedContentText + Mathf.Round(speed).ToString() + " m/s";
 	    }
     }
