@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class CheckPlacement : MonoBehaviour
@@ -8,8 +9,8 @@ public class CheckPlacement : MonoBehaviour
 {
     private BuildingManager buildingmanager;
     //public bool canPlace;
-    
-    void Start()
+
+    void Start() 
     {
         buildingmanager = GameObject.Find("Buttons").GetComponent<BuildingManager>();
     }
@@ -18,17 +19,15 @@ public class CheckPlacement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Object"))
         {
-            buildingmanager.canPlace = true;
-            print(buildingmanager.canPlace);
+            buildingmanager.canPlace = buildingmanager.canPlace; //true;
         }
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Object"))
         {
-            buildingmanager.canPlace = false;
-            print(buildingmanager.canPlace);
+            buildingmanager.canPlace = buildingmanager.canPlace; //false;
         }
     }
-}
+}    

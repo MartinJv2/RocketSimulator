@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,14 +10,14 @@ public class BuildingManager : MonoBehaviour
 {
     public GameObject[] objects;
     public GameObject Parent;
-    private GameObject object_loading;
+    public GameObject object_loading;
     private Vector3 position;
     private RaycastHit hits_ground;
     public float gridSize;
     [SerializeField] private LayerMask LayerMask;
     public bool canPlace;
     [SerializeField] private Material[] showingplaceable;
-    
+    private bool placed = false;
     
     void Update()
     {
@@ -26,14 +27,31 @@ public class BuildingManager : MonoBehaviour
                 Gridsnap(position.x),
                 Gridsnap(position.y),
                 Gridsnap(position.z));
+            Collider[] hitColliders = Physics.OverlapSphere(new Vector3(Gridsnap(position.x), Gridsnap(position.y), Gridsnap(position.z)), 0.6f);
+            Collider[] minihitcollider = Physics.OverlapSphere(new Vector3(Gridsnap(position.x), Gridsnap(position.y + 0.1f), Gridsnap(position.z)), 0.0001f);
+            if (hitColliders.Length <= 2 && placed)
+            {
+                canPlace = false;
+            }
+            else
+            {
+                canPlace = true;
+            }
             UpdateColor();
+            print("SMALL :"+minihitcollider.Length);
+            print("BIG :"+hitColliders.Length);
+            print(canPlace);
             
 
-            if (Input.GetMouseButtonDown(0) && canPlace)
+            if (Input.GetMouseButtonDown(0) && canPlace && hitColliders.Length >= 2 && minihitcollider.Length==2)
             {
                 object_loading.GetComponent<MeshRenderer>().material = showingplaceable[2];
                 object_loading = null;
                 canPlace = false;
+                if(placed==false)
+                {
+                     placed = true;
+                }
             }
         }
     }
@@ -66,7 +84,7 @@ public class BuildingManager : MonoBehaviour
         {
             Destroy(object_loading);
         }
-        object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);   
+        object_loading = Instantiate(objects[index], position, transform.rotation, Parent.transform);
         
     }
 
@@ -74,7 +92,6 @@ public class BuildingManager : MonoBehaviour
     {
         if (canPlace)
         {
-            Debug.Log(showingplaceable[0]);
             object_loading.GetComponent<MeshRenderer>().material = showingplaceable[0];
         }
         else
@@ -82,5 +99,4 @@ public class BuildingManager : MonoBehaviour
             object_loading.GetComponent<MeshRenderer>().material = showingplaceable[1];
         }
     }
-    
 }
