@@ -38,9 +38,6 @@ public class BuildingManager : MonoBehaviour
                 canPlace = true;
             }
             UpdateColor();
-            print("SMALL :"+minihitcollider.Length);
-            print("BIG :"+hitColliders.Length);
-            print(canPlace);
             
 
             if (Input.GetMouseButtonDown(0) && canPlace && hitColliders.Length >= 2 && minihitcollider.Length==2)
