@@ -1,92 +1,108 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
 using TMPro;
 
 public class PhysiqueEngine : MonoBehaviour
 {
-    [Header("RocketInfo")]
-	public double GravityAcelleration;
-    public float MotorForce;
-    public float MotorIgniteTime;
-	public float Weight;
-	public float accelerator = 1;
-	[Header("LaunchButton")]
-	public TMPro.TextMeshProUGUI ToggleLaunchButtonText;
-	public string StopText = "Stop";
-	public string RunText = "Run";
-	[Header("FlightInfo")]
-	public string AltitudeContentText = "Altitude: ";
-	public TMPro.TextMeshProUGUI AltitudeText;
-	public string SpeedContentText = "Speed: ";
-	public TMPro.TextMeshProUGUI SpeedText;
-
-	public float AcceleratorSpeed = 0.1f;
-	
-	private bool IsRunning = false;
-	private float speed = 0;
-	private float altitude;
-	private float TimeUntilStart = 0;
-	private MeshRenderer _renderer;
-
-	void Start()
-	{
-		ToggleLaunchButtonText.text = RunText;
-		_renderer = GetComponent<MeshRenderer>();
-	}
-    void FixedUpdate()
+    [Serializable]
+    public struct RocketParameter
     {
-	    if (IsRunning)
-	    {
-		    TimeUntilStart += Time.deltaTime;
-		    speed += AddGravityBaseOnTime();
-		    speed += AddMotorFocreBaseOnTime();
-		    altitude += speed * Time.deltaTime;
-		    _renderer.material.mainTextureOffset = new Vector2(0, (float)(speed*AcceleratorSpeed)); 
-		    AltitudeText.text = AltitudeContentText + Mathf.Round(altitude).ToString() + "m";
-		    SpeedText.text = SpeedContentText + Mathf.Round(speed).ToString() + " m/s";
-	    }
+        public double gravityacelleration;
+        public float motorforce;
+        public float motorignitetime;
+        public float weight;
+        public float acceleratorspeed;
+    }
+
+    public RocketParameter rocketparameter;
+
+    [Serializable]
+    public struct ToggleButton
+    {
+        public TextMeshProUGUI button;
+        public string stoptext;
+        public string runtext;
+    }
+
+    public ToggleButton togglebutton;
+
+    [Serializable]
+    public struct TextDependOnenValue
+    {
+        public TextMeshProUGUI element;
+        public string value;
+    }
+
+    [Serializable]
+    public struct DisplayInfo
+    {
+        public TextDependOnenValue altitude;
+        public TextDependOnenValue speed;
+    }
+
+    public DisplayInfo displayinfo;
+
+
+    private bool _isrunning = false;
+    private float _speed = 0;
+    private float _altitude;
+    private float _timeuntilstart = 0;
+    private MeshRenderer _renderer;
+
+    private void Start()
+    {
+        togglebutton.button.text = togglebutton.runtext;
+        _renderer = GetComponent<MeshRenderer>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isrunning)
+        {
+            _timeuntilstart += Time.deltaTime;
+            _speed += AddGravityBaseOnTime();
+            _speed += AddMotorFocreBaseOnTime();
+            _altitude += _speed * Time.deltaTime;
+            _renderer.material.mainTextureOffset = new Vector2(0, (_speed * rocketparameter.acceleratorspeed));
+            displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
+            displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
+        }
     }
 
     private float AddGravityBaseOnTime()
     {
-	    return (float)(GravityAcelleration * Time.deltaTime);
+        return (float)(rocketparameter.gravityacelleration * Time.deltaTime);
     }
-	private float AddMotorFocreBaseOnTime()
-	{
-		if (TimeUntilStart >= MotorIgniteTime)
-		{
-			return 0;
-		}
-		else
-		{
-			return (float)(CalculateAccellerationBaseOnForceAndWeight(MotorForce) * Time.deltaTime);
-		}
-	}
-	private float CalculateAccellerationBaseOnForceAndWeight(float force)
-	{
-		return (float)(force/Weight);
-	}
 
-	private float DragForce()
-	{
-		return 0;
-	}
+    private float AddMotorFocreBaseOnTime()
+    {
+        if (_timeuntilstart >= rocketparameter.motorignitetime)
+            return 0;
+        else
+            return (CalculateAccellerationBaseOnForceAndWeight(rocketparameter.motorforce) * Time.deltaTime);
+    }
 
-	public void ToggleLaunch()
-	{
-		if (IsRunning)
-		{
-			IsRunning = false;
-			ToggleLaunchButtonText.text = RunText;
-		}
-		else
-		{
-			IsRunning = true;
-			ToggleLaunchButtonText.text = StopText;
-		}
-	}
+    private float CalculateAccellerationBaseOnForceAndWeight(float force)
+    {
+        return (force / rocketparameter.weight);
+    }
+
+    private float DragForce()
+    {
+        return 0;
+    }
+
+    public void ToggleLaunch()
+    {
+        if (_isrunning)
+        {
+            _isrunning = false;
+            togglebutton.button.text = togglebutton.runtext;
+        }
+        else
+        {
+            _isrunning = true;
+            togglebutton.button.text = togglebutton.stoptext;
+        }
+    }
 }

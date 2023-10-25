@@ -1149,18 +1149,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c7e8b73f4f79240932b03fc827fc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityAcelleration: -9.81
-  MotorForce: 5
-  MotorIgniteTime: 0
-  Weight: 5
-  accelerator: 8
-  ToggleLaunchButtonText: {fileID: 1789049561}
-  StopText: Stop
-  RunText: Run
-  AltitudeContentText: 'Altitude: '
-  AltitudeText: {fileID: 1059091424}
-  SpeedContentText: 'Speed: '
-  SpeedText: {fileID: 416900817}
+  rocketparameter:
+    gravityacelleration: -9.81
+    motorforce: 5
+    motorignitetime: 1
+    weight: 5
+    acceleratorspeed: 0.1
+  togglebutton:
+    button: {fileID: 1789049561}
+    stoptext: Stop
+    runtext: Run
+  displayinfo:
+    altitude:
+      element: {fileID: 1059091424}
+      value: 'Altitude: '
+    speed:
+      element: {fileID: 416900817}
+      value: 'Speed: '
 --- !u!64 &1872383202
 MeshCollider:
   m_ObjectHideFlags: 0
