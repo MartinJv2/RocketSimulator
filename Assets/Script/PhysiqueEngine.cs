@@ -23,6 +23,8 @@ public class PhysiqueEngine : MonoBehaviour
 	public TMPro.TextMeshProUGUI AltitudeText;
 	public string SpeedContentText = "Speed: ";
 	public TMPro.TextMeshProUGUI SpeedText;
+
+	public float AcceleratorSpeed = 0.1f;
 	
 	private bool IsRunning = false;
 	private float speed = 0;
@@ -43,16 +45,7 @@ public class PhysiqueEngine : MonoBehaviour
 		    speed += AddGravityBaseOnTime();
 		    speed += AddMotorFocreBaseOnTime();
 		    altitude += speed * Time.deltaTime;
-		    if (altitude < 0)
-		    {
-			    _renderer.material.mainTextureOffset = new Vector2(0, (float)-Math.Sqrt(Math.Abs(altitude))); 
-		    }
-		    else
-		    {
-			    _renderer.material.mainTextureOffset = new Vector2(0, (float)Math.Sqrt(altitude));
-		    }
-			    
-		    
+		    _renderer.material.mainTextureOffset = new Vector2(0, (float)(speed*AcceleratorSpeed)); 
 		    AltitudeText.text = AltitudeContentText + Mathf.Round(altitude).ToString() + "m";
 		    SpeedText.text = SpeedContentText + Mathf.Round(speed).ToString() + " m/s";
 	    }
