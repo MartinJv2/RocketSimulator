@@ -3,11 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using TMPro;
 
 public class EditPlacedObjects : MonoBehaviour
 {
     public GameObject selectedObj;
-    
+    public TextMeshProUGUI objNameText;
+    private BuildingManager buildingManager;
+
+    private void Start()
+    {
+        buildingManager = GameObject.Find("Buttons").GetComponent<BuildingManager>();
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -24,7 +32,7 @@ public class EditPlacedObjects : MonoBehaviour
 
         }
         
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1) && selectedObj != null)
         {
             Deselect();
         }
@@ -46,4 +54,16 @@ public class EditPlacedObjects : MonoBehaviour
         }
         
     }
+
+    /*void Move()
+    {
+        buildingManager.object_loading = selectedObj;
+    }
+
+    void Delete()
+    {
+        GameObject objToDestroy = selectedObj;
+        Deselect();
+    }*/
+    
 }
