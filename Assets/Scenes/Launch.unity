@@ -528,7 +528,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1149,18 +1149,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c7e8b73f4f79240932b03fc827fc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityAcelleration: -9.81
-  MotorForce: 5
-  MotorIgniteTime: 0
-  Weight: 5
-  accelerator: 8
-  ToggleLaunchButtonText: {fileID: 1789049561}
-  StopText: Stop
-  RunText: Run
-  AltitudeContentText: 'Altitude: '
-  AltitudeText: {fileID: 1059091424}
-  SpeedContentText: 'Speed: '
-  SpeedText: {fileID: 416900817}
+  rocketparameter:
+    gravityacelleration: -9.81
+    motorforce: 5
+    motorignitetime: 0
+    weight: 0.1
+    acceleratorspeed: 0.00001
+  togglebutton:
+    button: {fileID: 1789049561}
+    stoptext: Stop
+    runtext: Start
+  displayinfo:
+    altitude:
+      element: {fileID: 1059091424}
+      value: 'Altitude: '
+    speed:
+      element: {fileID: 416900817}
+      value: 'Speed: '
 --- !u!64 &1872383202
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1203,7 +1208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a9bab4a0c7aeac409f79d3fb9dddd7f, type: 2}
+  - {fileID: 2100000, guid: 3b5e00221bddb1542aeae17de62bf55f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
