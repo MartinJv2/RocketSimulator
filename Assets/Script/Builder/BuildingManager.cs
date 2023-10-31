@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
@@ -16,39 +18,47 @@ public class BuildingManager : MonoBehaviour
     public float gridSize;
     [SerializeField] private LayerMask LayerMask;
     public bool canPlace;
+    public bool first;
     [SerializeField] private Material[] showingplaceable;
-    private bool placed = false;
     
     void Update()
     {
         if (object_loading != null)
         {
+            if (OverlapSphere(Gridsnap(position.x),
+                    Gridsnap(position.y),
+                    Gridsnap(position.z), 0.6f).Length >= 2 && OverlapSphere(Gridsnap(position.x),
+                    Gridsnap(position.y),
+                    Gridsnap(position.z), 0.0001f).Length == 2)
+            {
+                canPlace = true;
+            }
+            if (OverlapSphere(Gridsnap(position.x),
+                    Gridsnap(position.y),
+                    Gridsnap(position.z), 0.6f).Length !<= 2 && first == false || OverlapSphere(Gridsnap(position.x),
+                    Gridsnap(position.y),
+                    Gridsnap(position.z), 0.0001f).Length != 2 && first == false)
+            {
+                canPlace = false;
+            }
+            
             object_loading.transform.position = new Vector3(
                 Gridsnap(position.x),
                 Gridsnap(position.y),
                 Gridsnap(position.z));
-            Collider[] hitColliders = Physics.OverlapSphere(new Vector3(Gridsnap(position.x), Gridsnap(position.y), Gridsnap(position.z)), 0.6f);
-            Collider[] minihitcollider = Physics.OverlapSphere(new Vector3(Gridsnap(position.x), Gridsnap(position.y + 0.1f), Gridsnap(position.z)), 0.0001f);
-            if (hitColliders.Length <= 2 && placed)
-            {
-                canPlace = false;
-            }
-            else
-            {
-                canPlace = true;
-            }
+
             UpdateColor();
             
-
-            if (Input.GetMouseButtonDown(0) && canPlace && hitColliders.Length >= 2 && minihitcollider.Length==2)
+            if (Input.GetMouseButtonDown(0) && canPlace)
             {
                 object_loading.GetComponent<MeshRenderer>().material = showingplaceable[2];
                 object_loading = null;
                 canPlace = false;
-                if(placed==false)
+                if(first)
                 {
-                     placed = true;
-                }
+                    first = false;
+                } 
+            
             }
         }
     }
@@ -95,5 +105,11 @@ public class BuildingManager : MonoBehaviour
         {
             object_loading.GetComponent<MeshRenderer>().material = showingplaceable[1];
         }
+    }
+
+    Collider[] OverlapSphere(float posx, float posy, float posz, float size)
+    {
+        return Physics.OverlapSphere(new Vector3(posx, posy, posz), size);
+
     }
 }
