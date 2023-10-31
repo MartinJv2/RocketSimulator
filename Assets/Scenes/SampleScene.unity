@@ -1019,6 +1019,7 @@ GameObject:
   - component: {fileID: 587713478}
   - component: {fileID: 587713477}
   - component: {fileID: 587713480}
+  - component: {fileID: 587713481}
   m_Layer: 3
   m_Name: Buttons
   m_TagString: Untagged
@@ -1130,15 +1131,30 @@ MonoBehaviour:
   - {fileID: 3094922816282848995, guid: 1078a88463058d8468b3342f72e825e5, type: 3}
   - {fileID: 6912486557993584536, guid: dc2646591268dff439cb28191a137696, type: 3}
   Parent: {fileID: 103436258}
+  object_loading: {fileID: 0}
   gridSize: 1
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
   canPlace: 1
+  first: 1
   showingplaceable:
   - {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
   - {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
   - {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
+--- !u!114 &587713481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587713475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06746235f098e3441b1cfb31e3567866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObj: {fileID: 0}
 --- !u!1 &595575609
 GameObject:
   m_ObjectHideFlags: 0
