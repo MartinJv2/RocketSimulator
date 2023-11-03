@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
 {
+    public int numberObjects = 0;
     public GameObject[] objects;
     public GameObject Parent;
     public GameObject object_loading;
@@ -18,7 +19,6 @@ public class BuildingManager : MonoBehaviour
     public float gridSize;
     [SerializeField] private LayerMask LayerMask;
     public bool canPlace;
-    public bool first;
     [SerializeField] private Material[] showingplaceable;
     
     void Update()
@@ -35,9 +35,9 @@ public class BuildingManager : MonoBehaviour
             }
             if (OverlapSphere(Gridsnap(position.x),
                     Gridsnap(position.y),
-                    Gridsnap(position.z), 0.6f).Length !<= 2 && first == false || OverlapSphere(Gridsnap(position.x),
+                    Gridsnap(position.z), 0.6f).Length !<= 2 && numberObjects > 0 || OverlapSphere(Gridsnap(position.x),
                     Gridsnap(position.y),
-                    Gridsnap(position.z), 0.0001f).Length != 2 && first == false)
+                    Gridsnap(position.z), 0.0001f).Length != 2 &&  numberObjects > 0)
             {
                 canPlace = false;
             }
@@ -53,12 +53,8 @@ public class BuildingManager : MonoBehaviour
             {
                 object_loading.GetComponent<MeshRenderer>().material = showingplaceable[2];
                 object_loading = null;
+                numberObjects++;
                 canPlace = false;
-                if(first)
-                {
-                    first = false;
-                } 
-            
             }
         }
     }

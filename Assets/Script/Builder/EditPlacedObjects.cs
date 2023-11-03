@@ -10,6 +10,7 @@ public class EditPlacedObjects : MonoBehaviour
     public GameObject selectedObj;
     public TextMeshProUGUI objNameText;
     private BuildingManager buildingManager;
+    public GameObject objUi;
 
     private void Start()
     {
@@ -37,33 +38,43 @@ public class EditPlacedObjects : MonoBehaviour
             Deselect();
         }
         
-        void Select(GameObject obj)
-        {
-            if(obj == selectedObj) return;
-            if(selectedObj != null) Deselect();
-            Outline outline = obj.GetComponent<Outline>();
-            if(outline == null) obj.AddComponent<Outline>();
-            else outline.enabled = true;
-            selectedObj = obj;
-        }
-        
-        void Deselect()
-        {
-            selectedObj.GetComponent<Outline>().enabled = false;
-            selectedObj = null;
-        }
-        
     }
-
-    /*void Move()
+    
+    private void Select(GameObject obj)
+    {
+        if(obj == selectedObj) return;
+        if(selectedObj != null) Deselect();
+        Outline outline = obj.GetComponent<Outline>();
+        if(outline == null) obj.AddComponent<Outline>();
+        else outline.enabled = true;
+        objNameText.text = obj.name;
+        objUi.SetActive(true);
+        selectedObj = obj;
+    }
+    
+    private void Deselect()
+    {
+        objUi.SetActive(false);
+        selectedObj.GetComponent<Outline>().enabled = false;
+        selectedObj = null;
+    }
+ 
+    public void Move()
     {
         buildingManager.object_loading = selectedObj;
+        buildingManager.numberObjects--;
     }
 
-    void Delete()
+    public void Delete()
     {
-        GameObject objToDestroy = selectedObj;
-        Deselect();
-    }*/
+        if (buildingManager.numberObjects > 1)
+        {
+             GameObject objToDestroy = selectedObj;
+             Deselect();
+             Destroy(objToDestroy);
+             buildingManager.numberObjects--;
+        }
+           
+    }
     
 }
