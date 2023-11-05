@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -9199683961014292616}
   - component: {fileID: 1048840309883756621}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Motor
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
