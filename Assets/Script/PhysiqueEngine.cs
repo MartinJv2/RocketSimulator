@@ -1,17 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static System.Linq.Enumerable;
 
 public class PhysiqueEngine : MonoBehaviour
 {
+    public GameObject objectlocation;
     [Serializable]
     public struct RocketParameter
     {
         public double gravityacelleration;
-        public float motorforce;
-        public float motorignitetime;
-        public float weight;
         public float acceleratorspeed;
+        
+        [HideInInspector]
+        public float weight;
+        [HideInInspector]
+        public List<MotorProperty> motorlist;
     }
 
     public RocketParameter rocketparameter;
@@ -43,18 +48,47 @@ public class PhysiqueEngine : MonoBehaviour
     public DisplayInfo displayinfo;
 
 
-    private bool _isrunning = false;
-    private float _speed = 0;
+    private bool _isrunning;
+    private float _speed;
     private float _altitude;
-    private float _timeuntilstart = 0;
+    private float _timeuntilstart;
     private MeshRenderer _renderer;
+    private Transform _currentchild;
 
     private void Start()
     {
+        rocketparameter.weight = CalculateTotalWightFromParent();
+        rocketparameter.motorlist = FindAllMotorFromParent();
         togglebutton.button.text = togglebutton.runtext;
         _renderer = GetComponent<MeshRenderer>();
     }
 
+    private float CalculateTotalWightFromParent()
+    {
+        
+        float weight = 0;
+        foreach (int index in Range(0,objectlocation.transform.childCount))
+        {
+            _currentchild = objectlocation.transform.GetChild(index);
+            weight += _currentchild.transform.GetComponent<BaseProperty>().weight;
+        }
+        return weight;
+    }
+
+    private List<MotorProperty> FindAllMotorFromParent()
+    {
+        List<MotorProperty> motorlist = new List<MotorProperty>();
+        foreach (int index in Range(0, objectlocation.transform.childCount))
+        {
+            _currentchild = objectlocation.transform.GetChild(index);
+            if (_currentchild.transform.GetComponent<MotorProperty>() != null)
+            {
+                motorlist.Add(_currentchild.gameObject.GetComponent<MotorProperty>());
+            }
+        }
+
+        return motorlist;
+    }
     private void FixedUpdate()
     {
         if (_isrunning)
@@ -84,10 +118,16 @@ public class PhysiqueEngine : MonoBehaviour
 
     private float AddMotorFocreBaseOnTime()
     {
-        if (_timeuntilstart >= rocketparameter.motorignitetime)
-            return 0;
-        else
-            return (CalculateAccellerationBaseOnForceAndWeight(rocketparameter.motorforce) * Time.deltaTime);
+        float force = 0;
+        foreach (MotorProperty motor in rocketparameter.motorlist)
+        {
+            if (_timeuntilstart <= motor.ignitetime)
+            {
+                force += (CalculateAccellerationBaseOnForceAndWeight(motor.force) * Time.deltaTime);
+            }
+        }
+
+        return force;
     }
 
     private float CalculateAccellerationBaseOnForceAndWeight(float force)
