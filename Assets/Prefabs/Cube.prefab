@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2799081723080227574}
   - component: {fileID: 3341631760435769054}
   - component: {fileID: 3899346215252346564}
+  - component: {fileID: 3575154147787991892}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Object
@@ -153,7 +154,24 @@ MonoBehaviour:
     wrongplacement: {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
     correctplacement: {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
     finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
-  ismouving: 0
   layermask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &3575154147787991892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390866999137272505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

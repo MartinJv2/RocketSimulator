@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
@@ -8,7 +9,8 @@ public class EditPlacedObjects : MonoBehaviour
 {
     
     public float gridsize;
-    private GameObject floor;
+    private GameObject _floor;
+    private GameObject _menu;
     [Serializable]
     public struct MaterialsList
     {
@@ -20,7 +22,20 @@ public class EditPlacedObjects : MonoBehaviour
     private Outline _outline;
     private bool _isselected; 
     [HideInInspector]
-    public bool ismouving;
+    private bool _ismouving;
+
+    public bool ismouving
+    {
+        get { return _ismouving; }
+        set
+        {
+            _ismouving = value;
+            if (!ismouving)
+            {
+                SetMaterial(materialslist.finish);
+            }
+        }
+    }
     private Vector3 _position;
     private CapsuleCollider _box;
     [SerializeField] private LayerMask layermask;
@@ -31,7 +46,7 @@ public class EditPlacedObjects : MonoBehaviour
     private bool _iscollinding = false;
     
 
-    private bool _CanPlace
+    public bool CanPlace
     {
         get { return _canplace;}
         set
@@ -47,28 +62,15 @@ public class EditPlacedObjects : MonoBehaviour
             }
         }
     }
-    public bool IsSelected
-    {
-        get {return _isselected;}
-        set
-        {
-            _isselected = value;
-            ismouving = value;
-            _outline.enabled = value;
-            if (!_isselected)
-            {
-                SetMaterial(materialslist.finish);
-            }
-        }
-    }
+
+    
 
     private void Start()
     {
-        _outline = gameObject.AddComponent<Outline>();
-        _outline.OutlineColor = Color.black;
-        IsSelected = true;
+        _menu = GameObject.Find("Menu");
+        _ismouving = true;
         _box = GetComponent<CapsuleCollider>();
-        floor = GameObject.Find("Floor");
+        _floor = GameObject.Find("Floor");
         _mesh = GetComponent<MeshFilter>().mesh;
         _scale = RoundVector3(multiplyVector3byVector3(gameObject.transform.localScale, _mesh.bounds.size));
     }
@@ -77,42 +79,43 @@ public class EditPlacedObjects : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, layermask))
+        if (Physics.Raycast(ray, out hit, 1000, layermask) && _ismouving)
         {
             _position = GridSnapCoordonate(hit.point);
-            _position.y = floor.transform.position.y;
-            if (IsSelected)
+            _position.y = _floor.transform.position.y;
+            gameObject.transform.position = _position;
+            if (_iscollinding)
             {
-                gameObject.transform.position = _position;
-                if (_iscollinding)
+                if (_canplaceobject.ContainsValue(false))
                 {
-                    if (_canplaceobject.ContainsValue(false))
-                    {
-                        _CanPlace = false;
-                    }
-                    else if (_canplaceobject.ContainsValue(true))
-                    {
-                        _CanPlace = true;
-                    }
-                    Debug.Log("Number of collider" + _canplaceobject.Count);
+                    CanPlace = false;
                 }
-                else if (GameObject.FindGameObjectsWithTag("Object").Length == 1)
+                else if (_canplaceobject.ContainsValue(true))
                 {
-                    _CanPlace = true;
+                    CanPlace = true;
                 }
-                else
-                {
-                    _CanPlace = false;
-                }
+            }
+            else if (GameObject.FindGameObjectsWithTag("Object").Length == 1)
+            {
+                CanPlace = true;
+            }
+            else
+            {
+                CanPlace = false;
             }
         }
     }
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && _CanPlace)
+        if (_canplace && Input.GetMouseButtonDown(0) && ismouving)
         {
-            IsSelected = !IsSelected;
+            ismouving = false;
+            _menu.GetComponent<MenuManager>().UnSelectObject();
+        }
+        else if (Input.GetMouseButtonDown(0) && !ismouving)
+        {
+            _menu.GetComponent<MenuManager>().Selectedobject = gameObject;
         }
     }
 
@@ -129,17 +132,15 @@ public class EditPlacedObjects : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Object") && ismouving)
+        if (other.CompareTag("Object") && _ismouving)
         {
             _canplaceobject[other] = IsValidePosition(other);
-            
-            Debug.Log(gameObject.name + IsValidePosition(other));
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Object") && ismouving)
+        if (other.CompareTag("Object") && _ismouving)
         {
             _canplaceobject.Remove(other);
             if (_canplaceobject.Count == 0)
@@ -151,7 +152,7 @@ public class EditPlacedObjects : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Object") && ismouving)
+        if (other.CompareTag("Object") && _ismouving)
         {
             _iscollinding = true;
         }
@@ -159,12 +160,6 @@ public class EditPlacedObjects : MonoBehaviour
 
     private bool InRange(float center1, float center2, float offset1, float offset2)
     {
-        
-        Debug.Log("Offset: "+offset1);
-        Debug.Log("Min center 1: "+ (center1 - offset1));
-        Debug.Log("Max center 2: "+ (center2 + offset2));
-        Debug.Log("Max center 1: "+(center1 + offset2));
-        Debug.Log("Min center 2: "+ (center2 - offset1));
         return center1 + offset1 > center2 - offset2 && center1 - offset1 < center2 + offset2;
     }
 
@@ -190,8 +185,6 @@ public class EditPlacedObjects : MonoBehaviour
         Mesh mesh = collider.gameObject.GetComponent<MeshFilter>().mesh;
         Vector3 colliderscale =
             RoundVector3(multiplyVector3byVector3(gameObject.transform.localScale, _mesh.bounds.size));
-        Debug.Log("Size: "+_scale);
-        Debug.Log("New collider");
         if (IsInside(gameObject.transform.position, collider.transform.position, _scale / 2, colliderscale/2))
         {
             return false;
