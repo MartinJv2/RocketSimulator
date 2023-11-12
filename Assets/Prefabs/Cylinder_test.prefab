@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5859198971023599163}
   - component: {fileID: -38723806480183338}
   - component: {fileID: 4331800774764057287}
-  - component: {fileID: 1418132825835254697}
-  m_Layer: 0
+  - component: {fileID: -4581847091678833126}
+  m_Layer: 3
   m_Name: Cylinder_test
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -132,28 +132,28 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.6
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!65 &1418132825835254697
-BoxCollider:
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4581847091678833126
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3094922816282848995}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06746235f098e3441b1cfb31e3567866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridsize: 1
+  materialslist:
+    wrongplacement: {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
+    correctplacement: {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
+    finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
+  ismouving: 0
+  layermask:
+    serializedVersion: 2
+    m_Bits: 8

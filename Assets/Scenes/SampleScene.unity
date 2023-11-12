@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1128,17 +1128,8 @@ MonoBehaviour:
   objects:
   - {fileID: 7390866999137272505, guid: 98b8a8e46dc8146408be2640403974b9, type: 3}
   - {fileID: 3094922816282848995, guid: 1078a88463058d8468b3342f72e825e5, type: 3}
-  - {fileID: 6912486557993584536, guid: dc2646591268dff439cb28191a137696, type: 3}
-  Parent: {fileID: 103436258}
-  gridSize: 1
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  canPlace: 1
-  showingplaceable:
-  - {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
-  - {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
-  - {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
+  - {fileID: 698829190366166637, guid: 945b8547a4de08d4cba4ae436c78067c, type: 3}
+  parent: {fileID: 103436258}
 --- !u!1 &595575609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,9 +2107,9 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 208478985}
   - {fileID: 705507995}
   - {fileID: 595575610}
   - {fileID: 103436259}
   - {fileID: 1570543137}
   - {fileID: 1347110297}
-  - {fileID: 208478985}
