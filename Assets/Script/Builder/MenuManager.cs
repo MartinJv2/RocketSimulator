@@ -16,7 +16,10 @@ public class MenuManager : MonoBehaviour
             {
                 UnSelectObject();
             }
-            SelectObject(value);
+            else
+            {
+                SelectObject(value);
+            }
         }
     }
 
