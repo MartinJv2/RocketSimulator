@@ -16,8 +16,20 @@ public class MenuManager : MonoBehaviour
             {
                 UnSelectObject();
             }
+            else if (value == null)
+            {
+                if (_selectedobject != null)
+                {
+                    UnSelectObject();
+                }
+                _selectedobject = null;
+            }
             else
             {
+                if (_selectedobject != null)
+                {
+                    UnSelectObject();
+                }
                 SelectObject(value);
             }
         }
@@ -41,10 +53,8 @@ public class MenuManager : MonoBehaviour
             UnSelectObject();
         }
         _selectedobject = value;
-        if (value != null)
-        {
-            _selectedobject.GetComponent<Outline>().enabled = true;
-        }
+        _editplacedobjects = _selectedobject.GetComponent<EditPlacedObjects>();
+        _selectedobject.GetComponent<Outline>().enabled = true;
         UnHide();
     }
 
@@ -67,6 +77,7 @@ public class MenuManager : MonoBehaviour
             Destroy(Selectedobject);
         }
         Selectedobject = null;
+        Hide();
     }
     
     private void Hide()

@@ -10,10 +10,8 @@ public class BuildingManager : MonoBehaviour
     {
         if (menu.GetComponent<MenuManager>().Selectedobject != null)
         {
-            Destroy(menu.GetComponent<MenuManager>().Selectedobject);
             menu.GetComponent<MenuManager>().Selectedobject = null;
         }
-        
         InstatiateObject();
     }
     private void InstatiateObject()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -383328509276923949}
   - component: {fileID: 8788807018308502699}
   - component: {fileID: -2739069184882251948}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Cone
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
     finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
   layermask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 32
 --- !u!64 &8788807018308502699
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3341631760435769054}
   - component: {fileID: 3899346215252346564}
   - component: {fileID: 3575154147787991892}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Cube
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
     finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
   layermask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 32
 --- !u!114 &3575154147787991892
 MonoBehaviour:
   m_ObjectHideFlags: 0

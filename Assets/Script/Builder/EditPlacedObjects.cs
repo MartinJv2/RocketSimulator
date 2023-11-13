@@ -79,8 +79,9 @@ public class EditPlacedObjects : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, layermask) && _ismouving)
+        if (_ismouving)
         {
+            Physics.Raycast(ray, out hit, 1000);
             _position = GridSnapCoordonate(hit.point);
             _position.y = _floor.transform.position.y;
             gameObject.transform.position = _position;
