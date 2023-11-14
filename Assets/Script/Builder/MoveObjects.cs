@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
-public class EditPlacedObjects : MonoBehaviour
+public class MoveObjects : MonoBehaviour
 {
     
     public float gridsize;
@@ -43,7 +43,6 @@ public class EditPlacedObjects : MonoBehaviour
     private Mesh _mesh;
     private Vector3 _scale;
     private Dictionary<Collider, Boolean> _canplaceobject = new Dictionary<Collider, Boolean>();
-    private bool _iscollinding = false;
     
 
     public bool CanPlace
@@ -85,7 +84,7 @@ public class EditPlacedObjects : MonoBehaviour
             _position = GridSnapCoordonate(hit.point);
             _position.y = _floor.transform.position.y;
             gameObject.transform.position = _position;
-            if (_iscollinding)
+            if (_canplaceobject.Count > 0)
             {
                 if (_canplaceobject.ContainsValue(false))
                 {
@@ -144,21 +143,8 @@ public class EditPlacedObjects : MonoBehaviour
         if (other.CompareTag("Object") && _ismouving)
         {
             _canplaceobject.Remove(other);
-            if (_canplaceobject.Count == 0)
-            {
-                _iscollinding = false;
-            }
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Object") && _ismouving)
-        {
-            _iscollinding = true;
-        }
-    }
-
     private bool InRange(float center1, float center2, float offset1, float offset2)
     {
         return center1 + offset1 > center2 - offset2 && center1 - offset1 < center2 + offset2;

@@ -10,6 +10,10 @@ public class BuildingManager : MonoBehaviour
     {
         if (menu.GetComponent<MenuManager>().Selectedobject != null)
         {
+            if (menu.GetComponent<MenuManager>().Selectedobject.GetComponent<MoveObjects>().ismouving)
+            {
+                Destroy(menu.GetComponent<MenuManager>().Selectedobject);
+            }
             menu.GetComponent<MenuManager>().Selectedobject = null;
         }
         InstatiateObject();

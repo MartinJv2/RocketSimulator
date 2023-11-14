@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     private GameObject _selectedobject;
-    private EditPlacedObjects _editplacedobjects;
+    private MoveObjects _editplacedobjects;
     [HideInInspector]
     public GameObject Selectedobject
     {
@@ -28,6 +28,14 @@ public class MenuManager : MonoBehaviour
             {
                 if (_selectedobject != null)
                 {
+                    
+                    if (_selectedobject.GetComponent<MoveObjects>() != null)
+                    {
+                        if (_selectedobject.GetComponent<MoveObjects>().ismouving)
+                        {
+                            return;
+                        }
+                    }
                     UnSelectObject();
                 }
                 SelectObject(value);
@@ -37,7 +45,7 @@ public class MenuManager : MonoBehaviour
 
     public void UnSelectObject()
     {
-        _editplacedobjects = _selectedobject.GetComponent<EditPlacedObjects>();
+        _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         if (_editplacedobjects.CanPlace)
         {
             _selectedobject.GetComponent<Outline>().enabled = false;
@@ -53,7 +61,7 @@ public class MenuManager : MonoBehaviour
             UnSelectObject();
         }
         _selectedobject = value;
-        _editplacedobjects = _selectedobject.GetComponent<EditPlacedObjects>();
+        _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         _selectedobject.GetComponent<Outline>().enabled = true;
         UnHide();
     }
