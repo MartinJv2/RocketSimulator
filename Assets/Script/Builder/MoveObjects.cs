@@ -50,6 +50,10 @@ public class MoveObjects : MonoBehaviour
         get { return _canplace;}
         set
         {
+            if (_canplace == value)
+            {
+                return;
+            }
             _canplace = value;
             if (_canplace)
             {
@@ -134,6 +138,10 @@ public class MoveObjects : MonoBehaviour
     {
         if (other.CompareTag("Object") && _ismouving)
         {
+            if (other.gameObject.name == gameObject.name)
+            {
+                Debug.Log("Same object");
+            }
             _canplaceobject[other] = IsValidePosition(other);
         }
     }
