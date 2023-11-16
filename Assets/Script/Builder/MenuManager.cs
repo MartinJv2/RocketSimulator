@@ -6,10 +6,12 @@ public class MenuManager : MonoBehaviour
 {
     private GameObject _selectedobject;
     private MoveObjects _editplacedobjects;
+    public LayerMask layermask;
+
     [HideInInspector]
     public GameObject Selectedobject
     {
-        get { return _selectedobject;}
+        get { return _selectedobject; }
         set
         {
             if (_selectedobject == value)
@@ -22,13 +24,14 @@ public class MenuManager : MonoBehaviour
                 {
                     UnSelectObject();
                 }
+
                 _selectedobject = null;
             }
             else
             {
                 if (_selectedobject != null)
                 {
-                    
+
                     if (_selectedobject.GetComponent<MoveObjects>() != null)
                     {
                         if (_selectedobject.GetComponent<MoveObjects>().ismouving)
@@ -36,18 +39,33 @@ public class MenuManager : MonoBehaviour
                             return;
                         }
                     }
+
                     UnSelectObject();
                 }
+
                 SelectObject(value);
             }
         }
     }
 
+    void Update()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000, layermask) && Input.GetMouseButtonDown(0))
+        {
+            if (hit.collider.gameObject.CompareTag("Object"))
+            {
+                Selectedobject = hit.collider.gameObject;
+            }
+        }
+    }
     public void UnSelectObject()
     {
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         if (_editplacedobjects.CanPlace)
         {
+            _editplacedobjects.ismouving = false;
             _selectedobject.GetComponent<Outline>().enabled = false;
             _selectedobject = null;
         }

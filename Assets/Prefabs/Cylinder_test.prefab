@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4331800774764057287}
   - component: {fileID: -4581847091678833126}
   - component: {fileID: -2735927092261917477}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cylinder_test
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.51
+  m_Radius: 0.6
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
     finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
   layermask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 1
 --- !u!114 &-2735927092261917477
 MonoBehaviour:
   m_ObjectHideFlags: 0

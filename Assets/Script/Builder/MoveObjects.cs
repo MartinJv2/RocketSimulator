@@ -30,15 +30,13 @@ public class MoveObjects : MonoBehaviour
         set
         {
             _ismouving = value;
-            if (!ismouving)
+            if(!ismouving)
             {
                 SetMaterial(materialslist.finish);
             }
         }
     }
     private Vector3 _position;
-    private CapsuleCollider _box;
-    [SerializeField] private LayerMask layermask;
     private bool _canplace;
     private Mesh _mesh;
     private Vector3 _scale;
@@ -50,16 +48,12 @@ public class MoveObjects : MonoBehaviour
         get { return _canplace;}
         set
         {
-            if (_canplace == value)
-            {
-                return;
-            }
             _canplace = value;
             if (_canplace)
             {
                 SetMaterial(materialslist.correctplacement);
             }
-            else
+            else if (!_canplace)
             {
                 SetMaterial(materialslist.wrongplacement);
             }
@@ -72,7 +66,6 @@ public class MoveObjects : MonoBehaviour
     {
         _menu = GameObject.Find("Menu");
         _ismouving = true;
-        _box = GetComponent<CapsuleCollider>();
         _floor = GameObject.Find("Floor");
         _mesh = GetComponent<MeshFilter>().mesh;
         _scale = RoundVector3(multiplyVector3byVector3(gameObject.transform.localScale, _mesh.bounds.size));
@@ -110,14 +103,15 @@ public class MoveObjects : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    private void SelectObject()
     {
-        if (_canplace && Input.GetMouseButtonDown(0) && ismouving)
+        Debug.Log("Click on the object");
+        if (_canplace && ismouving)
         {
             ismouving = false;
             _menu.GetComponent<MenuManager>().UnSelectObject();
         }
-        else if (Input.GetMouseButtonDown(0) && !ismouving)
+        else if (!ismouving)
         {
             _menu.GetComponent<MenuManager>().Selectedobject = gameObject;
         }
