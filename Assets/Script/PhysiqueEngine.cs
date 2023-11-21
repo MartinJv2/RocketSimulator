@@ -6,7 +6,8 @@ using static System.Linq.Enumerable;
 
 public class PhysiqueEngine : MonoBehaviour
 {
-    public GameObject objectlocation;
+    public string objectlocation;
+    private GameObject _objectlocation;
     [Serializable]
     public struct RocketParameter
     {
@@ -57,6 +58,7 @@ public class PhysiqueEngine : MonoBehaviour
 
     private void Start()
     {
+        _objectlocation = GameObject.Find(objectlocation);
         rocketparameter.weight = CalculateTotalWightFromParent();
         rocketparameter.motorlist = FindAllMotorFromParent();
         togglebutton.button.text = togglebutton.runtext;
@@ -67,9 +69,9 @@ public class PhysiqueEngine : MonoBehaviour
     {
         
         float weight = 0;
-        foreach (int index in Range(0,objectlocation.transform.childCount))
+        foreach (int index in Range(0,_objectlocation.transform.childCount))
         {
-            _currentchild = objectlocation.transform.GetChild(index);
+            _currentchild = _objectlocation.transform.GetChild(index);
             weight += _currentchild.transform.GetComponent<BaseProperty>().weight;
         }
         return weight;
@@ -78,9 +80,9 @@ public class PhysiqueEngine : MonoBehaviour
     private List<MotorProperty> FindAllMotorFromParent()
     {
         List<MotorProperty> motorlist = new List<MotorProperty>();
-        foreach (int index in Range(0, objectlocation.transform.childCount))
+        foreach (int index in Range(0, _objectlocation.transform.childCount))
         {
-            _currentchild = objectlocation.transform.GetChild(index);
+            _currentchild = _objectlocation.transform.GetChild(index);
             if (_currentchild.transform.GetComponent<MotorProperty>() != null)
             {
                 motorlist.Add(_currentchild.gameObject.GetComponent<MotorProperty>());

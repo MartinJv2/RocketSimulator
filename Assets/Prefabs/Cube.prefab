@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3341631760435769054}
   - component: {fileID: 3899346215252346564}
   - component: {fileID: 3575154147787991892}
+  - component: {fileID: 6552267134069617120}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Object
@@ -154,9 +155,6 @@ MonoBehaviour:
     wrongplacement: {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
     correctplacement: {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
     finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
-  layermask:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!114 &3575154147787991892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +173,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &6552267134069617120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390866999137272505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3376933c03467e144acdfc4502966e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: 1000
+  ignitetime: 1000

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
     private GameObject _selectedobject;
     private MoveObjects _editplacedobjects;
+    public GameObject launchbutton;
     public LayerMask layermask;
+    public TMP_InputField setweightinputfield;
 
     [HideInInspector]
     public GameObject Selectedobject
@@ -70,6 +74,7 @@ public class MenuManager : MonoBehaviour
             _selectedobject = null;
         }
         Hide();
+        ShowLaunchButton();
     }
 
     private void SelectObject(GameObject value)
@@ -80,10 +85,21 @@ public class MenuManager : MonoBehaviour
         }
         _selectedobject = value;
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
+        setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
         _selectedobject.GetComponent<Outline>().enabled = true;
         UnHide();
+        HideLaunchButton();
     }
 
+    private void HideLaunchButton()
+    {
+        launchbutton.SetActive(false);
+    }
+
+    private void ShowLaunchButton()
+    {
+        launchbutton.SetActive(true);
+    }
     public void ToggleMoveObject()
     {
         if (Selectedobject != null && _editplacedobjects.CanPlace)
@@ -120,5 +136,10 @@ public class MenuManager : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+    }
+
+    public void SetWeight(string text)
+    {
+        _selectedobject.GetComponent<BaseProperty>().weight = float.Parse(text);
     }
 }
