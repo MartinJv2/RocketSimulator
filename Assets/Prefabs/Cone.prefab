@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8788807018308502699}
   - component: {fileID: -2739069184882251948}
   - component: {fileID: -2271850023191074152}
+  - component: {fileID: 2263107441439219304}
   m_Layer: 0
   m_Name: Cone
   m_TagString: Object
@@ -104,9 +105,6 @@ MonoBehaviour:
     wrongplacement: {fileID: 2100000, guid: 5cd5a8d467182ea4ca2b124263f3aa03, type: 2}
     correctplacement: {fileID: 2100000, guid: 730f5161e9d126a4bba7ad96bc37d271, type: 2}
     finish: {fileID: 2100000, guid: 62d12ab0ea5161548b48880ec43f5fd7, type: 2}
-  layermask:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!64 &8788807018308502699
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -174,3 +172,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2263107441439219304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698829190366166637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48073af62b3b7a84098a6316a78d916a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
