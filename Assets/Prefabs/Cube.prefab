@@ -187,4 +187,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   force: 1000
-  ignitetime: 1000
+  ignitetime: 10
