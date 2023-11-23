@@ -7,6 +7,7 @@ using UnityEngine;
 public class CameraMouvement : MonoBehaviour
 { 
 private float y_rotation;
+private float x_rotation;
 private float size;
 public float speed;
 public float scale;
@@ -28,17 +29,17 @@ void Update()
     }
     if (Input.GetKey(KeyCode.S))
     {
-        size += scale;
+        x_rotation -= speed;
     }
     if (Input.GetKey(KeyCode.W))
     {
-        size -= scale;
+        x_rotation += speed;
     }
     if (size < 0)
     {
         size = 0;
     }
-    gameObject.transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x,y_rotation,transform.rotation.z));
+    gameObject.transform.rotation = Quaternion.Euler(new Vector3(x_rotation,y_rotation,transform.rotation.z));
     gameObject.transform.localScale = new Vector3(size, size, size);
 
 }
