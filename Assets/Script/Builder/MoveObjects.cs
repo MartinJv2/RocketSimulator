@@ -131,19 +131,15 @@ public class MoveObjects : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Object") && _ismouving)
+        if (other.CompareTag("Object"))
         {
-            if (other.gameObject.name == gameObject.name)
-            {
-                Debug.Log("Same object");
-            }
             canplaceobject[other] = IsValidePosition(other);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Object") && _ismouving)
+        if (other.CompareTag("Object"))
         {
             canplaceobject.Remove(other);
         }

@@ -110,7 +110,10 @@ public class MenuManager : MonoBehaviour
     {
         if (Selectedobject != null && _editplacedobjects.CanPlace)
         {
-            _editplacedobjects.ismouving = !_editplacedobjects.ismouving;
+            if (CheckConnections())
+            {
+                _editplacedobjects.ismouving = !_editplacedobjects.ismouving;
+            }
         }
         else
         {
@@ -120,12 +123,16 @@ public class MenuManager : MonoBehaviour
 
     public void DeleteObject()
     {
-        if (Selectedobject != null)
+        if(CheckConnections())
         {
-            Destroy(Selectedobject);
+            if (Selectedobject != null)
+            {
+                Destroy(Selectedobject);
+            }
+            Selectedobject = null;
+            Hide();
         }
-        Selectedobject = null;
-        Hide();
+        
     }
     
     private void Hide()
@@ -147,5 +154,44 @@ public class MenuManager : MonoBehaviour
     public void SetWeight(string text)
     {
         _selectedobject.GetComponent<BaseProperty>().weight = float.Parse(text);
+    }
+
+    private bool CheckConnections()
+    {
+        if(_editplacedobjects.canplaceobject.Count > 1)
+        {
+            Transform starting;
+            if(Selectedobject.transform.parent.GetChild(0) != Selectedobject)
+            {
+                starting = Selectedobject.transform.parent.GetChild(0);
+            }
+            else
+            {
+                starting = Selectedobject.transform.parent.GetChild(1);
+            }
+            List<Transform> Connections = new List<Transform>();
+            Connections.Add(starting);
+            List<Transform> CheckList = new List<Transform>();
+            CheckList.Add(starting);
+            while (CheckList.Count != 0)
+            {
+                        foreach (Collider collider in CheckList[0].GetComponent<MoveObjects>().canplaceobject.Keys)
+                        {
+                            if(!Connections.Contains(collider.gameObject.transform) && collider.gameObject != Selectedobject)
+                            {
+                                Connections.Add(collider.gameObject.transform);
+                                CheckList.Add(collider.gameObject.transform);
+                            }
+                        }
+                        CheckList.Remove(CheckList[0]);
+            }
+
+            if (Connections.Count < Selectedobject.transform.parent.childCount-1)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
