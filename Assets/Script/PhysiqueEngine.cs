@@ -99,15 +99,8 @@ public class PhysiqueEngine : MonoBehaviour
             _speed += AddGravityBaseOnTime();
             _speed += AddMotorFocreBaseOnTime();
             _altitude += _speed * Time.deltaTime;
-            if (_speed >= 0)
-            {
-                _renderer.material.mainTextureOffset = new Vector2(0, (float)((Math.Sqrt(_speed) +_altitude) * rocketparameter.acceleratorspeed));
-            }
-            else
-            {
-                _renderer.material.mainTextureOffset = new Vector2(0, (float)((Math.Sqrt(-_speed) +_altitude) * rocketparameter.acceleratorspeed));
-
-            }
+            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude,
+                _objectlocation.transform.position.z);
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
         }
