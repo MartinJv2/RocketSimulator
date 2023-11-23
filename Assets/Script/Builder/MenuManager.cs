@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -74,8 +75,12 @@ public class MenuManager : MonoBehaviour
             _selectedobject.GetComponent<Outline>().enabled = false;
             _selectedobject = null;
         }
-        Hide();
-        ShowLaunchButton();
+
+        if (!_editplacedobjects.ismouving)
+        {
+            Hide();
+            ShowLaunchButton();
+        }
     }
 
     private void SelectObject(GameObject value)

@@ -40,7 +40,8 @@ public class MoveObjects : MonoBehaviour
     private bool _canplace;
     private Mesh _mesh;
     private Vector3 _scale;
-    private Dictionary<Collider, Boolean> _canplaceobject = new Dictionary<Collider, Boolean>();
+    [HideInInspector]
+    public Dictionary<Collider, Boolean> canplaceobject = new Dictionary<Collider, Boolean>();
     
 
     public bool CanPlace
@@ -79,15 +80,15 @@ public class MoveObjects : MonoBehaviour
         {
             Physics.Raycast(ray, out hit, 1000);
             _position = GridSnapCoordonate(hit.point);
-            _position.y = _floor.transform.position.y;
+            _position.y = _floor.transform.position.y + 0.5f;
             gameObject.transform.position = _position;
-            if (_canplaceobject.Count > 0)
+            if (canplaceobject.Count > 0)
             {
-                if (_canplaceobject.ContainsValue(false))
+                if (canplaceobject.ContainsValue(false))
                 {
                     CanPlace = false;
                 }
-                else if (_canplaceobject.ContainsValue(true))
+                else if (canplaceobject.ContainsValue(true))
                 {
                     CanPlace = true;
                 }
@@ -136,7 +137,7 @@ public class MoveObjects : MonoBehaviour
             {
                 Debug.Log("Same object");
             }
-            _canplaceobject[other] = IsValidePosition(other);
+            canplaceobject[other] = IsValidePosition(other);
         }
     }
 
@@ -144,7 +145,7 @@ public class MoveObjects : MonoBehaviour
     {
         if (other.CompareTag("Object") && _ismouving)
         {
-            _canplaceobject.Remove(other);
+            canplaceobject.Remove(other);
         }
     }
     private bool InRange(float center1, float center2, float offset1, float offset2)
