@@ -14,6 +14,7 @@ public class PhysiqueEngine : MonoBehaviour
     public int beginspace;
     private string currentscence = "Onearh";
     private GameObject _objectlocation;
+    private bool isinspace;
     [Serializable]
     public struct RocketParameter
     {
@@ -102,11 +103,18 @@ public class PhysiqueEngine : MonoBehaviour
         if (_isrunning)
         {
             _timeuntilstart += Time.deltaTime;
-            _speed += AddGravityBaseOnTime();
+            if (!isinspace)
+            {
+                
+                _speed += AddGravityBaseOnTime();
+            }
             _speed += AddMotorFocreBaseOnTime();
             _altitude += _speed * Time.deltaTime;
-            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude,
-                _objectlocation.transform.position.z);
+            if (!isinspace)
+            {
+                _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude,
+                    _objectlocation.transform.position.z);
+            }
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
             if (beginspace > _altitude && _altitude > beginhauteatmosphere && currentscence != hauteatmospherescene)
@@ -118,6 +126,7 @@ public class PhysiqueEngine : MonoBehaviour
             {
                 SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
                 currentscence = spacescene;
+                isinspace = true;
             }
         }
     }
