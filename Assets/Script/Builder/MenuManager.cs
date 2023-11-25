@@ -165,6 +165,10 @@ public class MenuManager : MonoBehaviour
             {
                 starting = Selectedobject.transform.parent.GetChild(0);
             }
+            else if (Selectedobject.transform.parent.transform.childCount == 1)
+            {
+                return true;
+            }
             else
             {
                 starting = Selectedobject.transform.parent.GetChild(1);
