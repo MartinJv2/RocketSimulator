@@ -161,7 +161,7 @@ public class MenuManager : MonoBehaviour
         if(_editplacedobjects.canplaceobject.Count > 1)
         {
             Transform starting;
-            if(Selectedobject.transform.parent.GetChild(0) != Selectedobject)
+            if(Selectedobject.transform.parent.GetChild(0) != Selectedobject.transform)
             {
                 starting = Selectedobject.transform.parent.GetChild(0);
             }
@@ -177,11 +177,15 @@ public class MenuManager : MonoBehaviour
             {
                         foreach (Collider collider in CheckList[0].GetComponent<MoveObjects>().canplaceobject.Keys)
                         {
-                            if(!Connections.Contains(collider.gameObject.transform) && collider.gameObject != Selectedobject)
+                            if (collider != null)
                             {
-                                Connections.Add(collider.gameObject.transform);
-                                CheckList.Add(collider.gameObject.transform);
+                                if(!Connections.Contains(collider.gameObject.transform) && collider.gameObject != Selectedobject)
+                                {
+                                    Connections.Add(collider.gameObject.transform);
+                                    CheckList.Add(collider.gameObject.transform);
+                                }
                             }
+                            
                         }
                         CheckList.Remove(CheckList[0]);
             }
