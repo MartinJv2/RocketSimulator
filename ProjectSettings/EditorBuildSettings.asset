@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Builder.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Launch.unity
+    path: "Assets/Scenes/BasseAtmosph\xE8re.unity"
     guid: 6d8cf5fdc2744c14dabad11b8be59837
+  - enabled: 1
+    path: "Assets/Scenes/HauteAtmosph\xE8re.unity"
+    guid: 1243ed4c41b5e5d4797f370d47808966
   m_configObjects: {}

@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static System.Linq.Enumerable;
+using UnityEngine.SceneManagement;
 
 public class PhysiqueEngine : MonoBehaviour
 {
     public string objectlocation;
+    public string hauteatmospherescene;
+    public int beginhauteatmosphere;
+    public string spacescene;
+    public int beginspace;
+    private string currentscence = "Onearh";
     private GameObject _objectlocation;
+    private bool isinspace;
     [Serializable]
     public struct RocketParameter
     {
@@ -96,20 +103,31 @@ public class PhysiqueEngine : MonoBehaviour
         if (_isrunning)
         {
             _timeuntilstart += Time.deltaTime;
-            _speed += AddGravityBaseOnTime();
+            if (!isinspace)
+            {
+                
+                _speed += AddGravityBaseOnTime();
+            }
             _speed += AddMotorFocreBaseOnTime();
             _altitude += _speed * Time.deltaTime;
-            if (_speed >= 0)
+            if (!isinspace)
             {
-                _renderer.material.mainTextureOffset = new Vector2(0, (float)((Math.Sqrt(_speed) +_altitude) * rocketparameter.acceleratorspeed));
-            }
-            else
-            {
-                _renderer.material.mainTextureOffset = new Vector2(0, (float)((Math.Sqrt(-_speed) +_altitude) * rocketparameter.acceleratorspeed));
-
+                _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude,
+                    _objectlocation.transform.position.z);
             }
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
+            if (beginspace > _altitude && _altitude > beginhauteatmosphere && currentscence != hauteatmospherescene)
+            {
+                SceneManager.LoadScene(hauteatmospherescene, LoadSceneMode.Single);
+                currentscence = hauteatmospherescene;
+            }
+            else if (_altitude > beginspace && currentscence != spacescene)
+            {
+                SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
+                currentscence = spacescene;
+                isinspace = true;
+            }
         }
     }
 
