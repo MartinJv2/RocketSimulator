@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public GameObject launchbutton;
     public LayerMask layermask;
     public TMP_InputField setweightinputfield;
+    public GameObject motorparmeditor;
 
     [HideInInspector]
     public GameObject Selectedobject
@@ -93,8 +94,11 @@ public class MenuManager : MonoBehaviour
         setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
         _selectedobject.GetComponent<Outline>().enabled = true;
         UnHide();
-        HideLaunchButton(); 
-        
+        if (_selectedobject.GetComponent<MotorProperty>() == null)
+        {
+            motorparmeditor.SetActive(false);
+        }
+        HideLaunchButton();
     }
 
     private void HideLaunchButton()
@@ -154,6 +158,16 @@ public class MenuManager : MonoBehaviour
     public void SetWeight(string text)
     {
         _selectedobject.GetComponent<BaseProperty>().weight = float.Parse(text);
+    }
+
+    public void SetMotorForce(string text)
+    {
+        _selectedobject.GetComponent<MotorProperty>().force = float.Parse(text);
+    }
+
+    public void SetMotorDuration(string text)
+    {
+        _selectedobject.GetComponent<MotorProperty>().ignitetime = float.Parse(text);
     }
 
     private bool CheckConnections()
