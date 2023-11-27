@@ -11,6 +11,11 @@ private float size;
 public float speed;
 public float scale;
 
+private void Start()
+{
+    size = 0.5f;
+}
+
 void Update()
 {
     if (Input.GetKey(KeyCode.A))
@@ -29,9 +34,9 @@ void Update()
     {
         size -= scale;
     }
-    if (size < 0.5)
+    if (size < 0)
     {
-        size = 0.5f;
+        size = 0;
     }
     gameObject.transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x,y_rotation,transform.rotation.z));
     gameObject.transform.localScale = new Vector3(size, size, size);
