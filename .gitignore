@@ -73,5 +73,5 @@ crashlytics-build.properties
 Assets/Script/.idea/*
 
 
-Assets/TextMesh Pro/
-/.idea/*
+/Assets/Textures/RocketEngine/cache_fluid_4b85f272/config*
+/Assets/Textures/RocketEngine/cache_fluid_4b85f272/data/*
