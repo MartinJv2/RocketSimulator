@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class MoveObjects : MonoBehaviour
 {
-    
     public float gridsize;
     private GameObject _floor;
     private GameObject _menu;
@@ -164,6 +163,10 @@ public class MoveObjects : MonoBehaviour
     private void SetMaterial(Material material)
     {
         GetComponent<MeshRenderer>().material = material;
+        foreach (MeshRenderer meshrenderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            meshrenderer.material = material;
+        }
     }
 
     private bool IsValidePosition(Collider collider)
