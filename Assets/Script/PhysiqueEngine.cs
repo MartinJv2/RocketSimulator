@@ -110,11 +110,8 @@ public class PhysiqueEngine : MonoBehaviour
             }
             _speed += AddMotorFocreBaseOnTime();
             _altitude += _speed * Time.deltaTime;
-            if (!isinspace)
-            {
-                _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/20,
-                    _objectlocation.transform.position.z);
-            }
+            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/20, 
+                _objectlocation.transform.position.z);
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
             if (beginspace > _altitude && _altitude > beginhauteatmosphere && currentscence != hauteatmospherescene)
