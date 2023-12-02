@@ -83,7 +83,7 @@ public class Outline : MonoBehaviour {
   void Awake() {
 
     // Cache renderers
-    renderers = GetComponentsInChildren<Renderer>();
+    renderers = GetComponentsInChildren<Renderer>().Where(renderer => renderer.GetComponent<ParticleSystem>() == null).ToArray();
 
     // Instantiate outline materials
     outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
