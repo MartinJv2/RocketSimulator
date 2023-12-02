@@ -58,7 +58,7 @@ public class PhysiqueEngine : MonoBehaviour
 
     private bool _isrunning;
     private float _speed;
-    private float _altitude;
+    public float _altitude;
     private float _timeuntilstart;
     private MeshRenderer _renderer;
     private Transform _currentchild;
@@ -112,7 +112,7 @@ public class PhysiqueEngine : MonoBehaviour
             _altitude += _speed * Time.deltaTime;
             if (!isinspace)
             {
-                _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude,
+                _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/20,
                     _objectlocation.transform.position.z);
             }
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
