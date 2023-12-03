@@ -140,7 +140,12 @@ public class PhysiqueEngine : MonoBehaviour
         {
             if (_timeuntilstart <= motor.ignitetime)
             {
+                motor.GetComponent<ParticleSystem>().Play();
                 force += (CalculateAccellerationBaseOnForceAndWeight(motor.force) * Time.deltaTime);
+            }
+            else
+            {
+                motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
 

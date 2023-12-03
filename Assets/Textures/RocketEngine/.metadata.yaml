@@ -1,0 +1,26 @@
+milanm.g:
+  analysis:
+    dimensions:
+      depth: 0.0
+      height: 0.0
+      width: 0.0
+    estimatedPrintTime: 11340
+    filament:
+      tool0:
+        length: 0.0
+        volume: 0.0
+    infillPercent: Dense
+    numWalls: 2.0
+    printWeightGrams: 35.0
+    printingArea:
+      maxX: null
+      maxY: null
+      maxZ: null
+      minX: null
+      minY: null
+      minZ: null
+    resolutionMicrons: Medium
+    supportStructure: Everywhere
+  hash: e93169b3bb203dc2d2c59203314d77db71672be2
+  links: []
+  notes: []
