@@ -12,8 +12,10 @@ private float x_rotation;
 public float size;
 public float speed;
 public float scale;
-public int minx;
-public int maxx;
+public float minx;
+public float maxx;
+public float close;
+public float far;
 
 void Update()
 {
@@ -36,9 +38,9 @@ void Update()
 
     size += -Input.mouseScrollDelta.y * scale;
     
-    if (size < 0.25 || size > 5)
+    if (size < close || size > far)
     {
-        size = 0.25f;
+        size = close;
     }
     gameObject.transform.rotation = Quaternion.Euler(new Vector3(x_rotation,y_rotation,transform.rotation.z));
     gameObject.transform.localScale = new Vector3(size, size, size);

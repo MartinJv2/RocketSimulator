@@ -12,10 +12,9 @@ public class FollowGameObject : MonoBehaviour
     }
     void Update()
     {
-        if (GameObject.Find("physicManager").GetComponent<PhysiqueEngine>()._altitude > 1000)
+        if (GameObject.Find("physicManager").GetComponent<PhysiqueEngine>()._altitude > 3000 )
         {
-            gameObject.transform.rotation = Quaternion.Euler(55.0f, 0, 0);
-            gameObject.transform.position = new Vector3(-1, _followgameobject.transform.position.y+10, -5);
+            gameObject.transform.position = new Vector3(_followgameobject.transform.position.x, _followgameobject.transform.position.y, _followgameobject.transform.position.z);
         }
         
     }
