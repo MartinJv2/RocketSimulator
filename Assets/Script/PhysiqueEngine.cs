@@ -12,6 +12,7 @@ public class PhysiqueEngine : MonoBehaviour
     public int beginhauteatmosphere;
     public string spacescene;
     public int beginspace;
+    public int endHauteAtmosphere;
     private string currentscence = "Onearh";
     private GameObject _objectlocation;
     private bool isinspace;
@@ -114,11 +115,17 @@ public class PhysiqueEngine : MonoBehaviour
                 _objectlocation.transform.position.z);
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
-            if (_altitude > beginspace && currentscence != spacescene)
+            if (_altitude > endHauteAtmosphere && currentscence == hauteatmospherescene)
             {
                 SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
                 currentscence = spacescene;
                 isinspace = true;
+            }
+            else if (_altitude > beginspace && currentscence != spacescene && currentscence != hauteatmospherescene)
+            {
+                SceneManager.LoadScene(hauteatmospherescene, LoadSceneMode.Single);
+                currentscence = hauteatmospherescene;
+                isinspace = false;
             }
         }
     }

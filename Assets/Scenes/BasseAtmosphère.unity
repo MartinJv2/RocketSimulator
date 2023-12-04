@@ -1415,6 +1415,7 @@ MonoBehaviour:
   beginhauteatmosphere: 50000
   spacescene: Space
   beginspace: 3000
+  endHauteAtmosphere: 100000
   rocketparameter:
     gravityacelleration: -9.81
     acceleratorspeed: 1

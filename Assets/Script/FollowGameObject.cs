@@ -12,9 +12,17 @@ public class FollowGameObject : MonoBehaviour
     }
     void Update()
     {
-        if (GameObject.Find("physicManager").GetComponent<PhysiqueEngine>()._altitude > 3000 )
+        if (GameObject.Find("physicManager").GetComponent<PhysiqueEngine>()._altitude > 3000)
         {
-            gameObject.transform.position = new Vector3(_followgameobject.transform.position.x, _followgameobject.transform.position.y, _followgameobject.transform.position.z);
+            if (GameObject.Find("physicManager").GetComponent<PhysiqueEngine>()._altitude < 100000)
+            {
+                gameObject.transform.position = new Vector3(_followgameobject.transform.position.x, _followgameobject.transform.position.y-1.5f, _followgameobject.transform.position.z-4);   
+            }
+            else
+            {
+                gameObject.transform.position = new Vector3(_followgameobject.transform.position.x, _followgameobject.transform.position.y, _followgameobject.transform.position.z);   
+            }
+                
         }
         
     }
