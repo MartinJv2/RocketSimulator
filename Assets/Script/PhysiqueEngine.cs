@@ -51,6 +51,7 @@ public class PhysiqueEngine : MonoBehaviour
     {
         public TextDependOnenValue altitude;
         public TextDependOnenValue speed;
+        public TextDependOnenValue timeuntilstart;
     }
 
     public DisplayInfo displayinfo;
@@ -103,6 +104,7 @@ public class PhysiqueEngine : MonoBehaviour
         if (_isrunning)
         {
             _timeuntilstart += Time.deltaTime;
+            displayinfo.timeuntilstart.element.text = displayinfo.timeuntilstart.value + _timeuntilstart;
             if (!isinspace)
             {
                 
