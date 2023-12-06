@@ -248,11 +248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0.2
   speed: 0.5
-  scale: 0.125
+  scale: 0.0125
   minx: -10
   maxx: 40
-  close: 0.001
-  far: 1
+  close: 0.2
+  far: 0.5
 --- !u!114 &1701893536
 MonoBehaviour:
   m_ObjectHideFlags: 0
