@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -171,9 +172,8 @@ public class MoveObjects : MonoBehaviour
 
     private bool IsValidePosition(Collider collider)
     {
-        Mesh mesh = collider.gameObject.GetComponent<MeshFilter>().mesh;
         Vector3 colliderscale =
-            RoundVector3(multiplyVector3byVector3(gameObject.transform.localScale, _mesh.bounds.size));
+            RoundVector3(multiplyVector3byVector3(GetBiggerScaleFromChildrent(collider.gameObject), GetBiggerMeshFromChildren(collider.gameObject)));
         if (IsInside(gameObject.transform.position, collider.transform.position, _scale / 2, colliderscale/2))
         {
             return false;
@@ -184,5 +184,60 @@ public class MoveObjects : MonoBehaviour
     private Vector3 RoundVector3(Vector3 vector)
     {
         return new Vector3((float)Math.Round(vector.x), (float)Math.Round(vector.y), (float)Math.Round(vector.z));
+    }
+
+    private Vector3 GetBiggerMeshFromChildren(GameObject gameobject)
+    {
+        if (gameobject.transform.childCount == 0)
+        {
+            return gameobject.GetComponent<MeshFilter>().mesh.bounds.size;
+        }
+
+        float maxx = 0;
+        float maxy = 0;
+        float maxz = 0;
+        foreach (Transform child in gameobject.GetComponentsInChildren<Transform>())
+        {
+            if (child.gameObject.GetComponent<MeshFilter>().mesh.bounds.size.x > maxx)
+            {
+                maxx = child.gameObject.GetComponent<MeshFilter>().mesh.bounds.size.x;
+            }
+            if (child.gameObject.GetComponent<MeshFilter>().mesh.bounds.size.y > maxy)
+            {
+                maxy = child.gameObject.GetComponent<MeshFilter>().mesh.bounds.size.y;
+            }
+            if (child.gameObject.GetComponent<MeshFilter>().mesh.bounds.size.z > maxz)
+            {
+                maxz = child.gameObject.GetComponent<MeshFilter>().mesh.bounds.size.z;
+            }
+        }
+        return new Vector3(maxx, maxy, maxz);
+    }
+
+    private Vector3 GetBiggerScaleFromChildrent(GameObject gameobject)
+    {
+        if (gameobject.transform.childCount == 0)
+        {
+            return gameobject.transform.localScale;
+        }
+        float maxx = 0;
+        float maxy = 0;
+        float maxz = 0;
+        foreach (Transform child in gameobject.GetComponentsInChildren<Transform>())
+        {
+            if (child.gameObject.transform.localScale.x > maxx)
+            {
+                maxx = child.gameObject.transform.localScale.x;
+            }
+            if (child.gameObject.transform.localScale.y > maxy)
+            {
+                maxy = child.gameObject.transform.localScale.y;
+            }
+            if (child.gameObject.transform.localScale.z > maxz)
+            {
+                maxz = child.gameObject.transform.localScale.z;
+            }
+        }
+        return new Vector3(maxx, maxy, maxz);
     }
 }

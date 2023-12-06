@@ -52,6 +52,7 @@ public class PhysiqueEngine : MonoBehaviour
     {
         public TextDependOnenValue altitude;
         public TextDependOnenValue speed;
+        public TextDependOnenValue timeuntilstart;
     }
 
     public DisplayInfo displayinfo;
@@ -104,13 +105,14 @@ public class PhysiqueEngine : MonoBehaviour
         if (_isrunning)
         {
             _timeuntilstart += Time.deltaTime;
+            displayinfo.timeuntilstart.element.text = displayinfo.timeuntilstart.value + _timeuntilstart;
             if (!isinspace)
             {
                 
                 _speed += AddGravityBaseOnTime();
             }
             _speed += AddMotorFocreBaseOnTime();
-            _altitude += _speed * Time.deltaTime;
+            _altitude = _speed * _timeuntilstart;
             _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/60, 
                 _objectlocation.transform.position.z);
             displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
@@ -150,7 +152,6 @@ public class PhysiqueEngine : MonoBehaviour
                 motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
-
         return force;
     }
 
