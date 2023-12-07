@@ -251,7 +251,7 @@ MonoBehaviour:
   scale: 0.0125
   minx: -10
   maxx: 40
-  close: 0.2
+  close: 0.1
   far: 0.5
 --- !u!114 &1701893536
 MonoBehaviour:
