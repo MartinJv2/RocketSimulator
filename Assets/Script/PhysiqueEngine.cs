@@ -12,7 +12,6 @@ public class PhysiqueEngine : MonoBehaviour
     public int beginhauteatmosphere;
     public string spacescene;
     public int beginspace;
-    public int endHauteAtmosphere;
     private string currentscence = "Onearh";
     private GameObject _objectlocation;
     private bool isinspace;
@@ -59,9 +58,9 @@ public class PhysiqueEngine : MonoBehaviour
 
 
     private bool _isrunning;
-    private float _speed;
+    private float _meanspeed;
     public float _altitude;
-    private float _timeuntilstart;
+    private float _timesincestart;
     private MeshRenderer _renderer;
     private Transform _currentchild;
 
@@ -104,26 +103,26 @@ public class PhysiqueEngine : MonoBehaviour
     {
         if (_isrunning)
         {
-            _timeuntilstart += Time.deltaTime;
-            displayinfo.timeuntilstart.element.text = displayinfo.timeuntilstart.value + _timeuntilstart;
+            _timesincestart += Time.deltaTime;
+            displayinfo.timeuntilstart.element.text = displayinfo.timeuntilstart.value + _timesincestart;
             if (!isinspace)
             {
                 
-                _speed += AddGravityBaseOnTime();
+                _meanspeed += AddGravitySpeedBaseOnTime();
             }
-            _speed += AddMotorFocreBaseOnTime();
-            _altitude = _speed * _timeuntilstart;
+            _meanspeed += AddMotorAccelerationBaseOnTime()*Time.deltaTime;
+            _altitude = _meanspeed * _timesincestart;
             _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/60, 
                 _objectlocation.transform.position.z);
-            displayinfo.altitude.element.text = displayinfo.altitude.value + Mathf.Round(_altitude) + "m";
-            displayinfo.speed.element.text = displayinfo.speed.value + Mathf.Round(_speed) + " m/s";
-            if (_altitude > endHauteAtmosphere && currentscence == hauteatmospherescene)
+            displayinfo.altitude.element.text = displayinfo.altitude.value + (_altitude) + "m";
+            displayinfo.speed.element.text = displayinfo.speed.value + (_meanspeed*2) + " m/s";
+            if (_altitude > beginspace && currentscence != spacescene)
             {
                 SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
                 currentscence = spacescene;
                 isinspace = true;
             }
-            else if (_altitude > beginspace && currentscence != spacescene && currentscence != hauteatmospherescene)
+            else if (_altitude > beginhauteatmosphere && currentscence != spacescene && currentscence != hauteatmospherescene)
             {
                 SceneManager.LoadScene(hauteatmospherescene, LoadSceneMode.Single);
                 currentscence = hauteatmospherescene;
@@ -132,27 +131,27 @@ public class PhysiqueEngine : MonoBehaviour
         }
     }
 
-    private float AddGravityBaseOnTime()
+    private float AddGravitySpeedBaseOnTime()
     {
         return (float)(rocketparameter.gravityacelleration * Time.deltaTime);
     }
 
-    private float AddMotorFocreBaseOnTime()
+    private float AddMotorAccelerationBaseOnTime()
     {
-        float force = 0;
+        float acceleration = 0;
         foreach (MotorProperty motor in rocketparameter.motorlist)
         {
-            if (_timeuntilstart <= motor.ignitetime)
+            if (_timesincestart <= motor.ignitetime)
             {
                 motor.GetComponent<ParticleSystem>().Play();
-                force += (CalculateAccellerationBaseOnForceAndWeight(motor.force) * Time.deltaTime);
+                acceleration += (CalculateAccellerationBaseOnForceAndWeight(motor.force * _timesincestart));
             }
             else
             {
                 motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
-        return force;
+        return acceleration;
     }
 
     private float CalculateAccellerationBaseOnForceAndWeight(float force)

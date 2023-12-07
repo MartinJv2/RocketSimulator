@@ -609,6 +609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 516236088}
   - component: {fileID: 516236089}
+  - component: {fileID: 516236090}
   m_Layer: 0
   m_Name: Cameracontroler
   m_TagString: Untagged
@@ -645,6 +646,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followgameobjectname: Component
+--- !u!114 &516236090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516236086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c80acf72d048dd459b455dada04efdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &605861659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,10 +1425,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectlocation: Component
   hauteatmospherescene: "HauteAtmosph\xE8re"
-  beginhauteatmosphere: 50000
+  beginhauteatmosphere: 3000
   spacescene: Space
-  beginspace: 3000
-  endHauteAtmosphere: 100000
+  beginspace: 100000
   rocketparameter:
     gravityacelleration: -9.81
     acceleratorspeed: 1
