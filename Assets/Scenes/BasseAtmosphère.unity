@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "D\xE9mmarer"
+  m_text: "D\xE9marrer\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   togglebutton:
     button: {fileID: 1789049561}
     stoptext: "Arr\xEAter"
-    runtext: "D\xE9mmarer"
+    runtext: "D\xE9marrer "
   displayinfo:
     altitude:
       element: {fileID: 1059091424}
