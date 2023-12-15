@@ -9,6 +9,7 @@ public class PhysiqueEngine : MonoBehaviour
 {
     public string objectlocation;
     public string hauteatmospherescene;
+    public string basseatmospherescene;
     public int beginhauteatmosphere;
     public string spacescene;
     public int beginspace;
@@ -110,17 +111,23 @@ public class PhysiqueEngine : MonoBehaviour
                 
                 _meanspeed += AddGravitySpeedBaseOnTime();
             }
-            _meanspeed += AddMotorAccelerationBaseOnTime()*Time.deltaTime;
-            _altitude = _meanspeed * _timesincestart;
-            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/60, 
+
+            _meanspeed += AddMotorAccelerationBaseOnTime() * Time.deltaTime;
+            if (_altitude >= 0) 
+            {
+                 _altitude = _meanspeed * _timesincestart;
+            }
+            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/120, 
                 _objectlocation.transform.position.z);
             displayinfo.altitude.element.text = displayinfo.altitude.value + (_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + (_meanspeed*2) + " m/s";
             if (_altitude > beginspace && currentscence != spacescene)
-            {
-                SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
-                currentscence = spacescene;
+            { SceneManager.LoadScene(spacescene, LoadSceneMode.Single); currentscence = spacescene;
                 isinspace = true;
+            }
+            if (_altitude < beginhauteatmosphere && currentscence == hauteatmospherescene)
+            { SceneManager.LoadScene(basseatmospherescene, LoadSceneMode.Single);
+                currentscence = basseatmospherescene;
             }
             else if (_altitude > beginhauteatmosphere && currentscence != spacescene && currentscence != hauteatmospherescene)
             {
@@ -141,7 +148,7 @@ public class PhysiqueEngine : MonoBehaviour
         float acceleration = 0;
         foreach (MotorProperty motor in rocketparameter.motorlist)
         {
-            if (_timesincestart <= motor.ignitetime)
+            if (_timesincestart <= motor.outOfFuel)
             {
                 motor.GetComponent<ParticleSystem>().Play();
                 acceleration += (CalculateAccellerationBaseOnForceAndWeight(motor.force * _timesincestart));
@@ -175,6 +182,14 @@ public class PhysiqueEngine : MonoBehaviour
         {
             _isrunning = true;
             togglebutton.button.text = togglebutton.stoptext;
+        }
+    }
+
+    private void Update()
+    {
+        if (_altitude < 0)
+        {
+            _altitude = 0;
         }
     }
 }
