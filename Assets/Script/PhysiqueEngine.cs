@@ -113,14 +113,18 @@ public class PhysiqueEngine : MonoBehaviour
             }
 
             _meanspeed += AddMotorAccelerationBaseOnTime() * Time.deltaTime;
-            if (_altitude >= 0) 
+            if (_altitude != 0 || _meanspeed > 0)
             {
                  _altitude = _meanspeed * _timesincestart;
+                 _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/120, 
+                     _objectlocation.transform.position.z);
             }
-            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/120, 
-                _objectlocation.transform.position.z);
+
+            if (_altitude != 0)
+            {
+                displayinfo.speed.element.text = displayinfo.speed.value + (_meanspeed*2) + " m/s";   
+            }
             displayinfo.altitude.element.text = displayinfo.altitude.value + (_altitude) + "m";
-            displayinfo.speed.element.text = displayinfo.speed.value + (_meanspeed*2) + " m/s";
             if (_altitude > beginspace && currentscence != spacescene)
             { SceneManager.LoadScene(spacescene, LoadSceneMode.Single); currentscence = spacescene;
                 isinspace = true;
@@ -187,9 +191,10 @@ public class PhysiqueEngine : MonoBehaviour
 
     private void Update()
     {
-        if (_altitude < 0)
+        if (_altitude < 0 && _meanspeed < 0)
         {
             _altitude = 0;
+            displayinfo.speed.element.text = displayinfo.speed.value + 0 + " m/s";
         }
     }
 }

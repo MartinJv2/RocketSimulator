@@ -167,7 +167,7 @@ public class MenuManager : MonoBehaviour
 
     public void SetMotorDuration(string text)
     {
-        _selectedobject.GetComponent<MotorProperty>().ignitetime = float.Parse(text);
+        _selectedobject.GetComponent<MotorProperty>().outOfFuel = float.Parse(text);
     }
 
     private bool CheckConnections()
