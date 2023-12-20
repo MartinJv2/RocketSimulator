@@ -59,10 +59,12 @@ public class PhysiqueEngine : MonoBehaviour
 
     private bool _isrunning;
     private float _meanspeed;
-    public float _altitude;
+    public double _altitude;
     private float _timesincestart;
     private MeshRenderer _renderer;
     private Transform _currentchild;
+    private float aceleration = 0;
+    private double _speed = 0;
 
     private void Start()
     {
@@ -103,19 +105,25 @@ public class PhysiqueEngine : MonoBehaviour
     {
         if (_isrunning)
         {
+            double force = 0;
+            double acceleration;
+            double initialespeed = _speed;
+            double finalspeed = 0;
             _timesincestart += Time.deltaTime;
             displayinfo.timeuntilstart.element.text = displayinfo.timeuntilstart.value + _timesincestart;
             if (!isinspace)
             {
-                
-                _meanspeed += AddGravitySpeedBaseOnTime();
+                force += CalculateGravityFroce();
             }
-            _meanspeed += AddMotorAccelerationBaseOnTime()*Time.deltaTime;
-            _altitude = _meanspeed * _timesincestart;
-            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, _altitude/60, 
+            force += AddMotorForcenBaseOnTime();
+            acceleration = CalculateAccellerationBaseOnForceAndWeight(force);
+            finalspeed = (acceleration * Time.deltaTime) + initialespeed;
+            _altitude = (initialespeed + finalspeed) * _timesincestart/2;
+            _speed = finalspeed;
+            _objectlocation.transform.position = new Vector3(_objectlocation.transform.position.x, (float)(_altitude/60), 
                 _objectlocation.transform.position.z);
             displayinfo.altitude.element.text = displayinfo.altitude.value + (_altitude) + "m";
-            displayinfo.speed.element.text = displayinfo.speed.value + (_meanspeed*2) + " m/s";
+            displayinfo.speed.element.text = displayinfo.speed.value + (_speed*2) + " m/s";
             if (_altitude > beginspace && currentscence != spacescene)
             {
                 SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
@@ -131,30 +139,36 @@ public class PhysiqueEngine : MonoBehaviour
         }
     }
 
-    private float AddGravitySpeedBaseOnTime()
+    private float CalculateGravityFroce()
     {
-        return (float)(rocketparameter.gravityacelleration * Time.deltaTime);
+        return (float)(rocketparameter.gravityacelleration/rocketparameter.weight);
     }
 
-    private float AddMotorAccelerationBaseOnTime()
+    private float AddMotorForcenBaseOnTime()
     {
-        float acceleration = 0;
+        float force = 0;
         foreach (MotorProperty motor in rocketparameter.motorlist)
         {
-            if (_timesincestart <= motor.ignitetime)
+            if (_timesincestart <= motor.duration)
             {
                 motor.GetComponent<ParticleSystem>().Play();
-                acceleration += (CalculateAccellerationBaseOnForceAndWeight(motor.force * _timesincestart));
+                force += motor.force * _timesincestart;
+                motor.generatedtrusted = force;
             }
             else
             {
+                if (motor.generatedtrusted < (motor.force * motor.duration))
+                {
+                    force += (motor.force * motor.duration) - motor.generatedtrusted;
+                    motor.generatedtrusted += force;
+                }
                 motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
-        return acceleration;
+        return force;
     }
 
-    private float CalculateAccellerationBaseOnForceAndWeight(float force)
+    private double CalculateAccellerationBaseOnForceAndWeight(double force)
     {
         return (force / rocketparameter.weight);
     }
@@ -170,6 +184,7 @@ public class PhysiqueEngine : MonoBehaviour
         {
             _isrunning = false;
             togglebutton.button.text = togglebutton.runtext;
+            
         }
         else
         {
