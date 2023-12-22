@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class CameraMouvement : MonoBehaviour
@@ -47,11 +48,11 @@ void Update()
     gameObject.transform.rotation = Quaternion.Euler(new Vector3(x_rotation,y_rotation,transform.rotation.z));
     gameObject.transform.localScale = new Vector3(size, size, size);
 
-    if (GameObject.Find("physicManager").GetComponent<PhysiqueEngine>()._altitude > 10000)
+    /*if (Scene.buildIndex = 1)
     {
-        startingSize = 1;
-        startingRo = Quaternion.Euler(new Vector3(-40, 0,0));
-    }
+       startingSize = 1;
+       startingRo = Quaternion.Euler(new Vector3(-40, 0,0));
+    }*/
 }
 
 public void reset()
