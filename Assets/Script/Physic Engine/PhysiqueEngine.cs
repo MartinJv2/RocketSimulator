@@ -66,8 +66,6 @@ public class PhysiqueEngine : MonoBehaviour
     private float aceleration = 0;
     private double _speed = 0;
 
-    private double tmp = 0;
-
     private void Start()
     {
         _objectlocation = GameObject.Find(objectlocation);
@@ -141,8 +139,6 @@ public class PhysiqueEngine : MonoBehaviour
                 isinspace = false;
             }
         }
-
-        Debug.Log(tmp);
     }
 
     private float CalculateGravityFroce()
@@ -171,8 +167,6 @@ public class PhysiqueEngine : MonoBehaviour
                 motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
-
-        tmp = force;
         return force;
     }
 

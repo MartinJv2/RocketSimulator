@@ -87,6 +87,5 @@ public class CameraMouvement : MonoBehaviour
         size = startingSize;
         x_rotation = startingRo.x;
         y_rotation = startingRo.y;
-        Debug.Log("reset camera");
     }
 }
