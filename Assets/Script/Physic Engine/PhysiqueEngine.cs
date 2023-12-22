@@ -66,6 +66,8 @@ public class PhysiqueEngine : MonoBehaviour
     private float aceleration = 0;
     private double _speed = 0;
 
+    private double tmp = 0;
+
     private void Start()
     {
         _objectlocation = GameObject.Find(objectlocation);
@@ -137,11 +139,13 @@ public class PhysiqueEngine : MonoBehaviour
                 isinspace = false;
             }
         }
+
+        Debug.Log(tmp);
     }
 
     private float CalculateGravityFroce()
     {
-        return (float)(rocketparameter.gravityacelleration/rocketparameter.weight);
+        return (float)(rocketparameter.gravityacelleration*rocketparameter.weight);
     }
 
     private float AddMotorForcenBaseOnTime()
@@ -159,12 +163,14 @@ public class PhysiqueEngine : MonoBehaviour
             {
                 if (motor.generatedtrusted < (motor.force * motor.duration))
                 {
-                    force += (motor.force * motor.duration) - motor.generatedtrusted;
-                    motor.generatedtrusted += force;
+                    force += motor.force * motor.duration;
+                    motor.generatedtrusted = force;
                 }
                 motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
+
+        tmp = force;
         return force;
     }
 
