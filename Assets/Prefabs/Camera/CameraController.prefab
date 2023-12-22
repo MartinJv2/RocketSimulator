@@ -65,7 +65,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 25000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -139,13 +139,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameratransform: {fileID: 11400000, guid: 08bfd1366a1002446b1e4821051cb696, type: 2}
-  size: 0
   speed: 0.5
   scale: 0.125
   minx: -30
   maxx: 50
   close: 0.25
   far: 5
+  startingSize: 0
+  startingRo: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &-3924319908472853565
 MonoBehaviour:
   m_ObjectHideFlags: 0
