@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 690021507}
         m_TargetAssemblyTypeName: CameraMouvement, Assembly-CSharp
         m_MethodName: reset
         m_Mode: 1
@@ -1726,6 +1726,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &690021507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3580837140286400529, guid: c0923842f9cd84b4aa7bd99d44dc649c, type: 3}
+  m_PrefabInstance: {fileID: 2813470815025780655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d966d15df7d42014da1aa9b917a42a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &694123465
 GameObject:
   m_ObjectHideFlags: 0
