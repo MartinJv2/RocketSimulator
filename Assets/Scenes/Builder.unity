@@ -499,9 +499,10 @@ MonoBehaviour:
   scale: 0.125
   minx: -30
   maxx: 50
+  close: 0.25
+  far: 5
   startingSize: 0
   startingRo: {x: 0, y: 0, z: 0, w: 0}
-  rocket: {fileID: 1286204206}
 --- !u!1 &236934006
 GameObject:
   m_ObjectHideFlags: 0
