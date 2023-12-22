@@ -646,6 +646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followgameobjectname: Component
+  hauteAtmosphereHeight: 3000
+  spaceHeight: 100000
 --- !u!114 &516236090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,6 +1427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectlocation: Component
   hauteatmospherescene: "HauteAtmosph\xE8re"
+  basseatmospherescene: 
   beginhauteatmosphere: 3000
   spacescene: Space
   beginspace: 100000

@@ -20,7 +20,6 @@ public class PhysiqueEngine : MonoBehaviour
     public struct RocketParameter
     {
         public double gravityacelleration;
-        public float acceleratorspeed;
         
         [HideInInspector]
         public float weight;

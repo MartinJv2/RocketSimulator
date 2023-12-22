@@ -501,7 +501,6 @@ MonoBehaviour:
   maxx: 50
   startingSize: 0
   startingRo: {x: 0, y: 0, z: 0, w: 0}
-  rocket: {fileID: 1286204206}
 --- !u!1 &236934006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3931,6 +3930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1347110293}
   height: 0
+  minHeight: 0
+  maxHeight: 5
 --- !u!1 &1382531648
 GameObject:
   m_ObjectHideFlags: 0

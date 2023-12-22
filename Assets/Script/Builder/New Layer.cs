@@ -7,6 +7,8 @@ public class NewLayer : MonoBehaviour
 {
     public GameObject floor;
     public float height;
+    public float minHeight;
+    public float maxHeight;
     
     void Update()
     {   
@@ -16,13 +18,13 @@ public class NewLayer : MonoBehaviour
     public void SelectHeightChange(int heightincrease)
     {
         height += heightincrease;
-        if (height <= 0)
+        if (height <= minHeight)
         {
-            height = 0;
+            height = minHeight;
         }
-        if (height >= 5)
+        if (height >= maxHeight)
         {
-            height = 5;
+            height = maxHeight;
         }
     } 
 }
