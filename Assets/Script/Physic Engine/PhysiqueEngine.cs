@@ -9,6 +9,7 @@ public class PhysiqueEngine : MonoBehaviour
 {
     public string objectlocation;
     public string hauteatmospherescene;
+    public string basseatmospherescene;
     public int beginhauteatmosphere;
     public string spacescene;
     public int beginspace;
@@ -127,10 +128,12 @@ public class PhysiqueEngine : MonoBehaviour
             displayinfo.altitude.element.text = displayinfo.altitude.value + (_altitude) + "m";
             displayinfo.speed.element.text = displayinfo.speed.value + (_speed*2) + " m/s";
             if (_altitude > beginspace && currentscence != spacescene)
-            {
-                SceneManager.LoadScene(spacescene, LoadSceneMode.Single);
-                currentscence = spacescene;
+            { SceneManager.LoadScene(spacescene, LoadSceneMode.Single); currentscence = spacescene;
                 isinspace = true;
+            }
+            if (_altitude < beginhauteatmosphere && currentscence == hauteatmospherescene)
+            { SceneManager.LoadScene(basseatmospherescene, LoadSceneMode.Single);
+                currentscence = basseatmospherescene;
             }
             else if (_altitude > beginhauteatmosphere && currentscence != spacescene && currentscence != hauteatmospherescene)
             {
@@ -196,6 +199,15 @@ public class PhysiqueEngine : MonoBehaviour
         {
             _isrunning = true;
             togglebutton.button.text = togglebutton.stoptext;
+        }
+    }
+
+    private void Update()
+    {
+        if (_altitude < 0 && _meanspeed < 0)
+        {
+            _altitude = 0;
+            displayinfo.speed.element.text = displayinfo.speed.value + 0 + " m/s";
         }
     }
 }
