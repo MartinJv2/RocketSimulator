@@ -372,99 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c80acf72d048dd459b455dada04efdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &340408124
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 100000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_Name
-      value: Planet16128Tris
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -15.881086
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -30000
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9129bad9aad7f394aa91b2eb46de21c8, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 340408126}
-  m_SourcePrefab: {fileID: 100100000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
---- !u!1 &340408125 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: b82e0d2b8cc9ee64cacfa0b6e51ff1a3, type: 3}
-  m_PrefabInstance: {fileID: 340408124}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &340408126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340408125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c80acf72d048dd459b455dada04efdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &416900815
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +711,6 @@ GameObject:
   m_Component:
   - component: {fileID: 993120155}
   - component: {fileID: 993120154}
-  - component: {fileID: 993120156}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -889,18 +795,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
---- !u!114 &993120156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993120153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c80acf72d048dd459b455dada04efdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1059091422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1327,6 @@ MonoBehaviour:
   beginspace: 100000
   rocketparameter:
     gravityacelleration: -9.81
-    acceleratorspeed: 1
     weight: 0
     motorlist: []
   togglebutton:
@@ -1472,4 +1365,3 @@ SceneRoots:
   - {fileID: 299900570}
   - {fileID: 1172277511}
   - {fileID: 2097699630}
-  - {fileID: 340408124}
