@@ -18,4 +18,8 @@ public class BeginGame : MonoBehaviour
     {
         SceneManager.LoadScene(starterscene, LoadSceneMode.Single);
     }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
