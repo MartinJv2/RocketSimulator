@@ -1,12 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Donotdestroy : MonoBehaviour
 {
+
+    public List<string> exeptions;
+    
     public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (!exeptions.Any(sceneName.Contains))
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }
