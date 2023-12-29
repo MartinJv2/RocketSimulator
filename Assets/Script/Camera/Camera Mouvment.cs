@@ -8,8 +8,8 @@ using UnityEngine.UIElements;
 public class CameraMouvement : MonoBehaviour
 {
     public CameraTransform cameratransform;
-    public float y_rotation;
-    public float x_rotation;
+    private float y_rotation;
+    private float x_rotation;
     private float size;
     public float speed;
     public float scale;
@@ -24,7 +24,10 @@ public class CameraMouvement : MonoBehaviour
     {
         gameObject.transform.rotation = Quaternion.Euler(cameratransform.rotation);
         gameObject.transform.localScale = cameratransform.scale;
-        size = startingSize;
+        y_rotation = cameratransform.rotation.y;
+        x_rotation = cameratransform.rotation.x;
+        size = gameObject.transform.localScale.x;
+        startingSize = size;
         startingRo = Quaternion.Euler(new Vector3(x_rotation, y_rotation,gameObject.transform.rotation.z));
     }
 
