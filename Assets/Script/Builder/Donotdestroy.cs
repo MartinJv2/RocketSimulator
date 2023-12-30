@@ -12,12 +12,16 @@ public class Donotdestroy : MonoBehaviour
     
     public void Awake()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        if(exeptions.Any(sceneName.Contains))
-        {
-            Destroy(gameObject);
-        }
         DontDestroyOnLoad(gameObject);
     }
+
+    void Update()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if(exeptions.Contains(currentScene))
+        {
+           Destroy(gameObject);
+        }
+    }
+    
 }
