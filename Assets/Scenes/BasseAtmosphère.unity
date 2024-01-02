@@ -1059,6 +1059,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
+      propertyPath: maxx
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
+      propertyPath: minx
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
+      propertyPath: close
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
       propertyPath: x_rotation
       value: -30
       objectReference: {fileID: 0}
