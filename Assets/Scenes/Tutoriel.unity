@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -523,9 +523,9 @@ RectTransform:
   - {fileID: 1818581850}
   m_Father: {fileID: 678075988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -80, y: 16}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998437572
@@ -676,9 +676,9 @@ RectTransform:
   - {fileID: 117108045}
   m_Father: {fileID: 678075988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -70}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -80, y: 46}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416991803
@@ -794,9 +794,12 @@ MonoBehaviour:
   - "2. Vous pouvez d\xE9placer, supprimer et modifier les propri\xE9t\xE9s des objets
     que vous avez plac\xE9s en cliquant dessus. N\u2019oubliez pas : vous n\u2019avez
     pas le droit de placer des objets les uns dans les autres ou de ne toucher aucun
-    autre objet."
+    autre objet ni de placer des cones autrement que sur d'autres objets."
   - "3. Une fois que vous avez termin\xE9 la construction de votre fus\xE9e, frappez
     le lancement et voyez le r\xE9sultat !"
+  - '4. Avant de vous lancer : n''oubliez pas d''utiliser les touches : W,A,S,D pour
+    bouger la camera et d''utiliser les boutons prevus pour monter et descendre l''endroit
+    ou vous voulez placer votre objet.'
   currentTutorial: 0
   element: {fileID: 1506658630}
 --- !u!1 &1506658628
