@@ -8,15 +8,19 @@ using UnityEngine.UI;
 
 public class Instructions : MonoBehaviour
 {
-    public string tutorialScene;
     public List<string> tutorial;
     public int currentTutorial = 0;
     public TextMeshProUGUI element;
-    
+
+    private void Awake()
+    {
+        element.text = tutorial[currentTutorial];
+    }
+
     public void next()
     {
         currentTutorial++;
-        if (currentTutorial > tutorial.Count)
+        if (currentTutorial > tutorial.Count-1)
         {
             currentTutorial = 0;
         }
@@ -27,13 +31,8 @@ public class Instructions : MonoBehaviour
         currentTutorial--;
         if (currentTutorial < 0)
         {
-            currentTutorial =  tutorial.Count;
+            currentTutorial =  tutorial.Count-1;
         }
-        element.text = tutorial[currentTutorial];
-    }
-    public void instructionsScene()
-    {
-        SceneManager.LoadScene(tutorialScene, LoadSceneMode.Single);
         element.text = tutorial[currentTutorial];
     }
 }

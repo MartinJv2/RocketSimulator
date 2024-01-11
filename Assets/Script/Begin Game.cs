@@ -10,6 +10,7 @@ public class BeginGame : MonoBehaviour
 {
     public string builderscene;
     public string starterscene;
+    public string tutorialScene;
     
     public void Begin()
     {
@@ -23,5 +24,8 @@ public class BeginGame : MonoBehaviour
     {
         Application.Quit();
     }
-   
+    public void instructionsScene()
+    {
+        SceneManager.LoadScene(tutorialScene, LoadSceneMode.Single);
+    }
 }
