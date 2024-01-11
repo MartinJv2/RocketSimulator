@@ -4,11 +4,16 @@ using UnityEngine;
 using TMPro;
 using static System.Linq.Enumerable;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BeginGame : MonoBehaviour
 {
     public string builderscene;
     public string starterscene;
+    public List<string> tutorial;
+    private int currentTutorial;
+    public int maxTutorial;
+    public TextMeshProUGUI element;
     
     public void Begin()
     {
@@ -22,4 +27,13 @@ public class BeginGame : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Tutoriel()
+    {
+       if (currentTutorial == maxTutorial)
+       {
+           currentTutorial = 0;
+       }
+       element.text = tutorial[currentTutorial];
+    }
+    
 }
