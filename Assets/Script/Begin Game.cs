@@ -13,7 +13,6 @@ public class BeginGame : MonoBehaviour
     public string starterscene;
     public List<string> tutorial;
     public int currentTutorial;
-    public int maxTutorial;
     public TextMeshProUGUI element;
     
     public void Begin()
