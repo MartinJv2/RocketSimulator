@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class BeginGame : MonoBehaviour
 {
     public string builderscene;
+    public string tutorialScene;
     public string starterscene;
     public List<string> tutorial;
-    private int currentTutorial;
+    public int currentTutorial;
     public int maxTutorial;
     public TextMeshProUGUI element;
     
@@ -27,13 +28,27 @@ public class BeginGame : MonoBehaviour
     {
         Application.Quit();
     }
-    public void Tutoriel()
+    public void next()
     {
-       if (currentTutorial == maxTutorial)
-       {
-           currentTutorial = 0;
-       }
-       element.text = tutorial[currentTutorial];
+        currentTutorial++;
+        if (currentTutorial > tutorial.Count)
+        {
+            currentTutorial = 0;
+        }
+        element.text = tutorial[currentTutorial];
     }
-    
+    public void previous()
+    {
+        currentTutorial--;
+        if (currentTutorial < 0)
+        {
+            currentTutorial =  tutorial.Count;
+        }
+        element.text = tutorial[currentTutorial];
+    }
+    public void instructionsScene()
+    {
+        SceneManager.LoadScene(tutorialScene, LoadSceneMode.Single);
+        element.text = tutorial[currentTutorial];
+    }
 }
