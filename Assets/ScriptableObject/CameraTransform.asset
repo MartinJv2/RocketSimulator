@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21957a1014423054e99cc414c6233cc6, type: 3}
   m_Name: CameraTransform
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
-  rotation: {x: -21.5, y: 354, z: 0.00967906}
+  rotation: {x: 10.5, y: 0, z: 0}
   scale: {x: 0.25, y: 0.25, z: 0.25}
+  camera: {fileID: 0}
