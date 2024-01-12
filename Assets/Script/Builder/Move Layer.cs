@@ -18,7 +18,7 @@ public class NewLayer : MonoBehaviour
 
     void Update()
     {   
-        floor.transform.position = new Vector3(transform.position.x, height, transform.position.z);
+        //floor.transform.position = new Vector3(transform.position.x, height, transform.position.z);
     }
     
     public void SelectHeightChange(int heightincrease)
@@ -32,5 +32,6 @@ public class NewLayer : MonoBehaviour
         {
             height = maxHeight;
         }
+        floor.transform.position = new Vector3(transform.position.x, height, transform.position.z);
     } 
 }
