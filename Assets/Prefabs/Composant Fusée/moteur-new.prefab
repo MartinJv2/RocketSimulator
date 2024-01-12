@@ -5054,10 +5054,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3376933c03467e144acdfc4502966e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 100
+  physicEngine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
+  defaultweight: 1
   force: 20000
   duration: 10
-  ignitetime: 0
+  generatedtrusted: 0
 --- !u!54 &920459385712515681
 Rigidbody:
   m_ObjectHideFlags: 0

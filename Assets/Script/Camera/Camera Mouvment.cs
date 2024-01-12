@@ -22,6 +22,7 @@ public class CameraMouvement : MonoBehaviour
 
     void Start()
     {
+        cameratransform.camera = this.gameObject;
         gameObject.transform.rotation = Quaternion.Euler(cameratransform.rotation);
         gameObject.transform.localScale = cameratransform.scale;
         size = startingSize;

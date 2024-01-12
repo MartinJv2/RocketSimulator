@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e593100579f234989ad39098061a10, type: 3}
+  m_Name: SceneManager
+  m_EditorClassIdentifier: 
+  physicengine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
+  altitude: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
+  scenelist:
+  - name: "BasseAtmosph\xE8re"
+    minaltitudechange: 0
+    maxaltitudechange: 3000
+  - name: "HauteAtmosph\xE8re"
+    minaltitudechange: 3000
+    maxaltitudechange: 100000
+  - name: Space
+    minaltitudechange: 100000
+    maxaltitudechange: 0

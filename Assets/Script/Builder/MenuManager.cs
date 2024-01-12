@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public LayerMask layermask;
     public TMP_InputField setweightinputfield;
     public GameObject motorparmeditor;
+    public PhysicEngine physicengine;
 
     [HideInInspector]
     public GameObject Selectedobject
@@ -131,6 +132,15 @@ public class MenuManager : MonoBehaviour
         {
             if (Selectedobject != null)
             {
+                physicengine.weight -= Selectedobject.GetComponent<BaseProperty>().weight;
+                if (Selectedobject.GetComponent<MotorProperty>() == null)
+                {
+                    physicengine.RegisterObject(Selectedobject);
+                }
+                else
+                {
+                    physicengine.RemoveMotor(Selectedobject);
+                }
                 Destroy(Selectedobject);
             }
             Selectedobject = null;

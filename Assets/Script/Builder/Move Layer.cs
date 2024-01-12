@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,16 @@ using UnityEngine;
 
 public class NewLayer : MonoBehaviour
 {
-    public GameObject floor;
+    private GameObject floor;
     public float height;
     public float minHeight;
     public float maxHeight;
-    
+
+    public void Start()
+    {
+        floor = gameObject;
+    }
+
     void Update()
     {   
         floor.transform.position = new Vector3(transform.position.x, height, transform.position.z);
