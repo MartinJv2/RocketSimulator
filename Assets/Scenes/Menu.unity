@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20543188, g: 0.34705707, b: 0.46619296, a: 1}
+  m_IndirectSpecularColor: {r: 0.20543185, g: 0.34705713, b: 0.46619308, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2137,11 +2137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7361765407853341056, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 7361765407853341056, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7361765407853341056, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
       propertyPath: m_LocalScale.x
@@ -2202,6 +2202,14 @@ PrefabInstance:
     - target: {fileID: 7361765407853341056, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130187245074260134, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130187245074260134, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8959459661854175157, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
       propertyPath: m_Name
@@ -2392,7 +2400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -80, y: -98.333}
+  m_AnchoredPosition: {x: -80, y: -149.26}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785913113
