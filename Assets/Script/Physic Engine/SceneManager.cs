@@ -39,10 +39,11 @@ public class ManageScene : ScriptableObject
         }
         else if (scenelist[_currentscene].minaltitudechange > altitude.value)
         {
-            if (_currentscene > 0)
+            if (_currentscene == 0)
             {
-                _currentscene -= 1;
+                return;
             }
+            _currentscene -= 1;
             SceneManager.LoadScene(scenelist[_currentscene].name);
         }
     }
