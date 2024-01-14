@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -80,6 +81,10 @@ public class PhysicEngine : ScriptableObject
         float force = 0;
         foreach (MotorProperty motor in motorlist)
         {
+            if (motor == null)
+            {
+                continue;
+            }
             if (_timesincestart <= motor.duration)
             {
                 motor.GetComponent<ParticleSystem>().Play();
