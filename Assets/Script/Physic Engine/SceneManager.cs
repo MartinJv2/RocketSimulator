@@ -21,7 +21,6 @@ public class ManageScene : ScriptableObject
     public void OnEnable()
     {
         SortList();
-        physicengine.OnPhysicUpdate.AddListener(SwitchedScene);
         _currentscene = 0;
     }
 
