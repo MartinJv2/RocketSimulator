@@ -65,9 +65,9 @@ public class PhysicEngine : ScriptableObject
             float force = TotalForceApplied();
             acceleration = force / weight;
             finalspeed = (acceleration * time) + initial_speed;
-            altitude.value = (initial_speed + finalspeed) * _timesincestart/2;
+            altitude.value += (initial_speed+finalspeed)/2 * time;
             _speed = finalspeed;
-            speed.value = _speed * 2;
+            speed.value = _speed;
             timevariable.value = _timesincestart;
             OnPhysicUpdate.Invoke();
         }
@@ -89,7 +89,7 @@ public class PhysicEngine : ScriptableObject
             if (_timesincestart <= motor.duration)
             {
                 motor.GetComponent<ParticleSystem>().Play();
-                force += motor.force * _timesincestart;
+                force += motor.force * motor.duration;
                 motor.generatedtrusted = force;
             }
             else
