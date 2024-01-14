@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,19 @@ public class ToggleButton : MonoBehaviour
     public TextMeshProUGUI text;
     public string runtext;
     public string stoptext;
+
+    public void Start()
+    {
+        TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
+        if (isruning.value)
+        {
+            text.text = stoptext;
+        }
+        else
+        {
+            text.text = runtext;
+        }
+    }
 
     public void Toggle()
     {
