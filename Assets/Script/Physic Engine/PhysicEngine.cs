@@ -75,9 +75,9 @@ public class PhysicEngine : ScriptableObject
 
     private float TotalForceApplied()
     {
-        return CalculateGravityForce() + AddMotorForcenBaseOnTime();
+        return CalculateGravityForce() + AddMotorForceBaseOnTime() + CalculateDragForce();
     }
-    private float AddMotorForcenBaseOnTime()
+    private float AddMotorForceBaseOnTime()
     {
         float force = 0;
         foreach (MotorProperty motor in motorlist)
@@ -113,6 +113,36 @@ public class PhysicEngine : ScriptableObject
         gravityacelleration.value = -(float)((UniversalGravitationalContant * EarthMass) /
                                             (Math.Pow(distance, 2)));
         return  (float)(gravityacelleration.value * weight);
+    }
+
+    public float CalculateDragForce()
+    {
+        float cd = CalculateCd();
+        float airdensity = CalculateAirDensity();
+        float radius = CalculateRadius(); 
+        float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
+        if (speed.value >= 0)
+        {
+            return -(float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+        }
+        return (float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+    }
+
+    public float CalculateCd()
+    {
+        return (float)(0.0112 * 63.434948 + 0.162);
+    }
+    public float CalculateRadius()
+    {
+        return 0.5f;
+    }
+    public float CalculateAirDensity()
+    {
+        if ((288.15 - 0.0065 * altitude.value) == 0)
+        {
+            altitude.value += 1;
+        }
+        return (float)(352.995*(Math.Pow(1 - 0.000022557*altitude.value, 5.25516))/(288.15 - 0.0065*altitude.value));
     }
 
     public void RemoveMotor(GameObject gameobject)
