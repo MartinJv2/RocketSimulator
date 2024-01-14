@@ -626,7 +626,6 @@ GameObject:
   - component: {fileID: 998437574}
   - component: {fileID: 998437573}
   - component: {fileID: 998437572}
-  - component: {fileID: 998437575}
   m_Layer: 5
   m_Name: Previous Information
   m_TagString: Untagged
@@ -748,25 +747,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998437569}
   m_CullTransparentMesh: 1
---- !u!114 &998437575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998437569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45032b7b959454f81f67439f18f59dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorial:
-  - 1
-  - 2
-  - 3
-  - 4
-  currentTutorial: 0
-  element: {fileID: 1506658630}
 --- !u!1001 &1149388255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -978,11 +958,11 @@ MonoBehaviour:
     que vous avez plac\xE9s en cliquant dessus. N\u2019oubliez pas : vous n\u2019avez
     pas le droit de placer des objets les uns dans les autres ou de ne toucher aucun
     autre objet ni de placer des cones autrement que sur d'autres objets."
-  - "3. Une fois que vous avez termin\xE9 la construction de votre fus\xE9e, frappez
-    le lancement et voyez le r\xE9sultat !"
-  - '4. Avant de vous lancer : n''oubliez pas d''utiliser les touches : W,A,S,D pour
-    bouger la camera et d''utiliser les boutons prevus pour monter et descendre l''endroit
-    ou vous voulez placer votre objet.'
+  - "3. Une fois que vous avez termin\xE9 la construction de votre fus\xE9e, appuyez
+    sur \"lancement\" et voyez le r\xE9sultat !"
+  - '4. Avant de vous lancer : n''oubliez pas d''utiliser les touches : W,A,S,D et
+    la molette pour bouger la camera et d''utiliser les boutons prevus pour monter
+    et descendre l''endroit ou vous voulez placer votre objet.'
   currentTutorial: 0
   element: {fileID: 1506658630}
 --- !u!1 &1506658628

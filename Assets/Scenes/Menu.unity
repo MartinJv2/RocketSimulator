@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20543188, g: 0.34705707, b: 0.46619296, a: 1}
+  m_IndirectSpecularColor: {r: 0.20543185, g: 0.34705713, b: 0.46619308, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -932,7 +932,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 320310206}
         m_TargetAssemblyTypeName: BeginGame, Assembly-CSharp
-        m_MethodName: Back
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
