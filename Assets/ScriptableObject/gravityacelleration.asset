@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897719a84af2484489b75a4608cbbb11, type: 3}
   m_Name: gravityacelleration
   m_EditorClassIdentifier: 
-  value: 0
+  value: -9.819954
