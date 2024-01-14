@@ -19,6 +19,7 @@ public class PhysicEngine : ScriptableObject
     public boolvariable isrunning;
     private float _speed;
     public floatscriptableobject timevariable;
+    public floatscriptableobject gravityacelleration;
 
     public void OnEnable()
     {
@@ -105,7 +106,13 @@ public class PhysicEngine : ScriptableObject
     }
     public float CalculateGravityForce()
     {
-        return (float)(-9.81 * weight);
+        double EarthMass = 5.972 * Math.Pow(10, 24);
+        double UniversalGravitationalContant = 6.674 * Math.Pow(10, -11);
+        double EarthRadius = 6.371 * Math.Pow(10, 6);
+        double distance = EarthRadius + Convert.ToDouble(altitude.value);
+        gravityacelleration.value = -(float)((UniversalGravitationalContant * EarthMass) /
+                                            (Math.Pow(distance, 2)));
+        return  (float)(gravityacelleration.value * weight);
     }
 
     public void RemoveMotor(GameObject gameobject)
