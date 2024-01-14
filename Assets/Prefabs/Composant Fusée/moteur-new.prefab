@@ -5056,8 +5056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicEngine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
   defaultweight: 1
-  force: 20000
-  duration: 10
+  force: 1
+  duration: 1
   generatedtrusted: 0
 --- !u!54 &920459385712515681
 Rigidbody:
