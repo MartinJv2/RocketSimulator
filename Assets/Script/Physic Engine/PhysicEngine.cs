@@ -12,7 +12,6 @@ public class PhysicEngine : ScriptableObject
     public float weight = 0;
     public floatscriptableobject altitude;
     public float forcevisualize;
-    private bool _issimulating;
     private float _timesincestart;
     public floatscriptableobject speed;
     public UnityEvent OnPhysicUpdate;
@@ -25,15 +24,21 @@ public class PhysicEngine : ScriptableObject
         ResetVariable();
     }
 
+    public void OnDisable()
+    {
+        ResetVariable();
+    }
+
     public void ResetVariable()
     {
         weight = 0;
         altitude.value = 0;
         motorlist = new List<MotorProperty>();
         objectlist= new List<BaseProperty>();
+        timevariable.value = 0;
         _timesincestart = 0;
         speed.value = 0;
-        timevariable.value = 0;
+        _speed = 0;
         isrunning.value = false;
     }
     public void RegisterMotor(GameObject motor)

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca1939ea5677d54cb41bf9295439b4a, type: 3}
   m_Name: PhysicEngine
   m_EditorClassIdentifier: 
-  motorlist:
+  motorlist: []
+  objectlist:
   - {fileID: 0}
-  objectlist: []
-  weight: 101
+  weight: 1
   altitude: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
-  forcevisualize: 11.840081
+  forcevisualize: 9901.291
   speed: {fileID: 11400000, guid: 22f45f83d89760349838aac5ca1e7917, type: 2}
   OnPhysicUpdate:
     m_PersistentCalls:
