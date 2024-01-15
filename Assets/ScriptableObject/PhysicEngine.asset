@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca1939ea5677d54cb41bf9295439b4a, type: 3}
   m_Name: PhysicEngine
   m_EditorClassIdentifier: 
-  motorlist: []
-  objectlist: []
-  weight: 0
+  motorlist:
+  - {fileID: 0}
+  objectlist:
+  - {fileID: 0}
+  weight: 100
   altitude: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
   forcevisualize: 9901.291
   speed: {fileID: 11400000, guid: 22f45f83d89760349838aac5ca1e7917, type: 2}
@@ -36,3 +38,4 @@ MonoBehaviour:
   isrunning: {fileID: 11400000, guid: b2620c3382dc12d458743dc05c123379, type: 2}
   timevariable: {fileID: 11400000, guid: 5c5d12a92b6803742a43892fb447ffe1, type: 2}
   gravityacelleration: {fileID: 11400000, guid: e79ecbe31da322749850b9ce8fe44e4b, type: 2}
+  dragforce: {fileID: 11400000, guid: e3a9620cb163e344e8f8e794511caf7d, type: 2}

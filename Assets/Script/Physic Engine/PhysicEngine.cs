@@ -20,6 +20,7 @@ public class PhysicEngine : ScriptableObject
     private float _speed;
     public floatscriptableobject timevariable;
     public floatscriptableobject gravityacelleration;
+    public floatscriptableobject dragforce;
 
     public void OnEnable()
     {
@@ -117,15 +118,21 @@ public class PhysicEngine : ScriptableObject
 
     public float CalculateDragForce()
     {
+        float force = 0;
         float cd = CalculateCd();
         float airdensity = CalculateAirDensity();
         float radius = CalculateRadius(); 
         float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
         if (speed.value >= 0)
         {
-            return -(float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+            force = -(float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
         }
-        return (float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+        else
+        {
+            force = (float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+        }
+        dragforce.value = Math.Abs(force);
+        return force;
     }
 
     public float CalculateCd()
