@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Acc\xE9l\xE9ration gtavitationelle : N/A m/s^2"
+  m_text: "Acc\xE9l\xE9ration grav.: N/A m/s^2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicengine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
   textobject: {fileID: 0}
-  prefix: "Acc\xE9l\xE9ration Gravitationelle"
+  prefix: "Acc\xE9l\xE9ration grav.:"
   value: {fileID: 11400000, guid: e79ecbe31da322749850b9ce8fe44e4b, type: 2}
   sufix: m/s^2
 --- !u!1 &3153927120772728535
