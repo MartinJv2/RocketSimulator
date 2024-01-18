@@ -85,12 +85,13 @@ public class PhysicEngine : ScriptableObject
         {
             if (motor == null)
             {
+                Debug.Log("motor == null");
                 continue;
             }
             if (_timesincestart <= motor.duration)
             {
                 motor.GetComponent<ParticleSystem>().Play();
-                force += motor.force * motor.duration;
+                force += motor.force * _timesincestart;
                 motor.generatedtrusted = force;
             }
             else
@@ -148,6 +149,11 @@ public class PhysicEngine : ScriptableObject
         if ((288.15 - 0.0065 * altitude.value) == 0)
         {
             altitude.value += 1;
+        }
+
+        if ((1 - 0.000022557 * altitude.value) <= 0)
+        {
+            return 0f;
         }
         return (float)(352.995*(Math.Pow(1 - 0.000022557*altitude.value, 5.25516))/(288.15 - 0.0065*altitude.value));
     }

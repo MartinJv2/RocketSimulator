@@ -1300,6 +1300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8130187245074260134, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
+      propertyPath: m_text
+      value: "R\xE9nitialiser"
+      objectReference: {fileID: 0}
     - target: {fileID: 8959459661854175157, guid: 5a1cee11ae6924646bde1bfde334bb49, type: 3}
       propertyPath: m_Name
       value: ResetCamera

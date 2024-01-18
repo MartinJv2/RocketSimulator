@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
     public GameObject launchbutton;
     public LayerMask layermask;
     public TMP_InputField setweightinputfield;
+    public TMP_InputField settrustinputfield;
+    public TMP_InputField setdurationtinputfield;
     public GameObject motorparmeditor;
     public PhysicEngine physicengine;
 
@@ -93,6 +95,11 @@ public class MenuManager : MonoBehaviour
         _selectedobject = value;
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
+        if (_editplacedobjects.GetComponent<MotorProperty>() != null)
+        {
+            setdurationtinputfield.text = _editplacedobjects.GetComponent<MotorProperty>().duration.ToString();
+            settrustinputfield.text = _editplacedobjects.GetComponent<MotorProperty>().force.ToString();
+        }
         _selectedobject.GetComponent<Outline>().enabled = true;
         UnHide();
         if (_selectedobject.GetComponent<MotorProperty>() == null)

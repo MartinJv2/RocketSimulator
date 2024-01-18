@@ -139,7 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameratransform: {fileID: 11400000, guid: 08bfd1366a1002446b1e4821051cb696, type: 2}
-  speed: 0.5
+  y_rotation: 0
+  x_rotation: 0
+  speed: 130
   scale: 0.125
   minx: -30
   maxx: 50

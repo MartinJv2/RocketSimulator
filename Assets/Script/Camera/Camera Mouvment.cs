@@ -33,22 +33,22 @@ public class CameraMouvement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            y_rotation += speed;
+            y_rotation += speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            y_rotation -= speed;
+            y_rotation -= speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            x_rotation -= speed;
+            x_rotation -= speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            x_rotation += speed;
+            x_rotation += speed * Time.deltaTime;
         }
 
         if (x_rotation > maxx)
