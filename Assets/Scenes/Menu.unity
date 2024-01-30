@@ -176,6 +176,10 @@ PrefabInstance:
       value: 315
       objectReference: {fileID: 0}
     - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
+      propertyPath: scrollSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
       propertyPath: startingRo.w
       value: 0.25
       objectReference: {fileID: 0}
@@ -1687,6 +1691,10 @@ PrefabInstance:
     - target: {fileID: 2733657576554114246, guid: d0c6ae93becf4e948822cb87628d0cc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229472009890330699, guid: d0c6ae93becf4e948822cb87628d0cc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 187.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

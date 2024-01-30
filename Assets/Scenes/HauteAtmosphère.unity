@@ -546,6 +546,10 @@ PrefabInstance:
       value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
+      propertyPath: scrollSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458076908954423229, guid: 3a602392dd31e4b438b0f79b7dece981, type: 3}
       propertyPath: startingSize
       value: 0.25
       objectReference: {fileID: 0}

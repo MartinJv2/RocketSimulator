@@ -19,6 +19,7 @@ public class CameraMouvement : MonoBehaviour
     public float far;
     public float startingSize;
     public Quaternion startingRo;
+    public int scrollSpeed;
 
     void Start()
     {
@@ -67,7 +68,7 @@ public class CameraMouvement : MonoBehaviour
         {
             y_rotation += 360;
         }
-        size += -Input.mouseScrollDelta.y * scale;
+        size += -Input.mouseScrollDelta.y * scale * scrollSpeed;
 
         if (size < close || size > far)
         {
