@@ -577,6 +577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoRocket
       objectReference: {fileID: 0}
+    - target: {fileID: 2513033182080270851, guid: d0c6ae93becf4e948822cb87628d0cc1, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2733657576554114246, guid: d0c6ae93becf4e948822cb87628d0cc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 370
