@@ -5151,6 +5151,18 @@ PrefabInstance:
       propertyPath: startingSize
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3580837140286400529, guid: c0923842f9cd84b4aa7bd99d44dc649c, type: 3}
+      propertyPath: startingSize.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580837140286400529, guid: c0923842f9cd84b4aa7bd99d44dc649c, type: 3}
+      propertyPath: startingSize.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580837140286400529, guid: c0923842f9cd84b4aa7bd99d44dc649c, type: 3}
+      propertyPath: startingSize.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4527369693295346378, guid: c0923842f9cd84b4aa7bd99d44dc649c, type: 3}
       propertyPath: m_Name
       value: CameraController
