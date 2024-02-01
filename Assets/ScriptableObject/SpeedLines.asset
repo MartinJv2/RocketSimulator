@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21957a1014423054e99cc414c6233cc6, type: 3}
   m_Name: SpeedLines
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 0, z: 0}
-  scale: {x: 0, y: 0, z: 0}
+  rotation: {x: -75, y: 26.248661, z: 0.13916656}
+  scale: {x: 0.5, y: 0.5, z: 0.5}
   camera: {fileID: 0}
