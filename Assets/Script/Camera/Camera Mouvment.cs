@@ -17,14 +17,14 @@ public class CameraMouvement : MonoBehaviour
     public float maxx;
     public float close;
     public float far;
-    public Vector3 startingSize;
+    public Vector3 startSize;
     public Quaternion startingRo;
     void Start()
     {
         cameratransform.camera = this.gameObject;
         gameObject.transform.rotation = Quaternion.Euler(cameratransform.rotation);
         gameObject.transform.localScale = cameratransform.scale;
-        size = startingSize;
+        size = startSize;
         startingRo = Quaternion.Euler(new Vector3(x_rotation, y_rotation,gameObject.transform.rotation.z));
     }
 
@@ -72,7 +72,7 @@ public class CameraMouvement : MonoBehaviour
         
         if (size.x < close|| size.z < close || size.x > far || size.z > far)
         {
-            size = startingSize;
+            size = startSize;
         }
         cameratransform.rotation = new Vector3(x_rotation, y_rotation, transform.rotation.z);
         gameObject.transform.rotation = Quaternion.Euler(cameratransform.rotation);
@@ -81,9 +81,9 @@ public class CameraMouvement : MonoBehaviour
     }
     public void reset()
     {
-        gameObject.transform.localScale = startingSize;
+        gameObject.transform.localScale = startSize;
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(startingRo.x, startingRo.y, startingRo.z));
-        size = startingSize;
+        size = startSize;
         x_rotation = startingRo.x;
         y_rotation = startingRo.y;
     }
