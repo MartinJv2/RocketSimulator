@@ -91,7 +91,7 @@ public class PhysicEngine : ScriptableObject
             if (_timesincestart <= motor.duration)
             {
                 motor.GetComponent<ParticleSystem>().Play();
-                force += motor.force * _timesincestart;
+                force += motor.force / motor.duration;
                 motor.generatedtrusted = force;
             }
             else
