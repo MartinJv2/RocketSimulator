@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,10 +18,13 @@ public class PhysicEngine : ScriptableObject
     public floatscriptableobject speed;
     public UnityEvent OnPhysicUpdate;
     public boolvariable isrunning;
-    private float _speed;
+    private Vector3 _speed;
     public floatscriptableobject timevariable;
     public floatscriptableobject gravityacelleration;
     public floatscriptableobject dragforce;
+    public floatscriptableobject currentorientation;
+    public Vector3 position;
+    public float angletolerance;
 
     public void OnEnable()
     {
@@ -41,8 +45,10 @@ public class PhysicEngine : ScriptableObject
         timevariable.value = 0;
         _timesincestart = 0;
         speed.value = 0;
-        _speed = 0;
+        _speed = new Vector3(0 ,0 ,0);
         isrunning.value = false;
+        currentorientation.value = 0;
+        position = new Vector3();
     }
     public void RegisterMotor(GameObject motor)
     {
@@ -58,27 +64,70 @@ public class PhysicEngine : ScriptableObject
     {
         if (isrunning.value)
         {
-            float acceleration = 0;
-            float finalspeed = 0; 
-            float initial_speed = _speed;
+            Vector3 acceleration;
+            Vector3 finalspeed; 
+            Vector3 initial_speed = _speed;
         
             _timesincestart += time;
-            float force = TotalForceApplied();
+            Vector3 force = TotalForceApplied();
             acceleration = force / weight;
             finalspeed = (acceleration * time) + initial_speed;
-            altitude.value += (initial_speed+finalspeed)/2 * time;
+            position += (initial_speed+finalspeed)/2 * time;
+            altitude.value = position.y;
             _speed = finalspeed;
-            speed.value = _speed;
+            if (_speed.y >= 0)
+            {
+                speed.value = _speed.magnitude;
+            }
+            else
+            {
+                speed.value = -_speed.magnitude;
+            }
             timevariable.value = _timesincestart;
             OnPhysicUpdate.Invoke();
+            currentorientation.value = FindOrienatation();
+        }    
+    }
+
+    private float FindOrienatation()
+    {
+        if (_speed.x == 0)
+        {
+            return 0f;
+        }
+        else
+        {
+            float neworientation = (float)(Math.Atan(Math.Abs(_speed.x / _speed.y)) * 180 / Math.PI);
+            if (Math.Abs(neworientation - currentorientation.value) < angletolerance)
+            {
+                return currentorientation.value;
+            }
+            else
+            {
+                return neworientation;
+            }
         }
     }
 
-    private float TotalForceApplied()
+    private float ConvertDegreeToRad(double angle)
     {
-        return CalculateGravityForce() + AddMotorForceBaseOnTime() + CalculateDragForce();
+        return (float)(angle * Math.PI/180);
     }
-    private float AddMotorForceBaseOnTime()
+    private Vector3 TotalForceApplied()
+    {
+        Vector3 value = new Vector3(0, CalculateGravityForce(),0);
+        //Vector3 value = new Vector3(0, 0, 0);
+        //value += CalculateDragForce();
+        value += AddMotorForceBaseOnTime();
+        return  value;
+    }
+
+    private Vector3 CreateVector3fromlenghtandorientation(float lenght)
+    {
+        float orientation = ConvertDegreeToRad(currentorientation.value);
+        return new Vector3((float)(Math.Sin(orientation) * lenght), (float)Math.Cos(orientation) * lenght, 0);
+    }
+    private Vector3 AddMotorForceBaseOnTime()
     {
         float force = 0;
         foreach (MotorProperty motor in motorlist)
@@ -104,7 +153,7 @@ public class PhysicEngine : ScriptableObject
                 motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
             }
         }
-        return force;
+        return CreateVector3fromlenghtandorientation(force);
     }
     public float CalculateGravityForce()
     {
@@ -117,14 +166,14 @@ public class PhysicEngine : ScriptableObject
         return  (float)(gravityacelleration.value * weight);
     }
 
-    public float CalculateDragForce()
+    public Vector3 CalculateDragForce()
     {
         float force = 0;
         float cd = CalculateCd();
         float airdensity = CalculateAirDensity();
         float radius = CalculateRadius(); 
         float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
-        if (speed.value >= 0)
+        if (_speed.y >= 0)
         {
             force = -(float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
         }
@@ -133,7 +182,7 @@ public class PhysicEngine : ScriptableObject
             force = (float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
         }
         dragforce.value = Math.Abs(force);
-        return force;
+        return CreateVector3fromlenghtandorientation(force);
     }
 
     public float CalculateCd()
