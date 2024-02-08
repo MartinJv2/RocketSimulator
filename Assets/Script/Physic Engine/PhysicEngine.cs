@@ -116,8 +116,7 @@ public class PhysicEngine : ScriptableObject
     private Vector3 TotalForceApplied()
     {
         Vector3 value = new Vector3(0, CalculateGravityForce(),0);
-        //Vector3 value = new Vector3(0, 0, 0);
-        //value += CalculateDragForce();
+        value += CalculateDragForce();
         value += AddMotorForceBaseOnTime();
         return  value;
     }
