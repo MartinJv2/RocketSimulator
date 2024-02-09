@@ -17,13 +17,24 @@ public class MenuManager : MonoBehaviour
     public TMP_InputField setdurationtinputfield;
     public GameObject motorparmeditor;
     public PhysicEngine physicengine;
-    [SerializeField] public Slider slider;
+    [SerializeField] public Slider slider_x;
+    [SerializeField] public Slider slider_z;
+    private float last_x = 1;
+    private float last_z = 1;
 
     private void Start()
     {
-        slider.onValueChanged.AddListener((v) =>
+        slider_x.onValueChanged.AddListener((v) =>
         {
-            Selectedobject.transform.localScale = new Vector3(v,v,v);
+            Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+            Selectedobject.transform.localScale = new Vector3(v*Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+            last_x = v;
+        });
+        slider_z.onValueChanged.AddListener((v) =>
+        {
+            Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/last_z);
+            Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
+            last_z = v;
         });
     }
 
