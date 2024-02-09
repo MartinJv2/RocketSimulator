@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,15 @@ public class MenuManager : MonoBehaviour
     public TMP_InputField setdurationtinputfield;
     public GameObject motorparmeditor;
     public PhysicEngine physicengine;
+    [SerializeField] public Slider slider;
+
+    private void Start()
+    {
+        slider.onValueChanged.AddListener((v) =>
+        {
+            Selectedobject.transform.localScale = new Vector3(v,v,v);
+        });
+    }
 
     [HideInInspector]
     public GameObject Selectedobject
