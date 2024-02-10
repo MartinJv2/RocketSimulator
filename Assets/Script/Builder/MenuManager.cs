@@ -29,12 +29,25 @@ public class MenuManager : MonoBehaviour
             Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
             Selectedobject.transform.localScale = new Vector3(v*Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
             last_x = v;
+            Selectedobject.GetComponent<MoveObjects>().ismouving = true;
         });
         slider_z.onValueChanged.AddListener((v) =>
         {
-            Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/last_z);
-            Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
-            last_z = v;
+            if(_selectedobject.name != ("Cone(Clone)"))
+            {
+                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/last_z);
+                Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
+                last_z = v;
+                Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+            }
+            else
+            {
+                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/last_z,Selectedobject.transform.localScale.z);
+                Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
+                last_z = v;
+                Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+            }
+            
         });
     }
 
