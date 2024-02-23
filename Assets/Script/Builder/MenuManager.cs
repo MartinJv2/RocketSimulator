@@ -19,33 +19,47 @@ public class MenuManager : MonoBehaviour
     public PhysicEngine physicengine;
     [SerializeField] public Slider slider_x;
     [SerializeField] public Slider slider_z;
-    private float last_x = 1;
-    private float last_z = 1;
 
     private void Start()
     {
         slider_x.onValueChanged.AddListener((v) =>
         {
-            Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+            Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/_selectedobject.GetComponent<BaseProperty>().last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
             Selectedobject.transform.localScale = new Vector3(v*Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
-            last_x = v;
+            _selectedobject.GetComponent<BaseProperty>().last_x = v;
+            if(_selectedobject.GetComponent<BaseProperty>().last_x % 2 == 0)
+            {
+                _selectedobject.GetComponent<BaseProperty>().decalement_x = 0.5f;
+            }
+            else
+            {
+                _selectedobject.GetComponent<BaseProperty>().decalement_x = 0;
+            }
             Selectedobject.GetComponent<MoveObjects>().ismouving = true;
         });
         slider_z.onValueChanged.AddListener((v) =>
         {
             if(_selectedobject.name != ("Cone(Clone)"))
             {
-                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/last_z);
+                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_z);
                 Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
-                last_z = v;
+                _selectedobject.GetComponent<BaseProperty>().last_z = v;
                 Selectedobject.GetComponent<MoveObjects>().ismouving = true;
             }
             else
             {
-                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/last_z,Selectedobject.transform.localScale.z);
+                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_z,Selectedobject.transform.localScale.z);
                 Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
-                last_z = v;
+                _selectedobject.GetComponent<BaseProperty>().last_z = v;
                 Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+            }
+            if(_selectedobject.GetComponent<BaseProperty>().last_z % 2 == 0)
+            {
+                _selectedobject.GetComponent<BaseProperty>().decalement_z = 0.5f;
+            }
+            else
+            {
+                _selectedobject.GetComponent<BaseProperty>().decalement_z = 0;
             }
             
         });
@@ -127,6 +141,9 @@ public class MenuManager : MonoBehaviour
             UnSelectObject();
         }
         _selectedobject = value;
+        Debug.Log(_selectedobject.transform.localScale.z);
+        slider_z.value = _selectedobject.transform.localScale.z;
+        slider_x.value = _selectedobject.transform.localScale.x;
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
         if (_editplacedobjects.GetComponent<MotorProperty>() != null)

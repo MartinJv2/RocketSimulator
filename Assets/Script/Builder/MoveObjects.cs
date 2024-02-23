@@ -120,7 +120,7 @@ public class MoveObjects : MonoBehaviour
 
     private Vector3 GridSnapCoordonate(Vector3 pos)
     {
-        return new Vector3(GridsnapValue(pos.x), GridsnapValue(pos.y), GridsnapValue(pos.z));
+        return new Vector3(GridsnapValue(pos.x)+gameObject.GetComponent<BaseProperty>().decalement_x, GridsnapValue(pos.y), GridsnapValue(pos.z)+gameObject.GetComponent<BaseProperty>().decalement_z);
     }
 
     private int GridsnapValue(float pos)
