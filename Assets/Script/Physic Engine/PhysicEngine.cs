@@ -165,23 +165,27 @@ public class PhysicEngine : ScriptableObject
         return  (float)(gravityacelleration.value * weight);
     }
 
-    public Vector3 CalculateDragForce()
+    private Vector3 CalculateDragForce()
+    {
+        return new Vector3(CalculateDragForce(_speed.x),CalculateDragForce(_speed.y),CalculateDragForce(_speed.z));
+    }
+
+    private float CalculateDragForce(float speed)
     {
         float force = 0;
         float cd = CalculateCd();
         float airdensity = CalculateAirDensity();
         float radius = CalculateRadius(); 
         float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
-        if (_speed.y >= 0)
+        if (speed >= 0)
         {
-            force = -(float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+            force = -(float)(cd*referencearea* airdensity* Math.Pow(speed, 2) /2);
         }
         else
         {
-            force = (float)(cd*referencearea* airdensity* Math.Pow(speed.value, 2) /2);
+            force = (float)(cd*referencearea* airdensity* Math.Pow(speed, 2) /2);
         }
-        dragforce.value = Math.Abs(force);
-        return CreateVector3fromlenghtandorientation(force);
+        return force;
     }
 
     public float CalculateCd()
