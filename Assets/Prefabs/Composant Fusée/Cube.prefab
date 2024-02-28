@@ -188,6 +188,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicEngine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
   defaultweight: 1
+  last_x: 1
+  last_z: 1
+  decalement_x: 0
+  decalement_z: 0
 --- !u!65 &2707204611981573103
 BoxCollider:
   m_ObjectHideFlags: 0

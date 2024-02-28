@@ -69,6 +69,11 @@ public class MoveObjects : MonoBehaviour
         _ismouving = true;
         _floor = GameObject.Find("Floor");
         _mesh = GetComponent<MeshFilter>().mesh;
+        UpdateScale();
+    }
+
+    public void UpdateScale()
+    {
         _scale = RoundVector3(multiplyVector3byVector3(gameObject.transform.localScale, _mesh.bounds.size));
     }
 
@@ -114,6 +119,7 @@ public class MoveObjects : MonoBehaviour
         }
         else if (!ismouving)
         {
+            _menu.GetComponent<MenuManager>().Selectedobject = gameObject;
             _menu.GetComponent<MenuManager>().Selectedobject = gameObject;
         }
     }
