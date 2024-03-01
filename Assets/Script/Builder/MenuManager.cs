@@ -147,9 +147,8 @@ public class MenuManager : MonoBehaviour
             UnSelectObject();
         }
         _selectedobject = value;
-        Debug.Log(_selectedobject.transform.localScale.z);
-        slider_z.value = _selectedobject.transform.localScale.z;
-        slider_x.value = _selectedobject.transform.localScale.x;
+        slider_z.value = _selectedobject.GetComponent<BaseProperty>().last_z;
+        slider_x.value = _selectedobject.GetComponent<BaseProperty>().last_x;
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
         if (_editplacedobjects.GetComponent<MotorProperty>() != null)
