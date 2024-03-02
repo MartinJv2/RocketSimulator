@@ -11,8 +11,10 @@ public class BaseProperty : MonoBehaviour
     public float defaultweight;
     public float last_x = 1;
     public float last_z = 1;
+    public float last_y = 1;
     public float decalement_x = 0;
     public float decalement_z = 0;
+    public float decalement_y = 0;
     public float weight
     {
         get { return _weight;}

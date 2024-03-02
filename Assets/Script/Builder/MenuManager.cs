@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     public PhysicEngine physicengine;
     [SerializeField] public Slider slider_x;
     [SerializeField] public Slider slider_z;
+    [SerializeField] public Slider slider_y;
 
     private void Start()
     {
@@ -66,6 +67,34 @@ public class MenuManager : MonoBehaviour
                 else
                 {
                     _selectedobject.GetComponent<BaseProperty>().decalement_z = 0;
+                }
+            }
+        });
+        slider_y.onValueChanged.AddListener((v) =>
+        {
+            if (CheckConnections())
+            {
+                if(_selectedobject.name != ("Cone(Clone)"))
+                {
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_y,Selectedobject.transform.localScale.z);
+                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
+                    _selectedobject.GetComponent<BaseProperty>().last_y = v;
+                    Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                }
+                else
+                {
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_z);
+                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z*v);
+                    _selectedobject.GetComponent<BaseProperty>().last_y = v;
+                    Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                }
+                if(_selectedobject.GetComponent<BaseProperty>().last_y % 2 == 0)
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_y = 0.5f;
+                }
+                else
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_y = 0;
                 }
             }
         });
@@ -149,6 +178,7 @@ public class MenuManager : MonoBehaviour
         _selectedobject = value;
         slider_z.value = _selectedobject.GetComponent<BaseProperty>().last_z;
         slider_x.value = _selectedobject.GetComponent<BaseProperty>().last_x;
+        slider_y.value = _selectedobject.GetComponent<BaseProperty>().last_y;
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
         if (_editplacedobjects.GetComponent<MotorProperty>() != null)

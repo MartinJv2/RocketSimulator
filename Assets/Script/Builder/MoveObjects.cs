@@ -85,7 +85,7 @@ public class MoveObjects : MonoBehaviour
         {
             Physics.Raycast(ray, out hit, 1000);
             _position = GridSnapCoordonate(hit.point);
-            _position.y = _floor.transform.position.y + 0.5f;
+            _position.y = _floor.transform.position.y + gameObject.GetComponent<BaseProperty>().last_y / 2;//+ 0.5f;//HERE
             gameObject.transform.position = _position;
             if (canplaceobject.Count > 0)
             {
@@ -126,7 +126,7 @@ public class MoveObjects : MonoBehaviour
 
     private Vector3 GridSnapCoordonate(Vector3 pos)
     {
-        return new Vector3(GridsnapValue(pos.x)+gameObject.GetComponent<BaseProperty>().decalement_x, GridsnapValue(pos.y), GridsnapValue(pos.z)+gameObject.GetComponent<BaseProperty>().decalement_z);
+        return new Vector3(GridsnapValue(pos.x)+gameObject.GetComponent<BaseProperty>().decalement_x, GridsnapValue(pos.y)+gameObject.GetComponent<BaseProperty>().decalement_y, GridsnapValue(pos.z)+gameObject.GetComponent<BaseProperty>().decalement_z);
     }
 
     private int GridsnapValue(float pos)
