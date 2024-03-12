@@ -9,6 +9,7 @@ public class MotorProperty : BaseProperty
     public float force;
     public float duration;
     public float generatedtrusted;
+    public bool isanimationruning;
 
     public override void Start()
     {
