@@ -68,6 +68,7 @@ public class MenuManager : MonoBehaviour
                 {
                     _selectedobject.GetComponent<BaseProperty>().decalement_z = 0;
                 }
+                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
             }
         });
         slider_y.onValueChanged.AddListener((v) =>
@@ -83,7 +84,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else
                 {
-                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_z);
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_y);
                     Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z*v);
                     _selectedobject.GetComponent<BaseProperty>().last_y = v;
                     Selectedobject.GetComponent<MoveObjects>().ismouving = true;
@@ -96,6 +97,7 @@ public class MenuManager : MonoBehaviour
                 {
                     _selectedobject.GetComponent<BaseProperty>().decalement_y = 0;
                 }
+                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
             }
         });
     }
