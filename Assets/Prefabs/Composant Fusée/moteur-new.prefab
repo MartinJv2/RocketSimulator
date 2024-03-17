@@ -5059,6 +5059,9 @@ MonoBehaviour:
   force: 1
   duration: 1
   generatedtrusted: 0
+  isanimationruning: 0
+  isrunning: 1
+  gamerunning: {fileID: 11400000, guid: b2620c3382dc12d458743dc05c123379, type: 2}
 --- !u!54 &920459385712515681
 Rigidbody:
   m_ObjectHideFlags: 0

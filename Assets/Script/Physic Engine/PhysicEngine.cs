@@ -136,13 +136,14 @@ public class PhysicEngine : ScriptableObject
                 Debug.Log("motor == null");
                 continue;
             }
-            if (_timesincestart <= motor.duration)
+
+            if (!motor.isrunning)
             {
-                if (!motor.isanimationruning)
-                {
-                    motor.GetComponent<ParticleSystem>().Play();
-                    motor.isanimationruning = true;
-                }
+                motor.stoptime += Time.deltaTime;
+            }
+            else if (_timesincestart - motor.stoptime<= motor.duration && motor.isrunning)
+            {
+                motor.startanimation();
                 force += motor.force / motor.duration;
                 motor.generatedtrusted = force;
             }
@@ -153,12 +154,8 @@ public class PhysicEngine : ScriptableObject
                     force += motor.force * motor.duration;
                     motor.generatedtrusted = force;
                 }
-
-                if (motor.isanimationruning)
-                {
-                    motor.isanimationruning = false;
-                    motor.GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
-                }
+                motor.stopanimation();
+                motor.isrunning = false;
             }
         }
         return CreateVector3fromlenghtandorientation(force);
