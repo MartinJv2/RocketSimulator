@@ -25,94 +25,104 @@ public class MenuManager : MonoBehaviour
     {
         slider_x.onValueChanged.AddListener((v) =>
         {
-            if (CheckConnections())
-            {
-                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/_selectedobject.GetComponent<BaseProperty>().last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
-                Selectedobject.transform.localScale = new Vector3(v*Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
-                if (v != _selectedobject.GetComponent<BaseProperty>().last_x)
+            if (Selectedobject != null)
                 {
-                    Selectedobject.GetComponent<MoveObjects>().ismouving = true;
-                }
-                _selectedobject.GetComponent<BaseProperty>().last_x = v;
-                if(_selectedobject.GetComponent<BaseProperty>().last_x % 2 == 0)
+                if (CheckConnections())
                 {
-                    _selectedobject.GetComponent<BaseProperty>().decalement_x = 0.5f;
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/_selectedobject.GetComponent<BaseProperty>().last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+                    Selectedobject.transform.localScale = new Vector3(v*Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+                    if (v != _selectedobject.GetComponent<BaseProperty>().last_x)
+                    {
+                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                    }
+                    _selectedobject.GetComponent<BaseProperty>().last_x = v;
+                    if(_selectedobject.GetComponent<BaseProperty>().last_x % 2 == 0)
+                    {
+                        _selectedobject.GetComponent<BaseProperty>().decalement_x = 0.5f;
+                    }
+                    else
+                    {
+                        _selectedobject.GetComponent<BaseProperty>().decalement_x = 0;
+                    }
+                    Selectedobject.GetComponent<MoveObjects>().UpdateScale();
                 }
-                else
-                {
-                    _selectedobject.GetComponent<BaseProperty>().decalement_x = 0;
-                }
-                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
             }
         });
         slider_z.onValueChanged.AddListener((v) =>
         {
-            if (CheckConnections())
+            if (Selectedobject != null)
             {
-                if(_selectedobject.name != ("Cone(Clone)"))
+                if (CheckConnections())
                 {
-                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_z);
-                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
-                    if (v != _selectedobject.GetComponent<BaseProperty>().last_z)
+                    if(_selectedobject.name != ("Cone(Clone)"))
                     {
-                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_z);
+                        Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
+                        if (v != _selectedobject.GetComponent<BaseProperty>().last_z)
+                        {
+                            Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        }
+                        _selectedobject.GetComponent<BaseProperty>().last_z = v;
                     }
-                    _selectedobject.GetComponent<BaseProperty>().last_z = v;
-                }
-                else
-                {
-                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_z,Selectedobject.transform.localScale.z);
-                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
-                    if (v != _selectedobject.GetComponent<BaseProperty>().last_z)
+                    else
                     {
-                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_z,Selectedobject.transform.localScale.z);
+                        Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
+                        if (v != _selectedobject.GetComponent<BaseProperty>().last_z)
+                        {
+                            Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        }
+                        _selectedobject.GetComponent<BaseProperty>().last_z = v;
                     }
-                    _selectedobject.GetComponent<BaseProperty>().last_z = v;
+                    if(_selectedobject.GetComponent<BaseProperty>().last_z % 2 == 0)
+                    {
+                        _selectedobject.GetComponent<BaseProperty>().decalement_z = 0.5f;
+                    }
+                    else
+                    {
+                        _selectedobject.GetComponent<BaseProperty>().decalement_z = 0;
+                    }
+                    Selectedobject.GetComponent<MoveObjects>().UpdateScale();
                 }
-                if(_selectedobject.GetComponent<BaseProperty>().last_z % 2 == 0)
-                {
-                    _selectedobject.GetComponent<BaseProperty>().decalement_z = 0.5f;
-                }
-                else
-                {
-                    _selectedobject.GetComponent<BaseProperty>().decalement_z = 0;
-                }
-                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
+                
             }
         });
         slider_y.onValueChanged.AddListener((v) =>
         {
-            if (CheckConnections())
+            if (Selectedobject != null)
             {
-                if(_selectedobject.name != ("Cone(Clone)"))
+                if (CheckConnections())
                 {
-                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_y,Selectedobject.transform.localScale.z);
-                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
-                    if (v != _selectedobject.GetComponent<BaseProperty>().last_y)
+                    if(_selectedobject.name != ("Cone(Clone)"))
                     {
-                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_y,Selectedobject.transform.localScale.z);
+                        Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
+                        if (v != _selectedobject.GetComponent<BaseProperty>().last_y)
+                        {
+                            Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        }
+                        _selectedobject.GetComponent<BaseProperty>().last_y = v;
                     }
-                    _selectedobject.GetComponent<BaseProperty>().last_y = v;
-                }
-                else
-                {
-                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_y);
-                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z*v);
-                    if (v != _selectedobject.GetComponent<BaseProperty>().last_y)
+                    else
                     {
-                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_y);
+                        Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z*v);
+                        if (v != _selectedobject.GetComponent<BaseProperty>().last_y)
+                        {
+                            Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                        }
+                        _selectedobject.GetComponent<BaseProperty>().last_y = v;
                     }
-                    _selectedobject.GetComponent<BaseProperty>().last_y = v;
+                    if(_selectedobject.GetComponent<BaseProperty>().last_y % 2 == 0)
+                    {
+                        _selectedobject.GetComponent<BaseProperty>().decalement_y = 0.5f;
+                    }
+                    else
+                    {
+                        _selectedobject.GetComponent<BaseProperty>().decalement_y = 0;
+                    }
+                    Selectedobject.GetComponent<MoveObjects>().UpdateScale();
                 }
-                if(_selectedobject.GetComponent<BaseProperty>().last_y % 2 == 0)
-                {
-                    _selectedobject.GetComponent<BaseProperty>().decalement_y = 0.5f;
-                }
-                else
-                {
-                    _selectedobject.GetComponent<BaseProperty>().decalement_y = 0;
-                }
-                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
             }
         });
     }
@@ -140,7 +150,6 @@ public class MenuManager : MonoBehaviour
             {
                 if (_selectedobject != null)
                 {
-
                     if (_selectedobject.GetComponent<MoveObjects>() != null)
                     {
                         if (_selectedobject.GetComponent<MoveObjects>().ismouving)
@@ -148,10 +157,8 @@ public class MenuManager : MonoBehaviour
                             return;
                         }
                     }
-
                     UnSelectObject();
                 }
-
                 SelectObject(value);
             }
         }
@@ -178,12 +185,8 @@ public class MenuManager : MonoBehaviour
             _selectedobject.GetComponent<Outline>().enabled = false;
             _selectedobject = null;
         }
-
-        if (!_editplacedobjects == null)
-        {
-            Hide();
-            ShowLaunchButton();
-        }
+        Hide();
+        ShowLaunchButton();
     }
 
     private void SelectObject(GameObject value)

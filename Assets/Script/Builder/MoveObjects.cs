@@ -78,7 +78,8 @@ public class MoveObjects : MonoBehaviour
 
     public void UpdateScale()
     {
-        _scale = RoundVector3(multiplyVector3byVector3(gameObject.transform.localScale, _mesh.bounds.size));
+        _mesh = GetComponent<MeshFilter>().mesh;
+        _scale = RoundVector3(multiplyVector3byVector3(transform.localScale, _mesh.bounds.size));
     }
 
     void Update()
