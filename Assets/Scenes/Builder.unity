@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed8488cf43c8dd4083fd645cfaecef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8298066809232876476, guid: 66d09e7d70aeb9741bd87315c2baffba, type: 3}
+  prefab: {fileID: 6538812172301551318, guid: 9e054bec3e9285d4bab62b504318348c, type: 3}
   parent: {fileID: 103436258}
   menu: {fileID: 2117907089}
 --- !u!114 &534295689
