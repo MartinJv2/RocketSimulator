@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,105 @@ public class MenuManager : MonoBehaviour
     public TMP_InputField setdurationtinputfield;
     public GameObject motorparmeditor;
     public PhysicEngine physicengine;
+    [SerializeField] public Slider slider_x;
+    [SerializeField] public Slider slider_z;
+    [SerializeField] public Slider slider_y;
+
+    private void Start()
+    {
+        slider_x.onValueChanged.AddListener((v) =>
+        {
+            if (CheckConnections())
+            {
+                Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x/_selectedobject.GetComponent<BaseProperty>().last_x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+                Selectedobject.transform.localScale = new Vector3(v*Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z);
+                if (v != _selectedobject.GetComponent<BaseProperty>().last_x)
+                {
+                    Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                }
+                _selectedobject.GetComponent<BaseProperty>().last_x = v;
+                if(_selectedobject.GetComponent<BaseProperty>().last_x % 2 == 0)
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_x = 0.5f;
+                }
+                else
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_x = 0;
+                }
+                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
+            }
+        });
+        slider_z.onValueChanged.AddListener((v) =>
+        {
+            if (CheckConnections())
+            {
+                if(_selectedobject.name != ("Cone(Clone)"))
+                {
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_z);
+                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,v*Selectedobject.transform.localScale.z);
+                    if (v != _selectedobject.GetComponent<BaseProperty>().last_z)
+                    {
+                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                    }
+                    _selectedobject.GetComponent<BaseProperty>().last_z = v;
+                }
+                else
+                {
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_z,Selectedobject.transform.localScale.z);
+                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
+                    if (v != _selectedobject.GetComponent<BaseProperty>().last_z)
+                    {
+                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                    }
+                    _selectedobject.GetComponent<BaseProperty>().last_z = v;
+                }
+                if(_selectedobject.GetComponent<BaseProperty>().last_z % 2 == 0)
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_z = 0.5f;
+                }
+                else
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_z = 0;
+                }
+                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
+            }
+        });
+        slider_y.onValueChanged.AddListener((v) =>
+        {
+            if (CheckConnections())
+            {
+                if(_selectedobject.name != ("Cone(Clone)"))
+                {
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y/_selectedobject.GetComponent<BaseProperty>().last_y,Selectedobject.transform.localScale.z);
+                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y*v,Selectedobject.transform.localScale.z);
+                    if (v != _selectedobject.GetComponent<BaseProperty>().last_y)
+                    {
+                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                    }
+                    _selectedobject.GetComponent<BaseProperty>().last_y = v;
+                }
+                else
+                {
+                    Selectedobject.transform.localScale = new Vector3(Selectedobject.transform.localScale.x,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z/_selectedobject.GetComponent<BaseProperty>().last_y);
+                    Selectedobject.transform.localScale = new Vector3( Selectedobject.transform.localScale.x ,Selectedobject.transform.localScale.y,Selectedobject.transform.localScale.z*v);
+                    if (v != _selectedobject.GetComponent<BaseProperty>().last_y)
+                    {
+                        Selectedobject.GetComponent<MoveObjects>().ismouving = true;
+                    }
+                    _selectedobject.GetComponent<BaseProperty>().last_y = v;
+                }
+                if(_selectedobject.GetComponent<BaseProperty>().last_y % 2 == 0)
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_y = 0.5f;
+                }
+                else
+                {
+                    _selectedobject.GetComponent<BaseProperty>().decalement_y = 0;
+                }
+                Selectedobject.GetComponent<MoveObjects>().UpdateScale();
+            }
+        });
+    }
 
     [HideInInspector]
     public GameObject Selectedobject
@@ -79,7 +179,7 @@ public class MenuManager : MonoBehaviour
             _selectedobject = null;
         }
 
-        if (!_editplacedobjects.ismouving)
+        if (!_editplacedobjects == null)
         {
             Hide();
             ShowLaunchButton();
@@ -93,6 +193,9 @@ public class MenuManager : MonoBehaviour
             UnSelectObject();
         }
         _selectedobject = value;
+        slider_z.value = _selectedobject.GetComponent<BaseProperty>().last_z;
+        slider_x.value = _selectedobject.GetComponent<BaseProperty>().last_x;
+        slider_y.value = _selectedobject.GetComponent<BaseProperty>().last_y;
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
         setweightinputfield.text = _editplacedobjects.GetComponent<BaseProperty>().weight.ToString();
         if (_editplacedobjects.GetComponent<MotorProperty>() != null)

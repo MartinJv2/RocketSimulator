@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4581847091678833126}
   - component: {fileID: -2735927092261917477}
   - component: {fileID: -8902066115924303966}
+  - component: {fileID: 57085257183860429}
   m_Layer: 0
   m_Name: Cylinder_test
   m_TagString: Object
@@ -132,7 +133,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.6
   m_Height: 1
@@ -187,3 +188,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicEngine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
   defaultweight: 1
+  last_x: 1
+  last_z: 1
+  decalement_x: 0
+  decalement_z: 0
+--- !u!64 &57085257183860429
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094922816282848995}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}

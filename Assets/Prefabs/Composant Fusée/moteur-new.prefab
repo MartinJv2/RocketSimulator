@@ -5056,6 +5056,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicEngine: {fileID: 11400000, guid: 76a78fd564200f04595a22069d4d3113, type: 2}
   defaultweight: 1
+  last_x: 1
+  last_z: 1
+  decalement_x: 0
+  decalement_z: 0
   force: 1
   duration: 1
   generatedtrusted: 0
