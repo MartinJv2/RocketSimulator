@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 0}
   objectlist:
   - {fileID: 0}
-  weight: 100
+  weight: 1
   altitude: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
   forcevisualize: 9901.291
   speed: {fileID: 11400000, guid: 22f45f83d89760349838aac5ca1e7917, type: 2}
@@ -39,3 +39,6 @@ MonoBehaviour:
   timevariable: {fileID: 11400000, guid: 5c5d12a92b6803742a43892fb447ffe1, type: 2}
   gravityacelleration: {fileID: 11400000, guid: e79ecbe31da322749850b9ce8fe44e4b, type: 2}
   dragforce: {fileID: 11400000, guid: e3a9620cb163e344e8f8e794511caf7d, type: 2}
+  currentorientation: {fileID: 11400000, guid: 955260ca3e1243149b88fb3bc7d67baf, type: 2}
+  position: {x: 7.763581e+18, y: 2.1367982e+19, z: 0}
+  angletolerance: 0.002

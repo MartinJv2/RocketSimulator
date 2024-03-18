@@ -90,7 +90,6 @@ public class MoveObjects : MonoBehaviour
         {
             Physics.Raycast(ray, out hit, 1000);
             _position = GridSnapCoordonate(hit.point);
-            print(_floorsize);
             _position.y = _floor.transform.position.y + gameObject.GetComponent<BaseProperty>().last_y / 2;//+ 0.5f;//HERE
             gameObject.transform.position = _position;
             if (!InRange(0, gameObject.transform.position.x, _floorsize.x, -gameObject.GetComponent<BaseProperty>().last_x) ||
