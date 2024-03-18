@@ -179,12 +179,13 @@ public class MenuManager : MonoBehaviour
     public void UnSelectObject()
     {
         _editplacedobjects = _selectedobject.GetComponent<MoveObjects>();
-        if (_editplacedobjects.CanPlace)
+        if (!_editplacedobjects.CanPlace)
         {
-            _editplacedobjects.ismouving = false;
-            _selectedobject.GetComponent<Outline>().enabled = false;
-            _selectedobject = null;
+            return;
         }
+        _editplacedobjects.ismouving = false;
+        _selectedobject.GetComponent<Outline>().enabled = false;
+        _selectedobject = null;
         Hide();
         ShowLaunchButton();
     }
