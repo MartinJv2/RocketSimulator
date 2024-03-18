@@ -189,7 +189,7 @@ public class MoveObjects : MonoBehaviour
     private bool IsValidePosition(Collider collider)
     {
         Vector3 colliderscale =
-            RoundVector3(multiplyVector3byVector3(GetBiggerScaleFromChildrent(collider.gameObject), GetBiggerMeshFromChildren(collider.gameObject)));
+            multiplyVector3byVector3(RoundVector3(multiplyVector3byVector3(GetBiggerScaleFromChildrent(collider.gameObject), GetBiggerMeshFromChildren(collider.gameObject))), collider.transform.localScale);
         if (IsInside(gameObject.transform.position, collider.transform.position, _scale / 2, colliderscale/2))
         {
             return false;
