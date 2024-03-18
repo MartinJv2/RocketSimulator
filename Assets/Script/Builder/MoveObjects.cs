@@ -42,7 +42,8 @@ public class MoveObjects : MonoBehaviour
     private Vector3 _scale;
     [HideInInspector]
     public Dictionary<Collider, Boolean> canplaceobject = new Dictionary<Collider, Boolean>();
-    
+
+    private Vector3 _floorsize;
 
     public bool CanPlace
     {
@@ -70,6 +71,9 @@ public class MoveObjects : MonoBehaviour
         _floor = GameObject.Find("Floor");
         _mesh = GetComponent<MeshFilter>().mesh;
         UpdateScale();
+        _floorsize = RoundVector3(multiplyVector3byVector3(_floor.transform.localScale,
+            _floor.GetComponent<MeshFilter>().mesh.bounds.size));
+
     }
 
     public void UpdateScale()
@@ -85,9 +89,15 @@ public class MoveObjects : MonoBehaviour
         {
             Physics.Raycast(ray, out hit, 1000);
             _position = GridSnapCoordonate(hit.point);
+            print(_floorsize);
             _position.y = _floor.transform.position.y + gameObject.GetComponent<BaseProperty>().last_y / 2;//+ 0.5f;//HERE
             gameObject.transform.position = _position;
-            if (canplaceobject.Count > 0)
+            if (!InRange(0, gameObject.transform.position.x, _floorsize.x, -gameObject.GetComponent<BaseProperty>().last_x) ||
+                !InRange(0, gameObject.transform.position.z, _floorsize.z, -gameObject.GetComponent<BaseProperty>().last_z))
+            {
+                CanPlace = false;
+            }
+            else if (canplaceobject.Count > 0)
             {
                 if (canplaceobject.ContainsValue(false))
                 {

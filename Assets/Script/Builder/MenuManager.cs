@@ -179,7 +179,7 @@ public class MenuManager : MonoBehaviour
             _selectedobject = null;
         }
 
-        if (!_editplacedobjects.ismouving)
+        if (!_editplacedobjects == null)
         {
             Hide();
             ShowLaunchButton();
