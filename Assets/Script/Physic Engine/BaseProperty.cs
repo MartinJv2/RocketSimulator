@@ -16,7 +16,7 @@ public class BaseProperty : MonoBehaviour
     public float decalement_z = 0;
     public float decalement_y = 0;
     public float last_x_rotation = 1;
-    public float last_z_rotation = 1;
+    public float last_y_rotation = 1;
     public float weight
     {
         get { return _weight;}

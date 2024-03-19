@@ -9,7 +9,7 @@ public class ChangeRotation : MonoBehaviour
     [SerializeField] public Slider slider_x;
     [SerializeField] public Slider slider_z;
     private float rotation_x;
-    private float rotation_z;
+    private float rotation_y;
     private GameObject _selectedobject;
 
     private void Select(GameObject value)
@@ -21,7 +21,7 @@ public class ChangeRotation : MonoBehaviour
 
         Show();
         _selectedobject = value;
-        slider_z.value = _selectedobject.GetComponent<BaseProperty>().last_z_rotation;
+        slider_z.value = _selectedobject.GetComponent<BaseProperty>().last_y_rotation;
         slider_x.value = _selectedobject.GetComponent<BaseProperty>().last_x_rotation;
         _selectedobject.GetComponent<Outline>().enabled = true;
     }
@@ -51,16 +51,19 @@ public class ChangeRotation : MonoBehaviour
 
     void Start()
     {
-        slider_x.onValueChanged.AddListener((v) =>
+        slider_x.onValueChanged.AddListener((value) =>
         {
-            _selectedobject.GetComponent<BaseProperty>().last_x_rotation = v;
-            rotation_x = v;
-            
+            Debug.Log(value);
+            Transform child = _selectedobject.transform.GetChild(2);
+            _selectedobject.GetComponent<BaseProperty>().last_x_rotation = value;
+            child.rotation = Quaternion.Euler(new Vector3(value+90, child.transform.rotation.y, child.rotation.z));
         });
-        slider_z.onValueChanged.AddListener((v) =>
+        slider_z.onValueChanged.AddListener((value) =>
         {
-            _selectedobject.GetComponent<BaseProperty>().last_z_rotation = v;
-            rotation_z = v;
+            Debug.Log(value);
+            Transform child = _selectedobject.transform.GetChild(2);
+            _selectedobject.GetComponent<BaseProperty>().last_y_rotation = value;
+            child.rotation = Quaternion.Euler(new Vector3(child.rotation.x+90, value, child.rotation.z));
             
         });
     }
@@ -68,7 +71,6 @@ public class ChangeRotation : MonoBehaviour
     // Update is called once per frame
         void Update()
         {
-            _selectedobject.transform.rotation = Quaternion.Euler(new Vector3(rotation_x, _selectedobject.transform.rotation.y, rotation_z));
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -84,6 +86,7 @@ public class ChangeRotation : MonoBehaviour
                     {
                         UnSelect();
                     }
+                    
 
                 }
             }

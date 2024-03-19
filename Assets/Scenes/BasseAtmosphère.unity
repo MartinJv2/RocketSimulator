@@ -282,23 +282,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4265661241245643202, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4265661241245643202, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4265661241245643202, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5802581926360958607, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5802581926360958607, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7188469092670158691, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_Value
@@ -319,6 +319,10 @@ PrefabInstance:
     - target: {fileID: 8938889684011889119, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_Name
       value: Slider_x
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938889684011889119, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -443,23 +447,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4265661241245643202, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4265661241245643202, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4265661241245643202, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5802581926360958607, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5802581926360958607, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7188469092670158691, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_Value
@@ -480,6 +484,10 @@ PrefabInstance:
     - target: {fileID: 8938889684011889119, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_Name
       value: Slider_z
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938889684011889119, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

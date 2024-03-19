@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5474303171109590621}
   - component: {fileID: 101280006399509019}
   m_Layer: 0
-  m_Name: Sphere.001
+  m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 3825557182489957174}
   - component: {fileID: 6509764545614482828}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,6 +346,8 @@ MonoBehaviour:
   decalement_x: 0
   decalement_z: 0
   decalement_y: 0
+  last_x_rotation: 1
+  last_z_rotation: 1
   force: 1
   duration: 1
   generatedtrusted: 0
