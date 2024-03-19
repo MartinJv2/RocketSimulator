@@ -130,7 +130,6 @@ public class MoveObjects : MonoBehaviour
         else if (!ismouving)
         {
             _menu.GetComponent<MenuManager>().Selectedobject = gameObject;
-            _menu.GetComponent<MenuManager>().Selectedobject = gameObject;
         }
     }
 
