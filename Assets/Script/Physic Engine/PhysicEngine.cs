@@ -117,8 +117,11 @@ public class PhysicEngine : ScriptableObject
     private Vector3 TotalForceApplied()
     {
         Vector3 value = new Vector3(0, CalculateGravityForce(),0);
-        value += CalculateDragForce();
         value += AddMotorForceBaseOnTime();
+        if (altitude.value <= 75000)
+        {
+            value += calculateDragForceVector3();
+        }
         return  value;
     }
     private Vector3 AddMotorForceBaseOnTime()
@@ -166,7 +169,7 @@ public class PhysicEngine : ScriptableObject
         return  (float)(gravityacelleration.value * weight);
     }
 
-    private Vector3 CalculateDragForce()
+    private Vector3 calculateDragForceVector3()
     {
         Vector3 result = new Vector3(CalculateDragForce(_speed.x), CalculateDragForce(_speed.y),
             CalculateDragForce(_speed.z));
@@ -179,7 +182,7 @@ public class PhysicEngine : ScriptableObject
     {
         float force = 0;
         float cd = CalculateCd();
-        float airdensity = CalculateAirDensity();
+        float airdensity = CalculateAirDensity()/1000;
         float radius = CalculateRadius(); 
         float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
         if (speed >= 0)
@@ -212,55 +215,56 @@ public class PhysicEngine : ScriptableObject
         float lb;
         float tb;
         float hb;
+        float alitudekm = altitude.value / 1000;
         
-        if (altitude.value < 11000)
+        if (altitude.value <= 11000)
         {
             hb = 0;
             lb = -6.5f;
             tb = 15;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
-        else if (altitude.value < 20000)
+        else if (altitude.value <= 20000)
         {
             hb = 11000;
             lb = 0;
             tb = (float)-97.5;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
-        else if (altitude.value<32000)
+        else if (altitude.value <= 32000)
         {
             hb = 20000;
             lb = 1;
             tb = (float)-97.5;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
-        else if (altitude.value < 47000)
+        else if (altitude.value <= 47000)
         {
             hb = 32000;
             lb = (float)2.8;
             tb = (float)-85.5;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
-        else if (altitude.value < 51000)
+        else if (altitude.value <= 51000)
         {
             hb = 47000;
             lb = 0;
             tb = (float)-43.5;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
-        else if (altitude.value < 71000)
+        else if (altitude.value <= 71000)
         {
             hb = 51000;
             lb = (float)-2.8;
             tb = (float)-43.5;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
-        else if (altitude.value < 74999)
+        else if (altitude.value <= 74999)
         {
             hb = 71000;
             lb = -2;
             tb = (float)12.5;
-            return ((altitude.value - hb) * lb + tb) +273.15f;
+            return ((alitudekm - hb) * lb + tb) +273.15f;
         }
         {
             return 0;
@@ -273,65 +277,64 @@ public class PhysicEngine : ScriptableObject
         int pab;
         float hb;
         
-        if (altitude.value < 11000)
+        if (altitude.value <= 11000)
         {
             hb = 0;
             lb = -6.5f;
-            tb = 15;
+            tb = 288.15f;
             pab = 101325;
         }
-        else if (altitude.value < 20000)
+        else if (altitude.value <= 20000)
         {
             hb = 11000;
             lb = 0;
-            tb = (float)-97.5;
+            tb = (float)216.65;
             pab = 22632;
         }
-        else if (altitude.value<32000)
+        else if (altitude.value <= 32000)
         {
             hb = 20000;
             lb = 1;
-            tb = (float)-97.5;
+            tb = (float)216.65;
             pab = 5475; 
         }
-        else if (altitude.value < 47000)
+        else if (altitude.value <= 47000)
         {
             hb = 32000;
             lb = (float)2.8;
-            tb = (float)-85.5;
+            tb = (float)228.65;
             pab = 868; 
         }
-        else if (altitude.value < 51000)
+        else if (altitude.value <= 51000)
         {
             hb = 47000;
             lb = 0;
-            tb = (float)-43.5;
+            tb = (float)270.65;
             pab = 111; 
         }
-        else if (altitude.value < 71000)
+        else if (altitude.value <= 71000)
         {
             hb = 51000;
             lb = (float)-2.8;
-            tb = (float)-43.5;
+            tb = (float)270.65;
             pab = 67; 
         }
-        else if (altitude.value < 74999)
+        else if (altitude.value <= 74999)
         {
             hb = 71000;
             lb = -2;
-            tb = (float)12.5;
+            tb = (float)214.65;
             pab = 4; 
         }
         else
         {
             return 0;
         }
-
         if (lb == 0)
         {
-            return Mathf.Pow(pab,(float)((9.81 * 28*(altitude.value - hb))/(8.31*tb)));
+            return (Mathf.Pow(pab,(float)((9.81 * 28*((altitude.value/1000) - hb))/(8.31*tb))));
         }
-        return pab * Mathf.Pow(tb/(tb + lb*(altitude.value - hb)),(9.81f * 28) / (8.31f * lb));
+        return (pab * Mathf.Pow(tb/(tb + lb*((altitude.value/1000) - hb)),(9.81f * 28) / (8.31f * lb)));
     }
 
     public void RemoveMotor(GameObject gameobject)
