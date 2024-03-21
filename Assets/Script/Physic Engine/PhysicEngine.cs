@@ -120,15 +120,9 @@ public class PhysicEngine : ScriptableObject
         value += AddMotorForceBaseOnTime();
         return  value;
     }
-
-    private Vector3 CreateVector3fromlenghtandorientation(float lenght)
-    {
-        float orientation = ConvertDegreeToRad(currentorientation.value);
-        return new Vector3((float)(Math.Sin(orientation) * lenght), (float)Math.Cos(orientation) * lenght, 0);
-    }
     private Vector3 AddMotorForceBaseOnTime()
     {
-        float force = 0;
+        Vector3 force = Vector3.zero;
         foreach (MotorProperty motor in motorlist)
         {
             if (motor == null)
@@ -144,21 +138,21 @@ public class PhysicEngine : ScriptableObject
             else if (_timesincestart - motor.stoptime<= motor.duration && motor.isrunning)
             {
                 motor.startanimation();
-                force += motor.force / motor.duration;
+                force += CreateVectorBaseOnLenghtAndLenght(motor.force, motor.anglebetweenvectorandy, motor.anglebetweenprojectvectorandx )/ motor.duration;
                 motor.generatedtrusted = force;
             }
             else
             {
-                if (motor.generatedtrusted < (motor.force * motor.duration))
+                if (motor.IsBurnComplete())
                 {
-                    force += motor.force * motor.duration;
+                    force += CreateVectorBaseOnLenghtAndLenght(motor.force, motor.anglebetweenvectorandy, motor.anglebetweenprojectvectorandx )* motor.duration;
                     motor.generatedtrusted = force;
                 }
                 motor.stopanimation();
                 motor.isrunning = false;
             }
         }
-        return CreateVector3fromlenghtandorientation(force);
+        return force;
     }
     public float CalculateGravityForce()
     {
@@ -225,5 +219,14 @@ public class PhysicEngine : ScriptableObject
     public void RemoveObject(GameObject gameobject)
     {
         objectlist.Remove(gameobject.GetComponent<BaseProperty>());
+    }
+
+    public Vector3 CreateVectorBaseOnLenghtAndLenght(float lenght, float anglebetweenvectorandy,
+        float anglebetweenprojectvectorandx)
+    {
+        float lenghtprojectvector = Mathf.Sin(anglebetweenvectorandy);
+        return new Vector3(Mathf.Cos(anglebetweenvectorandy) * lenght,
+            lenghtprojectvector * Mathf.Sin(anglebetweenprojectvectorandx),
+            lenghtprojectvector * Mathf.Cos(anglebetweenprojectvectorandx));
     }
 }

@@ -8,11 +8,14 @@ public class MotorProperty : BaseProperty
 {
     public float force;
     public float duration;
-    public float generatedtrusted;
+    public Vector3 generatedtrusted = Vector3.zero;
     private bool isanimationruning;
     public bool isrunning = true;
     public boolvariable gamerunning;
     public float stoptime;
+    public float anglebetweenvectorandy;
+    public float anglebetweenprojectvectorandx;
+    
 
     public override void Start()
     {
@@ -25,7 +28,7 @@ public class MotorProperty : BaseProperty
         if (gamerunning.value)
         {
             isrunning = !isrunning;
-            if (isrunning && generatedtrusted < force*duration){startanimation();}
+            if (isrunning && IsBurnComplete()){startanimation();}
             else{stopanimation();}
         }
     }
