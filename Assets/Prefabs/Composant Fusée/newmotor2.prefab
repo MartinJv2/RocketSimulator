@@ -348,8 +348,8 @@ MonoBehaviour:
   decalement_y: 0
   last_x_rotation: 1
   last_y_rotation: 1
-  force: 1
-  duration: 1
+  force: 1000
+  duration: 10
   generatedtrusted: {x: 0, y: 0, z: 0}
   isrunning: 1
   gamerunning: {fileID: 11400000, guid: b2620c3382dc12d458743dc05c123379, type: 2}
