@@ -50,4 +50,14 @@ public class MotorProperty : BaseProperty
             GetComponent<ParticleSystem>().Stop(false,ParticleSystemStopBehavior.StopEmitting);
         }
     }
+
+    public bool IsBurnComplete()
+    {
+        Vector3 vector =
+            physicEngine.CreateVectorBaseOnLenghtAndLenght(force, anglebetweenvectorandy,
+                anglebetweenprojectvectorandx);
+        return vector.x * duration < generatedtrusted.x &&
+               vector.y * duration < generatedtrusted.y &&
+               vector.z * duration < generatedtrusted.z;
+    }
 }
