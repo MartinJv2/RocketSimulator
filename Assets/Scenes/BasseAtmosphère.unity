@@ -471,11 +471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7188469092670158691, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_MaxValue
-      value: 5
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7188469092670158691, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_MinValue
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7188469092670158691, guid: d070e8eda41783945a334fddcfe2d103, type: 3}
       propertyPath: m_WholeNumbers
@@ -882,6 +882,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6340746805737637194, guid: eec68bc6c20f6e5489833da137b4766c, type: 3}
+      propertyPath: altitude
+      value: 
+      objectReference: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
     - target: {fileID: 8629673165992524215, guid: eec68bc6c20f6e5489833da137b4766c, type: 3}
       propertyPath: m_Name
       value: launchview

@@ -225,8 +225,8 @@ public class PhysicEngine : ScriptableObject
         float anglebetweenprojectvectorandx)
     {
         float lenghtprojectvector = Mathf.Sin(anglebetweenvectorandy);
-        return new Vector3(Mathf.Cos(anglebetweenvectorandy) * lenght,
-            lenghtprojectvector * Mathf.Sin(anglebetweenprojectvectorandx),
+        return new Vector3(lenghtprojectvector * Mathf.Cos(anglebetweenprojectvectorandx),
+            Mathf.Cos(anglebetweenvectorandy) * lenght,
             lenghtprojectvector * Mathf.Cos(anglebetweenprojectvectorandx));
     }
 }

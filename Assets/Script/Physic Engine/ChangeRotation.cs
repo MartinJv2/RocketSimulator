@@ -53,22 +53,21 @@ public class ChangeRotation : MonoBehaviour
     {
         slider_x.onValueChanged.AddListener((value) =>
         {
-            Debug.Log(value);
             Transform child = _selectedobject.transform.GetChild(2);
-            _selectedobject.GetComponent<BaseProperty>().last_x_rotation = value;
-            child.rotation = Quaternion.Euler(new Vector3(value+90, child.transform.rotation.y, child.rotation.z));
+            BaseProperty baseproprety = _selectedobject.GetComponent<BaseProperty>();
+            baseproprety.last_x_rotation = 90 + value;
+            child.rotation = Quaternion.Euler(new Vector3(baseproprety.last_x_rotation, baseproprety.last_y_rotation, 0));
         });
         slider_z.onValueChanged.AddListener((value) =>
         {
             Debug.Log(value);
             Transform child = _selectedobject.transform.GetChild(2);
-            _selectedobject.GetComponent<BaseProperty>().last_y_rotation = value;
-            child.rotation = Quaternion.Euler(new Vector3(child.rotation.x+90, value, child.rotation.z));
+            BaseProperty baseproprety = _selectedobject.GetComponent<BaseProperty>();
+            baseproprety.last_y_rotation = value;
+            child.transform.rotation = Quaternion.Euler(new Vector3(baseproprety.last_x_rotation, baseproprety.last_y_rotation, 0));
             
         });
     }
-
-    // Update is called once per frame
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
