@@ -236,6 +236,7 @@ public class PhysicEngine : ScriptableObject
             hb = 20000;
             lb = 1;
             tb = (float)-97.5;
+            
             return ((alitudekm - hb) * lb + tb) +273.15f;
         }
         else if (altitude.value <= 47000)
@@ -332,9 +333,9 @@ public class PhysicEngine : ScriptableObject
         }
         if (lb == 0)
         {
-            return (Mathf.Pow(pab,(float)((9.81 * 28*((altitude.value/1000) - hb))/(8.31*tb))));
+            return Mathf.Pow(pab,(float)((-9.81 * 28*(altitude.value/1000 - hb/1000))/(8.31*tb)));
         }
-        return (pab * Mathf.Pow(tb/(tb + lb*((altitude.value/1000) - hb)),(9.81f * 28) / (8.31f * lb)));
+        return (pab * Mathf.Pow(tb/(tb + lb*((altitude.value/1000) - hb/1000)),(9.81f * 28) / (8.31f * lb)));
     }
 
     public void RemoveMotor(GameObject gameobject)
