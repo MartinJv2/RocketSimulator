@@ -20,7 +20,14 @@ public class UpdateText : MonoBehaviour
 
     public void ChangeText()
     {
-        textobject.text = prefix +Mathf.Round(value.value * 100f) / 100f + sufix;
+        if (Mathf.Infinity == value.value)
+        {
+            textobject.text = prefix +"N/A "+ sufix;
+        }
+        else
+        {
+            textobject.text = prefix +Mathf.Round(value.value * 100f) / 100f + sufix;
+        }
     }
 
     public void OnDestroy()

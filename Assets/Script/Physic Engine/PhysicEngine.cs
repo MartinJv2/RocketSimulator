@@ -84,6 +84,14 @@ public class PhysicEngine : ScriptableObject
             {
                 speed.value = -_speed.magnitude;
             }
+
+            if (altitude.value < 0)
+            {
+                altitude.value = 0;
+                speed.value = 0;
+                dragforce.value = 0;
+                isrunning.value = false;
+            }
             timevariable.value = _timesincestart;
             OnPhysicUpdate.Invoke();
             currentorientation.value = FindOrienatation();
@@ -121,6 +129,10 @@ public class PhysicEngine : ScriptableObject
         if (altitude.value <= 75000)
         {
             value += calculateDragForceVector3();
+        }
+        else
+        {
+            dragforce.value = Mathf.Infinity;
         }
         return  value;
     }
@@ -182,7 +194,7 @@ public class PhysicEngine : ScriptableObject
     {
         float force = 0;
         float cd = CalculateCd();
-        float airdensity = CalculateAirDensity()/1000;
+        float airdensity = CalculateAirDensity();
         float radius = CalculateRadius(); 
         float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
         if (speed >= 0)
@@ -207,7 +219,7 @@ public class PhysicEngine : ScriptableObject
 
     public float CalculateAirDensity()
     {
-        return (float)((28 * CalculateAirPressure()) / (8.31*CalculateAirTemperature()));
+        return (float)(28*CalculateAirPressure() / (8314*CalculateAirTemperature()));
     }
 
     public float CalculateAirTemperature()
@@ -221,51 +233,51 @@ public class PhysicEngine : ScriptableObject
         {
             hb = 0;
             lb = -6.5f;
-            tb = 15;
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            tb = 288.15f;
+            return (alitudekm - hb) * lb + tb;
         }
         else if (altitude.value <= 20000)
         {
-            hb = 11000;
+            hb = 1.1f;
             lb = 0;
-            tb = (float)-97.5;
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            tb = (float)216.65;
+            return (alitudekm - hb) * lb + tb;
         }
         else if (altitude.value <= 32000)
         {
-            hb = 20000;
+            hb = 20;
             lb = 1;
-            tb = (float)-97.5;
+            tb = (float)216.65;
             
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            return (alitudekm - hb) * lb + tb ;
         }
         else if (altitude.value <= 47000)
         {
-            hb = 32000;
+            hb = 32;
             lb = (float)2.8;
-            tb = (float)-85.5;
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            tb = (float)228.65;
+            return (alitudekm - hb) * lb + tb;
         }
         else if (altitude.value <= 51000)
         {
-            hb = 47000;
+            hb = 47;
             lb = 0;
-            tb = (float)-43.5;
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            tb = (float)270.65;
+            return (alitudekm - hb) * lb + tb;
         }
         else if (altitude.value <= 71000)
         {
-            hb = 51000;
+            hb = 51;
             lb = (float)-2.8;
-            tb = (float)-43.5;
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            tb = (float)270.65;
+            return (alitudekm - hb) * lb + tb;
         }
         else if (altitude.value <= 74999)
         {
-            hb = 71000;
+            hb = 71;
             lb = -2;
-            tb = (float)12.5;
-            return ((alitudekm - hb) * lb + tb) +273.15f;
+            tb = (float)214.65;
+            return (alitudekm - hb) * lb + tb;
         }
         {
             return 0;
@@ -333,9 +345,9 @@ public class PhysicEngine : ScriptableObject
         }
         if (lb == 0)
         {
-            return Mathf.Pow(pab,(float)((-9.81 * 28*(altitude.value/1000 - hb/1000))/(8.31*tb)));
+            return pab* Mathf.Exp((float)((-9.81* 0.028*(altitude.value/1000 - hb/1000))/(8314*tb)));
         }
-        return (pab * Mathf.Pow(tb/(tb + lb*((altitude.value/1000) - hb/1000)),(9.81f * 28) / (8.31f * lb)));
+        return (pab * Mathf.Pow(tb/CalculateAirTemperature(),(float)((9.81f * 0.028f) / (8.314 * lb/1000))));
     }
 
     public void RemoveMotor(GameObject gameobject)
