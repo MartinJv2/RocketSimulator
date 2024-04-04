@@ -4462,7 +4462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 0
   minHeight: 0
-  maxHeight: 5
+  maxHeight: 8
 --- !u!1 &1569924521
 GameObject:
   m_ObjectHideFlags: 0
