@@ -16,17 +16,23 @@ public class BeginGame : MonoBehaviour
     public GameObject basicMenu;
     public Button CoinsButton;
     public Button SpeedButton;
+    public GameObject coinChallenges;
+    public GameObject speedChallenges;
 
     public void CoinLevels()
     {
 
-        SpeedButton.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+        coinChallenges.SetActive(true);
+        speedChallenges.SetActive(false);
+        SpeedButton.GetComponent<Image>().color = Color.white;
         CoinsButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
     }
     public void SpeedLevels()
     {
+        speedChallenges.SetActive(true);
+        coinChallenges.SetActive(false);
         SpeedButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
-        CoinsButton.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+        CoinsButton.GetComponent<Image>().color = Color.white;
     }
     public void BackToBeginingOfLevelsMenu()
     {
@@ -40,6 +46,8 @@ public class BeginGame : MonoBehaviour
     }
     public void SeeLevels()
     {
+        speedChallenges.SetActive(false);
+        coinChallenges.SetActive(false);
         menu.SetActive(false);
         levels.SetActive(true);
     }
