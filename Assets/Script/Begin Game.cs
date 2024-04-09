@@ -13,29 +13,30 @@ public class BeginGame : MonoBehaviour
     public string tutorialScene;
     public GameObject menu;
     public GameObject levels;
+    public GameObject basicMenu;
     public Button CoinsButton;
     public Button SpeedButton;
 
     public void CoinLevels()
     {
 
-        CoinsButton.GetComponent<Image>().color = new Color(.2f, .2f, .2f);
-        SpeedButton.GetComponent<Image>().color = new Color(100, 100, 100);
+        SpeedButton.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+        CoinsButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
     }
     public void SpeedLevels()
     {
-        SpeedButton.GetComponent<Image>().color = new Color(0f, 0f, 0f);
+        SpeedButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
         CoinsButton.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
     }
     public void BackToBeginingOfLevelsMenu()
     {
-        gameObject.SetActive(true);
+        basicMenu.SetActive(true);
         levels.SetActive(false);
     }
     public void MenuStart()
     {
      menu.SetActive(true);
-     gameObject.SetActive(false);
+     basicMenu.SetActive(false);
     }
     public void SeeLevels()
     {
