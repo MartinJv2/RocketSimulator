@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using static System.Linq.Enumerable;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,10 +19,12 @@ public class BeginGame : MonoBehaviour
     public Button SpeedButton;
     public GameObject coinChallenges;
     public GameObject speedChallenges;
+    public floatscriptableobject PriceGoal;
+    public Dropdown SelectedPrice;
+    public Dropdown SelectedHeight;
 
     public void CoinLevels()
     {
-
         coinChallenges.SetActive(true);
         speedChallenges.SetActive(false);
         SpeedButton.GetComponent<Image>().color = Color.white;
