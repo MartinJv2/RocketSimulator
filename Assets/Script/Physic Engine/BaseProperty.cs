@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class BaseProperty : MonoBehaviour
 {
-    
+
+    public float price = 0;
     public PhysicEngine physicEngine;
     private float _weight = 0;
     public float defaultweight;

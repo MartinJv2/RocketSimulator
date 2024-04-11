@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     private GameObject _selectedobject;
+    public TextMeshProUGUI priceForObjects;
     private MoveObjects _editplacedobjects;
     public GameObject launchbutton;
     public LayerMask layermask;
@@ -186,6 +187,26 @@ public class MenuManager : MonoBehaviour
                 Selectedobject = hit.collider.gameObject;
             }
         }
+
+        if (Selectedobject != null)
+        {
+            if (Selectedobject.GetComponent<MotorProperty>() != null)
+            {
+                float price =  -25 * (Selectedobject.GetComponent<BaseProperty>().weight *
+                                (Selectedobject.GetComponent<BaseProperty>().last_x *
+                                 Selectedobject.GetComponent<BaseProperty>().last_z *
+                                 Selectedobject.GetComponent<BaseProperty>().last_y))
+                         + (50 * Selectedobject.GetComponent<MotorProperty>().duration *
+                            Selectedobject.GetComponent<MotorProperty>().force);
+                if(price > 0)
+                {
+                    Selectedobject.GetComponent<BaseProperty>().price = price;
+                    priceForObjects.text = Selectedobject.GetComponent<BaseProperty>().price.ToString() + "$";
+                }
+                //Debug.Log(Selectedobject.GetComponent<BaseProperty>().price);
+            }   
+        }
+
     }
     public void UnSelectObject()
     {
