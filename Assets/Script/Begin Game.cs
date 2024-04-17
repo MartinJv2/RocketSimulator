@@ -23,11 +23,50 @@ public class BeginGame : MonoBehaviour
     public floatscriptableobject PriceGoal;
     public floatscriptableobject HeightGoal;
     public floatscriptableobject SpeedGoal;
+    public boolvariable Challenges;
     public TMP_Dropdown SelectedPrice;
     public TMP_Dropdown SelectedHeight;
     public TMP_Dropdown SelectedTime;
     public TMP_Dropdown SelectedPrice_speed;
 
+    
+    public void SetHeight()
+    {
+        if (SelectedTime.value % 2f == 1)
+        {
+            HeightGoal.value = 1000*(float)(Math.Pow(10, SelectedHeight.value/2));
+        }
+        else if (SelectedHeight.value%2f == 0)
+        {
+            HeightGoal.value = 500*(float)(Math.Pow(10, SelectedHeight.value/2));
+        }
+    }
+    public void SetPrice_speed()
+    {
+        if (SelectedTime.value % 2f == 1)
+        {
+            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+        }
+        else if (SelectedPrice_speed.value%2f == 0)
+        {
+            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+        }
+    }
+    public void SetSpeed()
+    {
+        if (SelectedTime.value % 2f == 1)
+        {
+            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedTime.value/2));
+        }
+        else if (SelectedTime.value%2f == 0)
+        {
+            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedTime.value/2));
+        }
+    }
+    public void ChallengesCancelled()
+    {
+        Challenges.value = false;
+    }
     public void SetPrice()
     {
         if (SelectedPrice.value % 2f == 1)
@@ -38,7 +77,6 @@ public class BeginGame : MonoBehaviour
         {
             PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice.value/2));
         }
-        print(PriceGoal.value);
     }
     public void CoinLevels()
     {

@@ -525,7 +525,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 320310206}
+        m_TargetAssemblyTypeName: BeginGame, Assembly-CSharp
+        m_MethodName: SetHeight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &93222771
 MonoBehaviour:
@@ -1622,6 +1634,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 320310206}
+        m_TargetAssemblyTypeName: BeginGame, Assembly-CSharp
+        m_MethodName: ChallengesCancelled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &320310204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,12 +1708,13 @@ MonoBehaviour:
   coinChallenges: {fileID: 768080198}
   speedChallenges: {fileID: 472792489}
   PriceGoal: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
-  HeightGoal: {fileID: 0}
-  SpeedGoal: {fileID: 0}
+  HeightGoal: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+  SpeedGoal: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
+  Challenges: {fileID: 11400000, guid: fe090b686c2a5004a83263fc2ad16694, type: 2}
   SelectedPrice: {fileID: 2110911974}
   SelectedHeight: {fileID: 93222770}
-  SelectedTime: {fileID: 0}
-  SelectedPrice_speed: {fileID: 0}
+  SelectedTime: {fileID: 875379794}
+  SelectedPrice_speed: {fileID: 1002534845}
 --- !u!1 &367004618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,6 +2744,7 @@ MonoBehaviour:
   PriceGoal: {fileID: 0}
   HeightGoal: {fileID: 0}
   SpeedGoal: {fileID: 0}
+  Challenges: {fileID: 0}
   SelectedPrice: {fileID: 0}
   SelectedHeight: {fileID: 0}
   SelectedTime: {fileID: 0}
@@ -3988,7 +4014,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 320310206}
+        m_TargetAssemblyTypeName: BeginGame, Assembly-CSharp
+        m_MethodName: SetSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &875379795
 MonoBehaviour:
@@ -4699,7 +4737,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 320310206}
         m_TargetAssemblyTypeName: BeginGame, Assembly-CSharp
-        m_MethodName: SetPrice
+        m_MethodName: SetPrice_speed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5059,7 +5097,7 @@ GameObject:
   - component: {fileID: 1093964080}
   - component: {fileID: 1093964079}
   m_Layer: 5
-  m_Name: Start
+  m_Name: Start_challenge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6733,7 +6771,7 @@ GameObject:
   - component: {fileID: 1544487259}
   - component: {fileID: 1544487258}
   m_Layer: 5
-  m_Name: Start
+  m_Name: Start_challenge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8078,6 +8116,7 @@ MonoBehaviour:
   PriceGoal: {fileID: 0}
   HeightGoal: {fileID: 0}
   SpeedGoal: {fileID: 0}
+  Challenges: {fileID: 0}
   SelectedPrice: {fileID: 0}
   SelectedHeight: {fileID: 0}
   SelectedTime: {fileID: 0}
