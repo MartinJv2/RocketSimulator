@@ -192,12 +192,11 @@ public class MenuManager : MonoBehaviour
         {
             if (Selectedobject.GetComponent<MotorProperty>() != null)
             {
-                float price =  -25 * (Selectedobject.GetComponent<BaseProperty>().weight *
-                                (Selectedobject.GetComponent<BaseProperty>().last_x *
-                                 Selectedobject.GetComponent<BaseProperty>().last_z *
-                                 Selectedobject.GetComponent<BaseProperty>().last_y))
-                         + (50 * Selectedobject.GetComponent<MotorProperty>().duration *
-                            Selectedobject.GetComponent<MotorProperty>().force);
+                float price =  (5 * Selectedobject.GetComponent<MotorProperty>().duration *
+                            Selectedobject.GetComponent<MotorProperty>().force)/(Selectedobject.GetComponent<BaseProperty>().weight *
+                                   (Selectedobject.GetComponent<BaseProperty>().last_x *
+                                    Selectedobject.GetComponent<BaseProperty>().last_z *
+                                    Selectedobject.GetComponent<BaseProperty>().last_y));
                 if(price > 0)
                 {
                     Selectedobject.GetComponent<BaseProperty>().price = price;

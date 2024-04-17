@@ -13,6 +13,7 @@ public class BeginGame : MonoBehaviour
     public string starterscene;
     public string tutorialScene;
     public GameObject menu;
+    public GameObject demoRocket;
     public GameObject levels;
     public GameObject basicMenu;
     public Button CoinsButton;
@@ -20,9 +21,25 @@ public class BeginGame : MonoBehaviour
     public GameObject coinChallenges;
     public GameObject speedChallenges;
     public floatscriptableobject PriceGoal;
-    public Dropdown SelectedPrice;
-    public Dropdown SelectedHeight;
+    public floatscriptableobject HeightGoal;
+    public floatscriptableobject SpeedGoal;
+    public TMP_Dropdown SelectedPrice;
+    public TMP_Dropdown SelectedHeight;
+    public TMP_Dropdown SelectedTime;
+    public TMP_Dropdown SelectedPrice_speed;
 
+    public void SetPrice()
+    {
+        if (SelectedPrice.value % 2f == 1)
+        {
+            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice.value/2));
+        }
+        else if (SelectedPrice.value%2f == 0)
+        {
+            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice.value/2));
+        }
+        print(PriceGoal.value);
+    }
     public void CoinLevels()
     {
         coinChallenges.SetActive(true);
@@ -41,11 +58,13 @@ public class BeginGame : MonoBehaviour
     {
         basicMenu.SetActive(true);
         levels.SetActive(false);
+        demoRocket.SetActive(true);
     }
     public void MenuStart()
     {
      menu.SetActive(true);
      basicMenu.SetActive(false);
+     demoRocket.SetActive(false);
     }
     public void SeeLevels()
     {
