@@ -32,7 +32,7 @@ public class BeginGame : MonoBehaviour
     
     public void SetHeight()
     {
-        if (SelectedTime.value % 2f == 1)
+        if (SelectedHeight.value % 2f == 1)
         {
             HeightGoal.value = 1000*(float)(Math.Pow(10, SelectedHeight.value/2));
         }
@@ -43,13 +43,13 @@ public class BeginGame : MonoBehaviour
     }
     public void SetPrice_speed()
     {
-        if (SelectedTime.value % 2f == 1)
+        if (SelectedPrice_speed.value % 2f == 1)
         {
-            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
         else if (SelectedPrice_speed.value%2f == 0)
         {
-            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
     }
     public void SetSpeed()
@@ -84,6 +84,23 @@ public class BeginGame : MonoBehaviour
         speedChallenges.SetActive(false);
         SpeedButton.GetComponent<Image>().color = Color.white;
         CoinsButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
+        if (SelectedHeight.value % 2f == 1)
+        {
+            HeightGoal.value = 1000*(float)(Math.Pow(10, SelectedHeight.value/2));
+        }
+        else if (SelectedHeight.value%2f == 0)
+        {
+            HeightGoal.value = 500*(float)(Math.Pow(10, SelectedHeight.value/2));
+        }
+        if (SelectedPrice.value % 2f == 1)
+        {
+            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice.value/2));
+        }
+        else if (SelectedPrice.value%2f == 0)
+        {
+            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice.value/2));
+        }
+        SpeedGoal.value = 0;
     }
     public void SpeedLevels()
     {
@@ -91,6 +108,24 @@ public class BeginGame : MonoBehaviour
         coinChallenges.SetActive(false);
         SpeedButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
         CoinsButton.GetComponent<Image>().color = Color.white;
+        if (SelectedTime.value % 2f == 1)
+        {
+            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+        }
+        else if (SelectedPrice_speed.value%2f == 0)
+        {
+            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+        }
+        if (SelectedTime.value % 2f == 1)
+        {
+            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedTime.value/2));
+        }
+        else if (SelectedTime.value%2f == 0)
+        {
+            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedTime.value/2));
+        }
+
+        HeightGoal.value = 0;
     }
     public void BackToBeginingOfLevelsMenu()
     {
