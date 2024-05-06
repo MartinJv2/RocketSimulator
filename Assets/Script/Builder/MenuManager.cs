@@ -22,9 +22,18 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public Slider slider_z;
     [SerializeField] public Slider slider_y;
     public floatscriptableobject radius;
+    public floatscriptableobject PriceGoal;
+    public boolvariable Challenges;
+    public TextMeshProUGUI PriceShowing;
 
     private void Start()
     {
+        if(Challenges.value)
+        {
+            PriceShowing.gameObject.SetActive(true);
+            PriceShowing.text = "Prix max :" + PriceGoal.value + "$";
+        }
+        
         slider_x.onValueChanged.AddListener((v) =>
         {
             if (Selectedobject != null)

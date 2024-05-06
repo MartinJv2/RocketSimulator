@@ -92,6 +92,7 @@ public class BeginGame : MonoBehaviour
         {
             HeightGoal.value = 500*(float)(Math.Pow(10, SelectedHeight.value/2));
         }
+        
         if (SelectedPrice.value % 2f == 1)
         {
             PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice.value/2));
@@ -108,14 +109,15 @@ public class BeginGame : MonoBehaviour
         coinChallenges.SetActive(false);
         SpeedButton.GetComponent<Image>().color = new Color(1f, 0.8352942f, 0.3647059f);
         CoinsButton.GetComponent<Image>().color = Color.white;
-        if (SelectedTime.value % 2f == 1)
+        if (SelectedPrice_speed.value % 2f == 1)
         {
-            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
         else if (SelectedPrice_speed.value%2f == 0)
         {
-            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
+        
         if (SelectedTime.value % 2f == 1)
         {
             SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedTime.value/2));
@@ -145,6 +147,7 @@ public class BeginGame : MonoBehaviour
         coinChallenges.SetActive(false);
         menu.SetActive(false);
         levels.SetActive(true);
+        Challenges.value = true;
     }
     public void Begin()
     {
