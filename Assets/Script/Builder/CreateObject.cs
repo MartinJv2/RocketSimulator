@@ -5,9 +5,11 @@ public class BuildingManager : MonoBehaviour
     public GameObject prefab;
     public GameObject parent;
     public GameObject menu;
+    public floatscriptableobject radius;
     
     public void CreateObject()
     {
+        radius.value = prefab.transform.localScale.x/ 2;
         if (menu.GetComponent<MenuManager>().Selectedobject != null)
         {
             if (menu.GetComponent<MenuManager>().Selectedobject.GetComponent<MoveObjects>().ismouving)
