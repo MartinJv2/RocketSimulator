@@ -21,6 +21,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public Slider slider_x;
     [SerializeField] public Slider slider_z;
     [SerializeField] public Slider slider_y;
+    public floatscriptableobject radius;
 
     private void Start()
     {
@@ -56,6 +57,7 @@ public class MenuManager : MonoBehaviour
                     }
                     Selectedobject.transform.localScale = localScale;
                     Selectedobject.GetComponent<MoveObjects>().UpdateScale();
+                    radius.value = localScale.x / 2;
                 }
             }
         });

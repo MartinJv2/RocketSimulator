@@ -25,6 +25,7 @@ public class PhysicEngine : ScriptableObject
     public floatscriptableobject currentorientation;
     public Vector3 position;
     public float angletolerance;
+    public floatscriptableobject radiusscriptableobject;
 
     public void OnEnable()
     {
@@ -195,7 +196,7 @@ public class PhysicEngine : ScriptableObject
         float force = 0;
         float cd = CalculateCd();
         float airdensity = CalculateAirDensity();
-        float radius = CalculateRadius(); 
+        float radius = radiusscriptableobject.value; 
         float referencearea = (float)(Math.PI * Math.Pow(radius, 2));
         if (speed >= 0)
         {
@@ -212,11 +213,6 @@ public class PhysicEngine : ScriptableObject
     {
         return (float)(0.0112 * 63.434948 + 0.162);
     }
-    public float CalculateRadius()
-    {
-        return 0.5f;
-    }
-
     public float CalculateAirDensity()
     {
         return (float)(28*CalculateAirPressure() / (8314*CalculateAirTemperature()));
