@@ -237,9 +237,17 @@ public class MenuManager : MonoBehaviour
         {
             setdurationtinputfield.text = _editplacedobjects.GetComponent<MotorProperty>().duration.ToString();
             settrustinputfield.text = _editplacedobjects.GetComponent<MotorProperty>().force.ToString();
+            
         }
         _selectedobject.GetComponent<Outline>().enabled = true;
         UnHide();
+        if (_editplacedobjects.GetComponent<MotorProperty>() != null)
+        {
+            slider_x.gameObject.SetActive(false);
+            slider_y.gameObject.SetActive(false);
+            slider_z.gameObject.SetActive(false);
+        }
+
         if (_selectedobject.GetComponent<MotorProperty>() == null)
         {
             motorparmeditor.SetActive(false);
