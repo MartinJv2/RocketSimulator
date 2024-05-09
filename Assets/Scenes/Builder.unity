@@ -6246,6 +6246,8 @@ MonoBehaviour:
   PriceGoal: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
   Challenges: {fileID: 11400000, guid: fe090b686c2a5004a83263fc2ad16694, type: 2}
   PriceShowing: {fileID: 730079146}
+  totalPrice: 0
+  component: {fileID: 103436258}
 --- !u!1001 &2130814431
 PrefabInstance:
   m_ObjectHideFlags: 0
