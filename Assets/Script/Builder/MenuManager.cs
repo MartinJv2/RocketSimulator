@@ -25,7 +25,9 @@ public class MenuManager : MonoBehaviour
     public floatscriptableobject PriceGoal;
     public boolvariable Challenges;
     public TextMeshProUGUI PriceShowing;
-
+    public float totalPrice = 0;
+    public GameObject component;
+    
     private void Start()
     {
         slider_x.onValueChanged.AddListener((v) =>
@@ -189,7 +191,6 @@ public class MenuManager : MonoBehaviour
             {
                 PriceShowing.text = priceForObjects.text + "/" +
                                     PriceGoal.value + "$";
-
             }
             else
             {
@@ -207,25 +208,26 @@ public class MenuManager : MonoBehaviour
                 Selectedobject = hit.collider.gameObject;
             }
         }
+        
+        int x = component.transform.childCount -1;
+            totalPrice = 0;
+                    while (x != -1)
+                    {
+                        if (component.transform.GetChild(x).GetComponent<MotorProperty>() != null && component.transform.GetChild(x).GetComponent<BaseProperty>().weight!=0)
+                        {
+                            float price =  (5 * component.transform.GetChild(x).GetComponent<MotorProperty>().duration *
+                                            component.transform.GetChild(x).GetComponent<MotorProperty>().force)/(component.transform.GetChild(x).GetComponent<BaseProperty>().weight);
+                            if(price > 0)
+                            {
+                                totalPrice += price;
+                                component.transform.GetChild(x).GetComponent<BaseProperty>().price = price;
+                                priceForObjects.text = totalPrice + "$";
+                                print(totalPrice);
+                            }
+                        }
 
-        if (Selectedobject != null)
-        {
-            if (Selectedobject.GetComponent<MotorProperty>() != null)
-            {
-                float price =  (5 * Selectedobject.GetComponent<MotorProperty>().duration *
-                            Selectedobject.GetComponent<MotorProperty>().force)/(Selectedobject.GetComponent<BaseProperty>().weight *
-                                   (Selectedobject.GetComponent<BaseProperty>().last_x *
-                                    Selectedobject.GetComponent<BaseProperty>().last_z *
-                                    Selectedobject.GetComponent<BaseProperty>().last_y));
-                if(price > 0)
-                {
-                    Selectedobject.GetComponent<BaseProperty>().price = price;
-                    priceForObjects.text = Selectedobject.GetComponent<BaseProperty>().price.ToString() + "$";
-                }
-                //Debug.Log(Selectedobject.GetComponent<BaseProperty>().price);
-            }   
-        }
-
+                        x -= 1;
+                    }
     }
     public void UnSelectObject()
     {
@@ -290,7 +292,7 @@ public class MenuManager : MonoBehaviour
         {
             if (CheckConnections())
             {
-                _editplacedobjects.ismouving = !_editplacedobjects.ismouving;
+                _editplacedobjects.ismouving =! _editplacedobjects.ismouving;
             }
         }
         else
@@ -305,6 +307,7 @@ public class MenuManager : MonoBehaviour
         {
             if (Selectedobject != null)
             {
+                totalPrice -= Selectedobject.GetComponent<BaseProperty>().price;
                 physicengine.weight -= Selectedobject.GetComponent<BaseProperty>().weight;
                 if (Selectedobject.GetComponent<MotorProperty>() == null)
                 {
