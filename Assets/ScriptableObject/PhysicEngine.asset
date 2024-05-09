@@ -40,5 +40,6 @@ MonoBehaviour:
   gravityacelleration: {fileID: 11400000, guid: e79ecbe31da322749850b9ce8fe44e4b, type: 2}
   dragforce: {fileID: 11400000, guid: e3a9620cb163e344e8f8e794511caf7d, type: 2}
   currentorientation: {fileID: 11400000, guid: 955260ca3e1243149b88fb3bc7d67baf, type: 2}
-  position: {x: 7.763581e+18, y: 2.1367982e+19, z: 0}
+  position: {x: 0, y: 0, z: 0}
   angletolerance: 0.002
+  radiusscriptableobject: {fileID: 11400000, guid: 9789d27f2c52a16499cefa63dffe1776, type: 2}

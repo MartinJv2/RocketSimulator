@@ -28,12 +28,6 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        if(Challenges.value)
-        {
-            PriceShowing.gameObject.SetActive(true);
-            PriceShowing.text = "Prix max :" + PriceGoal.value + "$";
-        }
-        
         slider_x.onValueChanged.AddListener((v) =>
         {
             if (Selectedobject != null)
@@ -189,6 +183,21 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (Challenges.value)
+        {
+            if (priceForObjects.text != "")
+            {
+                PriceShowing.text = priceForObjects.text + "/" +
+                                    PriceGoal.value + "$";
+
+            }
+            else
+            {
+                PriceShowing.text =  "0$/" + PriceGoal.value + "$";
+            }
+        }
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000, layermask) && Input.GetMouseButtonDown(0))
