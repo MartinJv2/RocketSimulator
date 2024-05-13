@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,6 +27,9 @@ public class PhysicEngine : ScriptableObject
     public Vector3 position;
     public float angletolerance;
     public floatscriptableobject radiusscriptableobject;
+    public floatscriptableobject speedGoal;
+    public floatscriptableobject heightGoal;
+    public stringscriptableobject challengeStatusValue;
 
     public void OnEnable()
     {
@@ -63,6 +67,14 @@ public class PhysicEngine : ScriptableObject
     
     public void SimulateFrame(float time)
     {
+        if (heightGoal.value != 0)
+        {
+            challengeStatusValue.value = (heightGoal.value-altitude.value) + "metres restants";
+        }
+        else if(speedGoal.value != 0)
+        {
+            challengeStatusValue.value = (speedGoal.value-_timesincestart) + "secondes pour atteindre l'espace";
+        }
         if (isrunning.value)
         {
             Vector3 acceleration;

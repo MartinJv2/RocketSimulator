@@ -187,15 +187,20 @@ public class MenuManager : MonoBehaviour
     {
         if (Challenges.value)
         {
-            if (priceForObjects.text != "")
+            if (totalPrice != 0)
             {
-                PriceShowing.text = priceForObjects.text + "/" +
+                PriceShowing.text = totalPrice + "/" +
                                     PriceGoal.value + "$";
             }
             else
             {
                 PriceShowing.text =  "0$/" + PriceGoal.value + "$";
             }
+        }
+
+        if (Selectedobject != null)
+        {
+            priceForObjects.text = Selectedobject.GetComponent<BaseProperty>().price + "$";
         }
 
 
@@ -221,7 +226,6 @@ public class MenuManager : MonoBehaviour
                             {
                                 totalPrice += price;
                                 component.transform.GetChild(x).GetComponent<BaseProperty>().price = price;
-                                priceForObjects.text = totalPrice + "$";
                                 print(totalPrice);
                             }
                         }

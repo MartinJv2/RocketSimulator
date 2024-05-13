@@ -6,3 +6,8 @@ public class floatscriptableobject : ScriptableObject
 {
    public float value;
 }
+[CreateAssetMenu(fileName = "stringscriptableobject", menuName = "ScriptableObjects/stringscriptableobject", order = 1)]
+public class stringscriptableobject : ScriptableObject
+{
+   public string value;
+}
