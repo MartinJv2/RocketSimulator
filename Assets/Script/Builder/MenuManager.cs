@@ -226,7 +226,6 @@ public class MenuManager : MonoBehaviour
                             {
                                 totalPrice += price;
                                 component.transform.GetChild(x).GetComponent<BaseProperty>().price = price;
-                                print(totalPrice);
                             }
                         }
 

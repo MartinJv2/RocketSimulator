@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca1939ea5677d54cb41bf9295439b4a, type: 3}
   m_Name: PhysicEngine
   m_EditorClassIdentifier: 
-  motorlist:
-  - {fileID: 0}
-  objectlist:
-  - {fileID: 0}
-  weight: 1
+  motorlist: []
+  objectlist: []
+  weight: 0
   altitude: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
   forcevisualize: 9901.291
   speed: {fileID: 11400000, guid: 22f45f83d89760349838aac5ca1e7917, type: 2}
@@ -43,3 +41,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   angletolerance: 0.002
   radiusscriptableobject: {fileID: 11400000, guid: 9789d27f2c52a16499cefa63dffe1776, type: 2}
+  SpeedGoal: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
+  HeightGoal: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+  challengeStatusSpeed: {fileID: 11400000, guid: 633a36e356e6a6e448369912269df2a9, type: 2}
+  challengeStatusHeight: {fileID: 11400000, guid: 87a5af4d42c79a64a987ce2aa4c69b87, type: 2}

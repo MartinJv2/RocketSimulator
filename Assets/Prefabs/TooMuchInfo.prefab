@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5059202995054472539}
   - component: {fileID: 1549693944633611522}
   - component: {fileID: 2044551546551030999}
+  - component: {fileID: 4099282670324445480}
   m_Layer: 5
   m_Name: TooMuchInfo
   m_TagString: Untagged
@@ -153,6 +154,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4099282670324445480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576879749766877090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ec2e9fe5fb8c042b9491f1a185d78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  challengeStatusSpeed: {fileID: 11400000, guid: 633a36e356e6a6e448369912269df2a9, type: 2}
+  challengeStatusHeight: {fileID: 11400000, guid: 87a5af4d42c79a64a987ce2aa4c69b87, type: 2}
+  HeightGoalOnScreen: {fileID: 0}
+  SpeedGoalOnScreen: {fileID: 0}
+  Challenges: {fileID: 11400000, guid: fe090b686c2a5004a83263fc2ad16694, type: 2}
 --- !u!1 &8150300587533319934
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,9 +27,10 @@ public class PhysicEngine : ScriptableObject
     public Vector3 position;
     public float angletolerance;
     public floatscriptableobject radiusscriptableobject;
-    public floatscriptableobject speedGoal;
-    public floatscriptableobject heightGoal;
-    public stringscriptableobject challengeStatusValue;
+    public floatscriptableobject SpeedGoal;
+    public floatscriptableobject HeightGoal;
+    public floatscriptableobject challengeStatusSpeed;
+    public floatscriptableobject challengeStatusHeight;
 
     public void OnEnable()
     {
@@ -43,6 +44,8 @@ public class PhysicEngine : ScriptableObject
 
     public void ResetVariable()
     {
+        challengeStatusSpeed.value = 0;
+        challengeStatusHeight.value = 0;
         weight = 0;
         altitude.value = 0;
         motorlist = new List<MotorProperty>();
@@ -67,13 +70,13 @@ public class PhysicEngine : ScriptableObject
     
     public void SimulateFrame(float time)
     {
-        if (heightGoal.value != 0)
+        if (HeightGoal.value != 0)
         {
-            challengeStatusValue.value = (heightGoal.value-altitude.value) + "metres restants";
+            challengeStatusHeight.value = (HeightGoal.value - altitude.value);
         }
-        else if(speedGoal.value != 0)
+        else if(SpeedGoal.value != 0)
         {
-            challengeStatusValue.value = (speedGoal.value-_timesincestart) + "secondes pour atteindre l'espace";
+            challengeStatusSpeed.value = (SpeedGoal.value - _timesincestart);
         }
         if (isrunning.value)
         {
