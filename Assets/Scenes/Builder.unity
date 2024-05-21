@@ -6749,6 +6749,74 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 889282581}
     m_Modifications:
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: levels
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: PriceGoal
+      value: 
+      objectReference: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: SpeedGoal
+      value: 
+      objectReference: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: basicMenu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: timeSpent
+      value: 
+      objectReference: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: Challenges
+      value: 
+      objectReference: {fileID: 11400000, guid: fe090b686c2a5004a83263fc2ad16694, type: 2}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: HeightGoal
+      value: 
+      objectReference: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: demoRocket
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: CoinsButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: SpeedButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: SelectedTime
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: SelectedPrice
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: SelectedHeight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: coinChallenges
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: speedChallenges
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: SelectedPrice_speed
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4553409467938072990, guid: a0839647e703c0849a123c40901577f8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

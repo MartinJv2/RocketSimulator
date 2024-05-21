@@ -31,7 +31,7 @@ public class PhysicEngine : ScriptableObject
     public floatscriptableobject HeightGoal;
     public floatscriptableobject challengeStatusSpeed;
     public floatscriptableobject challengeStatusHeight;
-
+    
     public void OnEnable()
     {
         ResetVariable();

@@ -28,8 +28,13 @@ public class BeginGame : MonoBehaviour
     public TMP_Dropdown SelectedHeight;
     public TMP_Dropdown SelectedTime;
     public TMP_Dropdown SelectedPrice_speed;
+    public floatscriptableobject timeSpent;
 
-    
+    public void Update()
+    {
+        timeSpent.value += Time.deltaTime;
+    }
+
     public void SetHeight()
     {
         if (SelectedHeight.value % 2f == 1)
