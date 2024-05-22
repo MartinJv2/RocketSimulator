@@ -283,3 +283,20 @@ MonoBehaviour:
   builderscene: Builder
   starterscene: Menu
   tutorialScene: Tutorial
+  menu: {fileID: 0}
+  demoRocket: {fileID: 0}
+  levels: {fileID: 0}
+  basicMenu: {fileID: 0}
+  CoinsButton: {fileID: 0}
+  SpeedButton: {fileID: 0}
+  coinChallenges: {fileID: 0}
+  speedChallenges: {fileID: 0}
+  PriceGoal: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
+  HeightGoal: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+  SpeedGoal: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
+  Challenges: {fileID: 11400000, guid: fe090b686c2a5004a83263fc2ad16694, type: 2}
+  SelectedPrice: {fileID: 0}
+  SelectedHeight: {fileID: 0}
+  SelectedTime: {fileID: 0}
+  SelectedPrice_speed: {fileID: 0}
+  timeSpent: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}

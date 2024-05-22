@@ -221,6 +221,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178973852}
     - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: speedGoal
+      value: 
+      objectReference: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
+    - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: heightGoal
+      value: 
+      objectReference: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+    - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
       propertyPath: SpeedGoalOnScreen
       value: 
       objectReference: {fileID: 1011389999}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,6 +32,9 @@ public class PhysicEngine : ScriptableObject
     public floatscriptableobject HeightGoal;
     public floatscriptableobject challengeStatusSpeed;
     public floatscriptableobject challengeStatusHeight;
+    public floatscriptableobject heightGoal;
+    public floatscriptableobject speedGoal;
+    public floatscriptableobject priceGoal;
     
     public void OnEnable()
     {
@@ -44,6 +48,9 @@ public class PhysicEngine : ScriptableObject
 
     public void ResetVariable()
     {
+        priceGoal.value = 0;
+        speedGoal.value = 0;
+        heightGoal.value = 0;
         challengeStatusSpeed.value = 0;
         challengeStatusHeight.value = 0;
         weight = 0;
@@ -72,11 +79,11 @@ public class PhysicEngine : ScriptableObject
     {
         if (HeightGoal.value != 0)
         {
-            challengeStatusHeight.value = (HeightGoal.value - altitude.value);
+            challengeStatusHeight.value = HeightGoal.value - altitude.value;
         }
         else if(SpeedGoal.value != 0)
         {
-            challengeStatusSpeed.value = (SpeedGoal.value - _timesincestart);
+            challengeStatusSpeed.value = SpeedGoal.value - _timesincestart;
         }
         if (isrunning.value)
         {
@@ -159,7 +166,6 @@ public class PhysicEngine : ScriptableObject
         {
             if (motor == null)
             {
-                Debug.Log("motor == null");
                 continue;
             }
 

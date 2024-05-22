@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShowTextForChallenge : MonoBehaviour
 {
-    public floatscriptableobject challengeStatusSpeed;
-    public floatscriptableobject challengeStatusHeight;
+    public floatscriptableobject speedGoal;
+    public floatscriptableobject heightGoal;
     public GameObject HeightGoalOnScreen;
     public GameObject SpeedGoalOnScreen;
     public boolvariable Challenges;
@@ -13,14 +13,15 @@ public class ShowTextForChallenge : MonoBehaviour
     {
         if (Challenges.value)
         {
-            if (challengeStatusSpeed.value != 0)
-                    {
-                        HeightGoalOnScreen.SetActive(false);
-                    }
-                    else if (challengeStatusHeight.value != 0)
-                    {
-                        SpeedGoalOnScreen.SetActive(false);
-                    }
+            if (speedGoal.value != 0)
+            {
+                HeightGoalOnScreen.SetActive(false);
+            }
+
+            if (heightGoal.value != 0)
+            {
+                SpeedGoalOnScreen.SetActive(false);
+            }
         }
         else
         {

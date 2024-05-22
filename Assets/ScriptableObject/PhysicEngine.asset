@@ -45,4 +45,6 @@ MonoBehaviour:
   HeightGoal: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
   challengeStatusSpeed: {fileID: 11400000, guid: 633a36e356e6a6e448369912269df2a9, type: 2}
   challengeStatusHeight: {fileID: 11400000, guid: 87a5af4d42c79a64a987ce2aa4c69b87, type: 2}
-  timeSpent: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}
+  heightGoal: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+  speedGoal: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
+  priceGoal: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
