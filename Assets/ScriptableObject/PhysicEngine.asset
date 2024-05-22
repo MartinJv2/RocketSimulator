@@ -48,3 +48,4 @@ MonoBehaviour:
   heightGoal: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
   speedGoal: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
   priceGoal: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
+  distanceTravelled: {fileID: 11400000, guid: 27ed1ad4743b33a449c1047023671c38, type: 2}

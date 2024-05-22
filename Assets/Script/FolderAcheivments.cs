@@ -15,6 +15,7 @@ public class FolderScript : MonoBehaviour
     public Button StatsButton;
     public GameObject LevelsBeaten;
     public GameObject Stats;
+    public PhysicEngine PhysicEngine;
     
     public void LevelsBeat()
     {
@@ -38,5 +39,10 @@ public class FolderScript : MonoBehaviour
         LevelsBeaten.SetActive(false);
         menu.SetActive(false);
         acheivments.SetActive(true);
+    }
+
+    public void Update()
+    {
+        PhysicEngine.OnPhysicUpdate.Invoke();
     }
 }

@@ -35,6 +35,7 @@ public class PhysicEngine : ScriptableObject
     public floatscriptableobject heightGoal;
     public floatscriptableobject speedGoal;
     public floatscriptableobject priceGoal;
+    public floatscriptableobject distanceTravelled;
     
     public void OnEnable()
     {
@@ -97,6 +98,7 @@ public class PhysicEngine : ScriptableObject
             acceleration = force / weight;
             finalspeed = (acceleration * time) + initial_speed;
             position += (initial_speed+finalspeed)/2 * time;
+            distanceTravelled.value += position.y - altitude.value;
             altitude.value = position.y;
             _speed = finalspeed;
             if (_speed.y >= 0)
