@@ -6248,6 +6248,7 @@ MonoBehaviour:
   PriceShowing: {fileID: 730079146}
   totalPrice: 0
   component: {fileID: 103436258}
+  totalBlocksPlaced: {fileID: 11400000, guid: ce69f8c9be3c0924cbce36b258fc3f4f, type: 2}
 --- !u!1001 &2130814431
 PrefabInstance:
   m_ObjectHideFlags: 0

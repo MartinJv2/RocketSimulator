@@ -29,6 +29,12 @@ public class BeginGame : MonoBehaviour
     public TMP_Dropdown SelectedTime;
     public TMP_Dropdown SelectedPrice_speed;
     public floatscriptableobject timeSpent;
+    public StatsScore statsScore;
+
+    public void Start()
+    {
+        statsScore.Begin();
+    }
 
     public void Update()
     {
@@ -50,11 +56,11 @@ public class BeginGame : MonoBehaviour
     {
         if (SelectedPrice_speed.value % 2f == 1)
         {
-            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 1000000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
         else if (SelectedPrice_speed.value%2f == 0)
         {
-            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 500000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
     }
     public void SetSpeed()
@@ -76,11 +82,11 @@ public class BeginGame : MonoBehaviour
     {
         if (SelectedPrice.value % 2f == 1)
         {
-            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice.value/2));
+            PriceGoal.value = 1000000*(float)(Math.Pow(10, SelectedPrice.value/2));
         }
         else if (SelectedPrice.value%2f == 0)
         {
-            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice.value/2));
+            PriceGoal.value = 500000*(float)(Math.Pow(10, SelectedPrice.value/2));
         }
     }
     public void CoinLevels()
@@ -100,11 +106,11 @@ public class BeginGame : MonoBehaviour
         
         if (SelectedPrice.value % 2f == 1)
         {
-            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice.value/2));
+            PriceGoal.value = 1000000*(float)(Math.Pow(10, SelectedPrice.value/2));
         }
         else if (SelectedPrice.value%2f == 0)
         {
-            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice.value/2));
+            PriceGoal.value = 500000*(float)(Math.Pow(10, SelectedPrice.value/2));
         }
         SpeedGoal.value = 0;
     }
@@ -116,11 +122,11 @@ public class BeginGame : MonoBehaviour
         CoinsButton.GetComponent<Image>().color = Color.white;
         if (SelectedPrice_speed.value % 2f == 1)
         {
-            PriceGoal.value = 1000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 1000000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
         else if (SelectedPrice_speed.value%2f == 0)
         {
-            PriceGoal.value = 500*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
+            PriceGoal.value = 500000*(float)(Math.Pow(10, SelectedPrice_speed.value/2));
         }
         
         if (SelectedTime.value % 2f == 1)

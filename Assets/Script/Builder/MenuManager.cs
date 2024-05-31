@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI PriceShowing;
     public float totalPrice = 0;
     public GameObject component;
+    public floatscriptableobject totalBlocksPlaced;
     
     private void Start()
     {
@@ -240,6 +241,7 @@ public class MenuManager : MonoBehaviour
             return;
         }
         _editplacedobjects.ismouving = false;
+        totalBlocksPlaced.value += 1;
         _selectedobject.GetComponent<Outline>().enabled = false;
         _selectedobject = null;
         Hide();
