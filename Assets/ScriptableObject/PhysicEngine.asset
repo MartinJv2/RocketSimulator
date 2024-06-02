@@ -49,3 +49,5 @@ MonoBehaviour:
   speedGoal: {fileID: 11400000, guid: c5bf76596d6f7e24f80f46ca55aa84f8, type: 2}
   priceGoal: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
   distanceTravelled: {fileID: 11400000, guid: 27ed1ad4743b33a449c1047023671c38, type: 2}
+  challengeComplete: 0
+  challengeFailed: 0

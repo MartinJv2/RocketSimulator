@@ -69,6 +69,8 @@ public class PhysicEngine : ScriptableObject
         isrunning.value = false;
         currentorientation.value = 0;
         position = new Vector3();
+        challengeComplete = false;
+        challengeFailed = false;
     }
     public void RegisterMotor(GameObject motor)
     {
@@ -82,18 +84,19 @@ public class PhysicEngine : ScriptableObject
     
     public void SimulateFrame(float time)
     {
-        if (challengeComplete != true)
+        if (challengeComplete == false)
         {
             if (HeightGoal.value != 0)
-                    {
+            {
                         challengeStatusHeight.value = HeightGoal.value - altitude.value;
+                
                         if (challengeStatusHeight.value <= 0)
                         {
                             challengeComplete = true;
                         }
-                    }
-                    else if(SpeedGoal.value != 0)
-                    {
+            }
+            else if(SpeedGoal.value != 0)
+            {
                         challengeStatusSpeed.value = SpeedGoal.value - _timesincestart;
                         if (challengeStatusSpeed.value <= 0)
                         {
@@ -106,7 +109,7 @@ public class PhysicEngine : ScriptableObject
                                 challengeFailed = true;
                             }
                         }
-                    }
+            }
         }
         
         if (isrunning.value)
@@ -210,6 +213,7 @@ public class PhysicEngine : ScriptableObject
                 {
                     force += CreateVectorBaseOnLenghtAndLenght(motor.force, motor.anglebetweenvectorandy, motor.anglebetweenprojectvectorandx )* motor.duration;
                     motor.generatedtrusted = force;
+                    challengeFailed = true;
                 }
                 motor.stopanimation();
                 motor.isrunning = false;

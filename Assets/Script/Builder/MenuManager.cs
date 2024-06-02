@@ -186,6 +186,10 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (totalPrice > PriceGoal.value)
+        {
+            launchbutton.SetActive(false);
+        }
         if (Challenges.value)
         {
             if (totalPrice != 0)
@@ -289,7 +293,11 @@ public class MenuManager : MonoBehaviour
 
     private void ShowLaunchButton()
     {
-        launchbutton.SetActive(true);
+        if (totalPrice <= PriceGoal.value)
+        {
+            launchbutton.SetActive(true);
+        }
+        ;
     }
     public void ToggleMoveObject()
     {
