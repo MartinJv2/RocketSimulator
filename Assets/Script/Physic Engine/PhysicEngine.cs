@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "PhysicEngine", menuName = "ScriptableObjects/PhysicEngine", order = 1)]
 public class PhysicEngine : ScriptableObject
@@ -36,6 +38,8 @@ public class PhysicEngine : ScriptableObject
     public floatscriptableobject speedGoal;
     public floatscriptableobject priceGoal;
     public floatscriptableobject distanceTravelled;
+    public bool challengeComplete = false;
+    public bool challengeFailed = false;
     
     public void OnEnable()
     {
@@ -78,14 +82,33 @@ public class PhysicEngine : ScriptableObject
     
     public void SimulateFrame(float time)
     {
-        if (HeightGoal.value != 0)
+        if (challengeComplete != true)
         {
-            challengeStatusHeight.value = HeightGoal.value - altitude.value;
+            if (HeightGoal.value != 0)
+                    {
+                        challengeStatusHeight.value = HeightGoal.value - altitude.value;
+                        if (challengeStatusHeight.value <= 0)
+                        {
+                            challengeComplete = true;
+                        }
+                    }
+                    else if(SpeedGoal.value != 0)
+                    {
+                        challengeStatusSpeed.value = SpeedGoal.value - _timesincestart;
+                        if (challengeStatusSpeed.value <= 0)
+                        {
+                            if(altitude.value >= 100000)
+                            {
+                                challengeComplete = true;
+                            }
+                            else
+                            {
+                                challengeFailed = true;
+                            }
+                        }
+                    }
         }
-        else if(SpeedGoal.value != 0)
-        {
-            challengeStatusSpeed.value = SpeedGoal.value - _timesincestart;
-        }
+        
         if (isrunning.value)
         {
             Vector3 acceleration;

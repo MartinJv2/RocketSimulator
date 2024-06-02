@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShowTextForChallenge : MonoBehaviour
@@ -9,6 +11,10 @@ public class ShowTextForChallenge : MonoBehaviour
     public GameObject HeightGoalOnScreen;
     public GameObject SpeedGoalOnScreen;
     public boolvariable Challenges;
+    public TextMeshProUGUI wonText;
+    public TextMeshProUGUI loseText;
+    public PhysicEngine physicEngine;
+    public bool challengesDone = false;
     void Start()
     {
         if (Challenges.value)
@@ -28,11 +34,37 @@ public class ShowTextForChallenge : MonoBehaviour
             HeightGoalOnScreen.SetActive(false);
             SpeedGoalOnScreen.SetActive(false);
         }
+
+    
+    }
+    public void Won()
+        {
+            HeightGoalOnScreen.SetActive(false);
+            SpeedGoalOnScreen.SetActive(false);
+            wonText.gameObject.SetActive(true);
+        }
+    public void Loss()
+    {
+        HeightGoalOnScreen.SetActive(false);
+        SpeedGoalOnScreen.SetActive(false);
+        loseText.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (challengesDone == false)
+        {
+            if (physicEngine.challengeComplete)
+            {
+                Won();
+                challengesDone = true;
+            }
+            if (physicEngine.challengeFailed)
+            {
+                Loss();
+                challengesDone = true;
+            }
+        }
         
     }
 }
