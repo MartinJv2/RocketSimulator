@@ -6750,6 +6750,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 889282581}
     m_Modifications:
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: totalTime
+      value: 
+      objectReference: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}
+    - target: {fileID: 2132757674142357237, guid: a0839647e703c0849a123c40901577f8, type: 3}
+      propertyPath: statsScore
+      value: 
+      objectReference: {fileID: 11400000, guid: c28f56ed7ccde9b4cb70451062059ad6, type: 2}
     - target: {fileID: 4553409467938072990, guid: a0839647e703c0849a123c40901577f8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

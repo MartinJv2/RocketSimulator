@@ -11,28 +11,21 @@ using Unity.VisualScripting.FullSerializer;
 [CreateAssetMenu(fileName = "BestScore", menuName = "ScriptableObjects/BestScore", order = 1)]
 public class StatsScore : ScriptableObject
 {
-    private float bestscore;
-    public string filepath;
-    public List<float> stats = new List<float>();
     public floatscriptableobject totalTime;
     public floatscriptableobject totalActions;
     public floatscriptableobject totalHeight;
-
-
-    public void Begin()
+    
+    public void SaveData()
     {
-        totalTime.value = stats[0];
-        totalHeight.value = stats[1];
-        totalActions.value = stats[2];
+        PlayerPrefs.SetFloat("Time", totalTime.value);
+        PlayerPrefs.SetFloat("Height", totalHeight.value);
+        PlayerPrefs.SetFloat("Actions", totalActions.value);
     }
 
-    public void UpdateStatus(float time)
+    public void LoadData()
     {
-        totalTime.value += time;
-        stats[0] = totalTime.value;
-        stats[1] = totalHeight.value;
-        stats[2] = totalActions.value;
+        totalTime.value = PlayerPrefs.GetFloat("Time");
+        totalHeight.value = PlayerPrefs.GetFloat("Height");
+        totalActions.value = PlayerPrefs.GetFloat("Actions");
     }
-    
-    
 }
