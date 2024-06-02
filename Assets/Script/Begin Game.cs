@@ -28,7 +28,6 @@ public class BeginGame : MonoBehaviour
     public TMP_Dropdown SelectedHeight;
     public TMP_Dropdown SelectedTime;
     public TMP_Dropdown SelectedPrice_speed;
-    public floatscriptableobject timeSpent;
     public StatsScore statsScore;
 
     public void Start()
@@ -38,7 +37,7 @@ public class BeginGame : MonoBehaviour
 
     public void Update()
     {
-        timeSpent.value += Time.deltaTime;
+        statsScore.UpdateStatus(Time.deltaTime);
     }
 
     public void SetHeight()

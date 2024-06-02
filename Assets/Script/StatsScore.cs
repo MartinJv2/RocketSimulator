@@ -26,8 +26,9 @@ public class StatsScore : ScriptableObject
         totalActions.value = stats[2];
     }
 
-    public void UpdateStatus()
+    public void UpdateStatus(float time)
     {
+        totalTime.value += time;
         stats[0] = totalTime.value;
         stats[1] = totalHeight.value;
         stats[2] = totalActions.value;

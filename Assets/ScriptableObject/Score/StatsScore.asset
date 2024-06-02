@@ -10,6 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 153c772fe1b9632469aa878804a224de, type: 3}
-  m_Name: 1000m1000$
+  m_Name: StatsScore
   m_EditorClassIdentifier: 
   filepath: 1000m1000$
+  stats:
+  - 0
+  - 0
+  - 0
+  totalTime: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}
+  totalActions: {fileID: 11400000, guid: ce69f8c9be3c0924cbce36b258fc3f4f, type: 2}
+  totalHeight: {fileID: 11400000, guid: 27ed1ad4743b33a449c1047023671c38, type: 2}

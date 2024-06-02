@@ -2076,6 +2076,7 @@ MonoBehaviour:
   SelectedTime: {fileID: 875379794}
   SelectedPrice_speed: {fileID: 1002534845}
   timeSpent: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}
+  statsScore: {fileID: 11400000, guid: c28f56ed7ccde9b4cb70451062059ad6, type: 2}
 --- !u!1 &367004618
 GameObject:
   m_ObjectHideFlags: 0
