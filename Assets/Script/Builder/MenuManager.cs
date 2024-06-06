@@ -186,12 +186,12 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (totalPrice > PriceGoal.value)
-        {
-            launchbutton.SetActive(false);
-        }
         if (Challenges.value)
         {
+            if (totalPrice > PriceGoal.value)
+            {
+                launchbutton.SetActive(false);
+            }
             if (totalPrice != 0)
             {
                 PriceShowing.text = totalPrice + "/" +
