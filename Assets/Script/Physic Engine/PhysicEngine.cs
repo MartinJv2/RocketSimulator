@@ -124,7 +124,7 @@ public class PhysicEngine : ScriptableObject
             acceleration = force / weight;
             finalspeed = (acceleration * time) + initial_speed;
             position += (initial_speed+finalspeed)/2 * time;
-            distanceTravelled.value += position.y - altitude.value;
+            distanceTravelled.value += Mathf.Abs(position.y - altitude.value);
             altitude.value = position.y;
             _speed = finalspeed;
             if (_speed.y >= 0)
@@ -142,6 +142,7 @@ public class PhysicEngine : ScriptableObject
                 speed.value = 0;
                 dragforce.value = 0;
                 isrunning.value = false;
+                challengeFailed = true;
             }
             timevariable.value = _timesincestart;
             OnPhysicUpdate.Invoke();
@@ -213,7 +214,6 @@ public class PhysicEngine : ScriptableObject
                 {
                     force += CreateVectorBaseOnLenghtAndLenght(motor.force, motor.anglebetweenvectorandy, motor.anglebetweenprojectvectorandx )* motor.duration;
                     motor.generatedtrusted = force;
-                    challengeFailed = true;
                 }
                 motor.stopanimation();
                 motor.isrunning = false;
