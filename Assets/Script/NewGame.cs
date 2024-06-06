@@ -12,6 +12,7 @@ public class NewGame : MonoBehaviour
         if (timeSpent.value == 0)
         {
             statsScore.LoadData();
+            statsScore.LoadHighscores();
         }
         
     }

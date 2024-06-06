@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc453bdf20e98641a23170850068b69, type: 3}
   m_Name: Challenge
   m_EditorClassIdentifier: 
-  value: 1
+  value: 0

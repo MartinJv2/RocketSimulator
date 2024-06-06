@@ -226,13 +226,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178973852}
     - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: time
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c5d12a92b6803742a43892fb447ffe1, type: 2}
+    - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
       propertyPath: wonText
       value: 
       objectReference: {fileID: 3949152279341021433}
     - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: altitude
+      value: 
+      objectReference: {fileID: 11400000, guid: e5246b3753b71184bab4ce384afe1d07, type: 2}
+    - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
       propertyPath: loseText
       value: 
       objectReference: {fileID: 1001521526400539069}
+    - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: priceGoal
+      value: 
+      objectReference: {fileID: 11400000, guid: 0796eebd34dba514fb5427ea330c4268, type: 2}
     - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
       propertyPath: speedGoal
       value: 
@@ -241,6 +253,10 @@ PrefabInstance:
       propertyPath: heightGoal
       value: 
       objectReference: {fileID: 11400000, guid: 180b75dfec106af47beb0b9f05480143, type: 2}
+    - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: statsScore
+      value: 
+      objectReference: {fileID: 11400000, guid: c28f56ed7ccde9b4cb70451062059ad6, type: 2}
     - target: {fileID: 4099282670324445480, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
       propertyPath: physicEngine
       value: 

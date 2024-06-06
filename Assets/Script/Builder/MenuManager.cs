@@ -225,7 +225,7 @@ public class MenuManager : MonoBehaviour
                     {
                         if (component.transform.GetChild(x).GetComponent<MotorProperty>() != null && component.transform.GetChild(x).GetComponent<BaseProperty>().weight!=0)
                         {
-                            float price =  (5 * component.transform.GetChild(x).GetComponent<MotorProperty>().duration *
+                            float price =  (100 * 1/(component.transform.GetChild(x).GetComponent<MotorProperty>().duration/50) *
                                             component.transform.GetChild(x).GetComponent<MotorProperty>().force)/(component.transform.GetChild(x).GetComponent<BaseProperty>().weight);
                             if(price > 0)
                             {
@@ -293,7 +293,7 @@ public class MenuManager : MonoBehaviour
 
     private void ShowLaunchButton()
     {
-        if (totalPrice <= PriceGoal.value)
+        if (totalPrice <= PriceGoal.value || !Challenges.value)
         {
             launchbutton.SetActive(true);
         }

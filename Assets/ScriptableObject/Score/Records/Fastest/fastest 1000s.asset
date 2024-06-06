@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 897719a84af2484489b75a4608cbbb11, type: 3}
-  m_Name: fastest 5 000 000$
+  m_Name: fastest 1000s
   m_EditorClassIdentifier: 
   value: 0

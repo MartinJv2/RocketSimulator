@@ -35,7 +35,7 @@ public class BeginGame : MonoBehaviour
     public void Update()
     {
         totalTime.value += Time.deltaTime;
-        statsScore.SaveData();
+        statsScore.LoadHighscores();
     }
 
     public void SetHeight()
@@ -64,11 +64,11 @@ public class BeginGame : MonoBehaviour
     {
         if (SelectedTime.value % 2f == 1)
         {
-            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedTime.value/2));
+            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedTime.value/2));
         }
         else if (SelectedTime.value%2f == 0)
         {
-            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedTime.value/2));
+            SpeedGoal.value = 100*(float)(Math.Pow(10, SelectedTime.value/2));
         }
     }
     public void ChallengesCancelled()
@@ -128,11 +128,11 @@ public class BeginGame : MonoBehaviour
         
         if (SelectedTime.value % 2f == 1)
         {
-            SpeedGoal.value = 1000*(float)(Math.Pow(10, SelectedTime.value/2));
+            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedTime.value/2));
         }
         else if (SelectedTime.value%2f == 0)
         {
-            SpeedGoal.value = 500*(float)(Math.Pow(10, SelectedTime.value/2));
+            SpeedGoal.value = 100*(float)(Math.Pow(10, SelectedTime.value/2));
         }
 
         HeightGoal.value = 0;
@@ -168,10 +168,18 @@ public class BeginGame : MonoBehaviour
     public void Exit()
     {
         statsScore.SaveData();
+        statsScore.LoadHighscores();
         Application.Quit();
     }
     public void instructionsScene()
     {
         SceneManager.LoadScene(tutorialScene, LoadSceneMode.Single);
+    }
+
+    public void DeleteSaves()
+    {
+        PlayerPrefs.DeleteAll();
+        statsScore.LoadData();
+        statsScore.LoadHighscores();
     }
 }

@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153c772fe1b9632469aa878804a224de, type: 3}
   m_Name: StatsScore
   m_EditorClassIdentifier: 
-  filepath: 1000m1000$
-  stats:
-  - 0
-  - 0
-  - 0
   totalTime: {fileID: 11400000, guid: 0714ab88e67f6664695dfa67a68ed4a1, type: 2}
   totalActions: {fileID: 11400000, guid: ce69f8c9be3c0924cbce36b258fc3f4f, type: 2}
   totalHeight: {fileID: 11400000, guid: 27ed1ad4743b33a449c1047023671c38, type: 2}
+  heightSOO: {fileID: 11400000, guid: 3a0f3f165583ec94badfc7c7f39a2bbe, type: 2}
+  heightIOOO: {fileID: 11400000, guid: 9f56ff007f01f9842965472df9027bdf, type: 2}
+  heightSOOO: {fileID: 11400000, guid: a7a29cfa50a7d9441a2b2a5d5021b439, type: 2}
+  heightIOOOO: {fileID: 11400000, guid: 2c16cd1c301021940b6a4d4de2b3cd98, type: 2}
+  heightSOOOO: {fileID: 11400000, guid: b4c600d7ed79f3242904d14d8e28f75f, type: 2}
+  heightIOOOOO: {fileID: 11400000, guid: fd93b55c1ef73e0459a6a7657f6285f5, type: 2}
+  speedIOO: {fileID: 11400000, guid: 2a28dec120d72cc4bb280340ce931c1a, type: 2}
+  speedSOO: {fileID: 11400000, guid: c32928b2f4283ad449258e302d97930b, type: 2}
+  speedIOOO: {fileID: 11400000, guid: a8fa878bbb767e343962eccbdcac3e93, type: 2}

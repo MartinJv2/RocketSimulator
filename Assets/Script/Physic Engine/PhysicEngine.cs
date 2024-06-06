@@ -98,16 +98,16 @@ public class PhysicEngine : ScriptableObject
             else if(SpeedGoal.value != 0)
             {
                         challengeStatusSpeed.value = SpeedGoal.value - _timesincestart;
-                        if (challengeStatusSpeed.value <= 0)
+                        if (challengeStatusSpeed.value >= 0)
                         {
                             if(altitude.value >= 100000)
                             {
                                 challengeComplete = true;
                             }
-                            else
-                            {
-                                challengeFailed = true;
-                            }
+                        }
+                        else if(altitude.value !>= 100000)
+                        {
+                            challengeFailed = true;
                         }
             }
         }

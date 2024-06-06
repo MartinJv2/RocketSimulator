@@ -15,6 +15,9 @@ public class ShowTextForChallenge : MonoBehaviour
     public TextMeshProUGUI loseText;
     public PhysicEngine physicEngine;
     public bool challengesDone = false;
+    public StatsScore statsScore;
+    public floatscriptableobject priceGoal;
+    
     void Start()
     {
         if (Challenges.value)
@@ -39,15 +42,23 @@ public class ShowTextForChallenge : MonoBehaviour
     }
     public void Won()
         {
-            HeightGoalOnScreen.SetActive(false);
-            SpeedGoalOnScreen.SetActive(false);
-            wonText.gameObject.SetActive(true);
+            if (challengesDone == false)
+            {
+                 HeightGoalOnScreen.SetActive(false);
+                 SpeedGoalOnScreen.SetActive(false);
+                 wonText.gameObject.SetActive(true);
+                 statsScore.SaveHighscore(heightGoal, speedGoal, priceGoal.value);
+                 statsScore.LoadHighscores();
+            }
         }
     public void Loss()
     {
-        HeightGoalOnScreen.SetActive(false);
-        SpeedGoalOnScreen.SetActive(false);
-        loseText.gameObject.SetActive(true);
+        if (challengesDone == false)
+        {
+             HeightGoalOnScreen.SetActive(false);
+             SpeedGoalOnScreen.SetActive(false);
+             loseText.gameObject.SetActive(true);
+        }
     }
 
     private void Update()
