@@ -198,6 +198,10 @@ PrefabInstance:
       value: TooMuchInfo
       objectReference: {fileID: 0}
     - target: {fileID: 2044551546551030999, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
+      propertyPath: infoCycling.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044551546551030999, guid: 9326861002a5b3c4f8df2cbfb69251f7, type: 3}
       propertyPath: infoCycling.Array.data[0]
       value: 
       objectReference: {fileID: 1702773534}
