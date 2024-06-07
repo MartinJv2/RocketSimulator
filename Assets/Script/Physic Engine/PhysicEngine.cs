@@ -105,7 +105,7 @@ public class PhysicEngine : ScriptableObject
                                 challengeComplete = true;
                             }
                         }
-                        else if(altitude.value !>= 100000)
+                        else if(altitude.value < 100000)
                         {
                             challengeFailed = true;
                         }

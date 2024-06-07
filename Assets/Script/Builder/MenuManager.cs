@@ -186,6 +186,10 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (Selectedobject == null)
+        {
+            ShowLaunchButton();
+        }
         if (Challenges.value)
         {
             if (totalPrice > PriceGoal.value)
@@ -225,7 +229,7 @@ public class MenuManager : MonoBehaviour
                     {
                         if (component.transform.GetChild(x).GetComponent<MotorProperty>() != null && component.transform.GetChild(x).GetComponent<BaseProperty>().weight!=0)
                         {
-                            float price =  (100 * 1/(component.transform.GetChild(x).GetComponent<MotorProperty>().duration/50) *
+                            float price =  (100/(component.transform.GetChild(x).GetComponent<MotorProperty>().duration/50) *
                                             component.transform.GetChild(x).GetComponent<MotorProperty>().force)/(component.transform.GetChild(x).GetComponent<BaseProperty>().weight);
                             if(price > 0)
                             {
@@ -334,6 +338,7 @@ public class MenuManager : MonoBehaviour
             }
             Selectedobject = null;
             Hide();
+            ShowLaunchButton();
         }
         
     }
